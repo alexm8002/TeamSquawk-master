@@ -23,7 +23,7 @@
     if (err != noErr)
     {
       NSLog(@"input format: %@, output format: %@", anInputDesc, anOutputDesc);
-      NSLog(@"AudioConverterNew failed with %d. %@", err, [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil]);
+      NSLog(@"AudioConverterNew failed with %d. %@", (int)err, [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil]);
       [self release];
       return nil;
     }
@@ -94,7 +94,7 @@ OSStatus AudioConverterInput(AudioConverterRef inAudioConverter, UInt32*ioNumber
   OSStatus err = AudioConverterFillComplexBuffer(audioConverterRef, AudioConverterInput, &userData, &outputFrameCount, outputList, NULL);
   if (err != noErr)
   {
-    NSLog(@"AudioConverterFillBuffer failed with %d. %@", err, [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil]);
+    NSLog(@"AudioConverterFillBuffer failed with %d. %@", (int)err, [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil]);
     MTAudioBufferListDispose(outputList);
     return nil;
   }

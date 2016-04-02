@@ -156,7 +156,7 @@ typedef enum {
 
 #pragma mark SLConnection Calls
 
-- (void)loginToServer:(NSString*)server port:(int)port nickname:(NSString*)nickname registered:(BOOL)registered username:(NSString*)username password:(NSString*)password channelDefault:(NSString*)channelDefault;
+- (void)loginToServer:(NSString*)server port:(int)port nickname:(NSString*)nickname registered:(BOOL)registered username:(NSString*)username password:(NSString*)password;
 
 #pragma mark SLConnection Delegates
 

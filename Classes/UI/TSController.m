@@ -41,21 +41,16 @@
     
     NSURL *url = [NSURL URLWithString:eventnew];
     
-    NSLog(@"URL Scheme: %@", [url scheme]);
-    NSLog(@"URL Host: %@", [url host]);
-    NSLog(@"URL PathExtension: %@", [url pathExtension]);
-    NSLog(@"URL Parameter string: %@", [url parameterString]);
-    NSLog(@"URL Query: %@", [url query]);
-    NSLog(@"URL Fragment: %@", [url fragment]);
-    
     [teamspeakConnection disconnect];
     [self loginToServer:[url host]
                    port:8767
                nickname:[url pathExtension]
-             registered:1//([[connectionWindowTypeMatrix selectedCell] tag] == 0)
+             registered:1
                username:[url parameterString]
-               password:[url query]
-         channelDefault:[url fragment]];
+               password:[url query]];
+    NSString *channel= [url fragment];
+    
+    [teamspeakConnection channelAutoConnect:channel withPassword:nil];
 }
 
 
@@ -390,8 +385,7 @@
              nickname:[server objectForKey:@"Nickname"]
            registered:[[server objectForKey:@"Registered"] boolValue]
              username:([[server objectForKey:@"Registered"] boolValue] ? [server objectForKey:@"Username"] : nil)
-             password:[server objectForKey:@"Password"]
-       channelDefault:[server objectForKey:@"Channel"]];
+             password:[server objectForKey:@"Password"]];
 }
 
 - (IBAction)singleClickOutlineView:(id)sender
@@ -500,8 +494,7 @@
              nickname:[connectionWindowNicknameTextField stringValue] 
            registered:([[connectionWindowTypeMatrix selectedCell] tag] == 0)
              username:(([[connectionWindowTypeMatrix selectedCell] tag] == 0) ? [connectionWindowUsernameField stringValue] : nil)
-             password:[connectionWindowPasswordField stringValue]
-   channelDefault:nil];
+             password:[connectionWindowPasswordField stringValue]];
 }
 
 - (IBAction)connectionWindowCancelAction:(id)sender
@@ -832,7 +825,7 @@
 
 #pragma mark SLConnection Calls
 
-- (void)loginToServer:(NSString*)server port:(int)port nickname:(NSString*)nickname registered:(BOOL)registered username:(NSString*)username password:(NSString*)password channelDefault:(NSString *)channelDefault
+- (void)loginToServer:(NSString*)server port:(int)port nickname:(NSString*)nickname registered:(BOOL)registered username:(NSString*)username password:(NSString*)password
 {
   NSError *error = nil;
   

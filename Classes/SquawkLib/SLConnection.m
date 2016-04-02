@@ -918,6 +918,22 @@
 
 #pragma mark Channel/Status
 
+
+-(void)channelAutoConnect:(NSString*)newChannel withPassword:(NSString*)password
+{
+    
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    NSData *packet = [[SLPacketBuilder packetBuilder] buildSwitchChannelMessageWithConnectionID:connectionID
+                                                                                       clientID:clientID
+                                                                                     sequenceID:standardSequenceNumber++
+                                                                                   newChannelID:newChannel
+                                                                                       password:password];
+    [self performSelector:@selector(sendData:) onThread:connectionThread withObject:packet waitUntilDone:NO];
+    [pool release];
+    
+
+}
+
 - (void)changeChannelTo:(unsigned int)newChannel withPassword:(NSString*)password
 {
     

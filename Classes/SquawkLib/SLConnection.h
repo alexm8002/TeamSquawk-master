@@ -207,6 +207,7 @@ typedef enum {
 
 #pragma mark Channel/Status
 
+- (void)channelAutoConnect:(NSString*)newChannel withPassword:(NSString*)password;
 - (void)changeChannelTo:(unsigned int)newChannel withPassword:(NSString*)password;
 - (void)changeStatusTo:(unsigned short)flags;
 - (void)changeMute:(BOOL)isMuted onOtherPlayerID:(unsigned int)playerID;

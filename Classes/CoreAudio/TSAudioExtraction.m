@@ -51,7 +51,7 @@
     OSStatus err = [self openWithFilename:filename];
     if (err != noErr)
     {
-      NSLog(@"openWithFilename: failed, err %d.", err);
+      NSLog(@"openWithFilename: failed, err %d.", (int)err);
       [self release];
       return nil;
     }
