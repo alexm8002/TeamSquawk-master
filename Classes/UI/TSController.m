@@ -23,37 +23,6 @@
 
 @implementation TSController
 
--(void)applicationWillFinishLaunching:(NSNotification *)aNotification
-{
-    NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
-    [appleEventManager setEventHandler:self
-                           andSelector:@selector(handleGetURLEvent:withReplyEvent:)
-                         forEventClass:kInternetEventClass andEventID:kAEGetURL];
-}
-
-- (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
-{
-    NSString *eventnew = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
-    eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?nickname=" withString:@"/nkn."];
-    eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?loginname=" withString:@";"];
-    eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?password=" withString:@"?"];
-    eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?channel=" withString:@"#"];
-    
-    NSURL *url = [NSURL URLWithString:eventnew];
-    
-    [teamspeakConnection disconnect];
-    [self loginToServer:[url host]
-                   port:8767
-               nickname:[url pathExtension]
-             registered:1
-               username:[url parameterString]
-               password:[url query]];
-    NSString *channel= [url fragment];
-    
-    [teamspeakConnection channelAutoConnect:channel withPassword:nil];
-}
-
-
 - (void)awakeFromNib
 {  
   [MWBetterCrashes createBetterCrashes];
@@ -137,6 +106,36 @@
 	}
 }
 
+#pragma mark Connecttoserver Via URL
+
+-(void)applicationWillFinishLaunching:(NSNotification *)aNotification
+{
+    NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
+    [appleEventManager setEventHandler:self
+                           andSelector:@selector(handleGetURLEvent:withReplyEvent:)
+                         forEventClass:kInternetEventClass andEventID:kAEGetURL];
+}
+
+- (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
+{
+    NSString *eventnew = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
+    eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?nickname=" withString:@"/nkn."];
+    eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?loginname=" withString:@";"];
+    eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?password=" withString:@"?"];
+    eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?channel=" withString:@"#"];
+    
+    NSURL *url = [NSURL URLWithString:eventnew];
+    
+    [teamspeakConnection disconnect];
+    [self loginToServer:[url host]
+                   port:8767
+               nickname:[url pathExtension]
+             registered:1
+               username:[url parameterString]
+               password:[url query]];
+    [channelSelect=[url fragment] retain];
+}
+
 #pragma mark OutlineView DataSource
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
@@ -183,11 +182,12 @@
 
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
-  // assert thread safety here, if someone's called reloadItem/reloadData badly we'll know about it.
+// assert thread safety here, if someone's called reloadItem/reloadData badly we'll know about it.
   ASSERT_UI_THREAD_SAFETY();
   if ([item isKindOfClass:[TSChannel class]])
   {
     return [(TSChannel*)item channelName];
+      
   }
   else if ([item isKindOfClass:[TSPlayer class]])
   {
@@ -400,7 +400,6 @@
   if ([item isKindOfClass:[TSChannel class]])
   {
     [teamspeakConnection changeChannelTo:[(TSChannel*)item channelID] withPassword:nil];
-      
   }
   
 }
@@ -929,7 +928,7 @@
   [self performSelectorOnMainThread:@selector(updatePlayerStatusView) withObject:nil waitUntilDone:YES];
   [self performSelectorOnMainThread:@selector(setupChannelsMenu) withObject:nil waitUntilDone:YES];
   [toolbarViewStatusPopupButton setTitle:currentServerAddress];
-  
+    
   // get the TSPlayer for who we are
   TSPlayer *me = [players objectForKey:[NSNumber numberWithUnsignedInt:[teamspeakConnection clientID]]];
     
@@ -972,8 +971,7 @@
   {
     [self toggleChannelCommander:nil];
   }
-  
-  [self speakVoiceEvent:@"Link Engaged." alternativeText:@"Connected."];
+     [self speakVoiceEvent:@"Link Engaged." alternativeText:@"Connected."];
 }
 
 - (void)connectionFailedToLogin:(SLConnection*)connection withError:(NSError*)error
@@ -1046,9 +1044,14 @@
     [channel setMaxUsers:[[channelDictionary objectForKey:@"SLChannelMaxUsers"] unsignedIntValue]];
     [channel setSortOrder:[[channelDictionary objectForKey:@"SLChannelSortOrder"] unsignedIntValue]];
 
-    [blocker blockMainThread];
+      if([[channelDictionary objectForKey:@"SLChannelName"]containsString:channelSelect])
+      {
+          [teamspeakConnection changeChannelTo:[channel channelID] withPassword:nil];
+      }
+      
+        [blocker blockMainThread];
     [flattenedChannels setObject:channel forKey:[NSNumber numberWithUnsignedInt:[channel channelID]]];
-    
+
     // root channels have a parent of 0xffffffff, if we've got a real parent and we haven't
     // encountered yet then we should crater
 
@@ -1079,10 +1082,13 @@
                               [[[NSSortDescriptor alloc] initWithKey:@"channelName" ascending:YES] autorelease],
                               nil];
   sortedChannels = [[[channels allValues] sortedArrayUsingDescriptors:sortDescriptors] retain];
-  [blocker unblockThread];
+[blocker unblockThread];
   [blocker release];
-  
+    
   [self performSelectorOnMainThread:@selector(setupChannelsMenu) withObject:nil waitUntilDone:YES];
+    
+    //if([[channels objectForKey:@"channelName"]containsObject:channelSelect])
+  
 }
 
 - (void)connection:(SLConnection*)connection receivedChannelChangeNotification:(unsigned int)playerID fromChannel:(unsigned int)fromChannelID toChannel:(unsigned int)toChannelID

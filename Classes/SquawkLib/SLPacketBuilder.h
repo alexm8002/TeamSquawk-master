@@ -55,7 +55,6 @@
 - (NSData*)buildTextMessagePacketWithConnectionID:(unsigned int)connectionID clientID:(unsigned int)clientID sequenceID:(unsigned int)sequenceID playerID:(unsigned int)playerID message:(NSString*)message;
 
 #pragma mark Voice Messages
-
 - (NSData*)buildVoiceMessageWithConnectionID:(unsigned int)connectionID clientID:(unsigned int)clientID codec:(unsigned char)codec packetCount:(unsigned short)packetCount transmissionID:(unsigned short)transmissionID audioData:(NSData*)data audioFrames:(unsigned char)frames;
 - (NSData*)buildVoiceWhisperWithConnectionID:(unsigned int)connectionID clientID:(unsigned int)clientID codec:(unsigned char)codec packetCount:(unsigned short)packetCount transmissionID:(unsigned short)transmissionID audioData:(NSData*)data audioFrames:(unsigned char)frames recipients:(NSArray*)recipientIDs;
 
@@ -64,7 +63,7 @@
 - (NSData*)buildSwitchChannelMessageWithConnectionID:(unsigned int)connectionID clientID:(unsigned int)clientID sequenceID:(unsigned int)sequenceID newChannelID:(unsigned int)channelID password:(NSString*)password;
 - (NSData*)buildChangePlayerStatusMessageWithConnectionID:(unsigned int)connectionID clientID:(unsigned int)clientID sequenceID:(unsigned int)sequenceID newStatusFlags:(unsigned short)statusFlags;
 - (NSData*)buildChangeOtherPlayerMuteStatusWithConnectionID:(unsigned int)connectionID clientID:(unsigned int)clientID sequenceID:(unsigned int)sequenceID playerID:(unsigned int)playerID muted:(BOOL)flag;
-//- (NSData*)buildCreateChannelMessageWithConnectionID:(unsigned int)connectionID clientID:(unsigned int)clientID sequenceID:(unsigned int)sequenceID 
+- (NSData*)buildCreateChannelMessageWithConnectionID:(unsigned int)connectionID clientID:(unsigned int)clientID sequenceID:(unsigned int)sequenceID;
 
 #pragma mark Admin
 

@@ -64,13 +64,13 @@ typedef enum {
   // state
   BOOL isConnecting;
   BOOL isConnected;
+    
   NSString *currentServerAddress;
-  
+    NSString *channelSelect;
   NSMutableDictionary *players;
   NSMutableDictionary *channels;
   NSMutableDictionary *flattenedChannels;
   NSArray *sortedChannels;
-  
   TSChannel *currentChannel;
   
   // main graph player
@@ -82,6 +82,7 @@ typedef enum {
   // transmission stuff
   TSTransmission *transmission;
 }
+//@synthetise channelSelect;
 
 - (void)awakeFromNib;
 
@@ -170,6 +171,7 @@ typedef enum {
 - (void)connection:(SLConnection*)connection receivedPlayerLeftNotification:(unsigned int)playerID;
 - (void)connection:(SLConnection*)connection receivedPlayerUpdateNotification:(unsigned int)playerID flags:(unsigned short)flags;
 - (void)connection:(SLConnection*)connection receivedPlayerMutedNotification:(unsigned int)playerID wasMuted:(BOOL)muted;
+
 - (void)connection:(SLConnection*)connection receivedChannelChangeNotification:(unsigned int)playerID fromChannel:(unsigned int)fromChannelID toChannel:(unsigned int)toChannelID;
 - (void)connection:(SLConnection*)connection receivedPlayerPriviledgeChangeNotification:(unsigned int)playerID byPlayerID:(unsigned int)byPlayerID changeType:(SLConnectionPrivChange)changeType privFlag:(SLConnectionChannelPrivFlags)flag;
 - (void)connection:(SLConnection*)connection receivedPlayerServerPriviledgeChangeNotification:(unsigned int)playerID byPlayerID:(unsigned int)byPlayerID changeType:(SLConnectionPrivChange)changeType privFlag:(SLConnectionChannelPrivFlags)flag;
