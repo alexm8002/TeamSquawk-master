@@ -128,22 +128,22 @@
     
     
     
-    NSURL *url = [NSURL URLWithString:eventnew];
+    NSURL *command = [NSURL URLWithString:eventnew];
     
-    if([url host]==nil)
+    if([command host]==nil)
         {
             [teamspeakConnection disconnect];
         }
     
         else
             
-    [self loginToServer:[url host]
+    [self loginToServer:[command host]
                    port:8767
-               nickname:[url pathExtension]
+               nickname:[command pathExtension]
              registered:1
-               username:[url parameterString]
-               password:[url query]];
-    [channelSelect=[url fragment] retain];
+               username:[command parameterString]
+               password:[command query]];
+    [channelSelect=[command fragment] retain];
 
 }
 #pragma mark OutlineView DataSource

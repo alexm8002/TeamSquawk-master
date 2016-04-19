@@ -11,8 +11,8 @@
                 https://github.com/alexm8002/TeamSquawk-master/blob/master/1.4.2.html
             </sparkle:releaseNotesLink>
             <pubDate>Tue, 19 Apr 2016 13:24:11 +0000</pubDate>
-            <enclosure url="https://github.com/alexm8002/TeamSquawk-master/releases/download/1.4.2/TeamSquawk-Release-190416-0947.dmg" sparkle:version="1.5" length="1472893" type="application/octet-stream" sparkle:dsaSignature="234818feCa1JyW30nbkBwainOzrN6EQuAh" />
-            <sparkle:minimumSystemVersion>10.10</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/alexm8002/TeamSquawk-master/releases/download/1.4.2/TeamSquawk-Release-190416-0947.dmg" sparkle:version="1.4.2" length="1472893" type="application/octet-stream"/>
+            <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
         </item>
 
     </channel>
