@@ -8,7 +8,7 @@
         <item>
             <title>Version 1.4.3</title>
             <sparkle:releaseNotesLink>
-                https://raw.githubusercontent.com/alexm8002/TeamSquawk-master/master/1.4.3.html
+                https://github.com/alexm8002/TeamSquawk-master/blob/master/1.4.3.html
             </sparkle:releaseNotesLink>
             <pubDate>Tue, 19 Apr 2016 15:22:11 +0000</pubDate>
             <enclosure url="https://github.com/alexm8002/TeamSquawk-master/releases/download/1.4.3/TeamSquawk-Release-190416-1458.dmg"
