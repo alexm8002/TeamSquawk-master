@@ -114,8 +114,7 @@
     [appleEventManager setEventHandler:self
                            andSelector:@selector(handleGetURLEvent:withReplyEvent:)
                          forEventClass:kInternetEventClass andEventID:kAEGetURL];
-    
-    
+
 }
 
 - (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
@@ -125,9 +124,7 @@
     eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?loginname=" withString:@";"];
     eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?password=" withString:@"?"];
     eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?channel=" withString:@"#"];
-    
-    
-    
+  
     NSURL *url = [NSURL URLWithString:eventnew];
     
     if([url host]==nil)
@@ -137,6 +134,7 @@
     
         else
             
+
     [self loginToServer:[url host]
                    port:8767
                nickname:[url pathExtension]
@@ -146,6 +144,7 @@
     [channelSelect=[url fragment] retain];
 
 }
+
 #pragma mark OutlineView DataSource
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
