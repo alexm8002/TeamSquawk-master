@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>TeamSquawk Changelog</title>
+        <link>https://raw.githubusercontent.com/alexm8002/TeamSquawk-master/master/Appcast.xml</link>
+        <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
             <title>Version 1.4.3</title>
@@ -11,4 +15,6 @@
             sparkle:version="1.4.3" length="1472893" type="application/octet-stream"
             sparkle:dsaSignature="MC0CFQCGnV4MXq13pxgSq+oWzJZFA9e0pwIULfeKMQxHUwRTCCDm0hgT0j65oSc=" />
         </item>
+
+    </channel>
 </rss>
