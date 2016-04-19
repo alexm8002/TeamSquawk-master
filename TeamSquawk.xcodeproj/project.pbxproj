@@ -1423,11 +1423,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-<<<<<<< HEAD
 			shellScript = "# shell script goes here\n\ncd \"$BUILD_DIR\"\nmkdir -p \"$BUILD_DIR/$CONFIGURATION/Speex\"\ncd \"$BUILD_DIR/$CONFIGURATION/Speex\"\nmkdir -p \"$BUILD_DIR/$CONFIGURATION/Speex/libspeex\"\nmkdir -p \"$BUILD_DIR/$CONFIGURATION/Speex/libspeex/.libs\"\n\nCFLAGS=\"-arch i386 -g\" $PROJECT_DIR/speex-1.2rc1/configure --disable-dependency-tracking && make clean && make\n\ncp \"$BUILD_DIR/$CONFIGURATION/Speex/libspeex/.libs/libspeex.1.5.0.dylib\" \"$BUILD_DIR/$CONFIGURATION\"\ncp \"$BUILD_DIR/$CONFIGURATION/Speex/libspeex/.libs/libspeexdsp.1.5.0.dylib\" \"$BUILD_DIR/$CONFIGURATION\"";
-=======
-			shellScript = "# shell script goes here\n\ncd \"$BUILD_DIR\"\nmkdir -p \"$BUILD_DIR/$CONFIGURATION/Speex\"\ncd \"$BUILD_DIR/$CONFIGURATION/Speex\"\n\nCFLAGS=\"-arch i386 -arch ppc -g\" $PROJECT_DIR/speex-1.2rc1/configure --disable-dependency-tracking && make clean && make\n\ncp \"$BUILD_DIR/$CONFIGURATION/Speex/libspeex/.libs/libspeex.1.5.0.dylib\" \"$BUILD_DIR/$CONFIGURATION\"\ncp \"$BUILD_DIR/$CONFIGURATION/Speex/libspeex/.libs/libspeexdsp.1.5.0.dylib\" \"$BUILD_DIR/$CONFIGURATION\"";
->>>>>>> origin/master
 		};
 		C9BD03210FFCA14400FC280A /* Fix Library Paths */ = {
 			isa = PBXShellScriptBuildPhase;
