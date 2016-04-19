@@ -522,6 +522,7 @@
 		C9E2E0B31009698700ED920D /* RPImageAndTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPImageAndTextCell.m; sourceTree = "<group>"; };
 		FE812C281CC65D0E00691D31 /* 1.4.2.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = 1.4.2.html; sourceTree = "<group>"; };
 		FE812C291CC65ECC00691D31 /* Appcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Appcast.xml; sourceTree = "<group>"; };
+		FE812C2A1CC6675B00691D31 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -622,6 +623,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FE812C2A1CC6675B00691D31 /* dsa_pub.pem */,
 				FE812C291CC65ECC00691D31 /* Appcast.xml */,
 				FE812C281CC65D0E00691D31 /* 1.4.2.html */,
 				C9E2CA1610032AAF00ED920D /* Images */,
@@ -1355,6 +1357,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0730;
+				TargetAttributes = {
+					8D1107260486CEB800E47090 = {
+						DevelopmentTeam = 4BV6J54P25;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TeamSquawk" */;
 			compatibilityVersion = "Xcode 3.2";

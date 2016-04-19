@@ -42,6 +42,6 @@
 	<key>SUFeedURL</key>
 	<string>https://github.com/alexm8002/TeamSquawk-master/blob/master/Appcast.xml</string>
 	<key>SUPublicDSAKeyFile</key>
-	<string>TeamSquawk.pub</string>
+	<string>dsa_pub.pem</string>
 </dict>
 </plist>
