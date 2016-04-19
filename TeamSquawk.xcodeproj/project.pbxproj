@@ -521,6 +521,7 @@
 		C9E2E0B21009698700ED920D /* RPImageAndTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPImageAndTextCell.h; sourceTree = "<group>"; };
 		C9E2E0B31009698700ED920D /* RPImageAndTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPImageAndTextCell.m; sourceTree = "<group>"; };
 		FE812C281CC65D0E00691D31 /* 1.4.2.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = 1.4.2.html; sourceTree = "<group>"; };
+		FE812C291CC65ECC00691D31 /* Appcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Appcast.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -621,6 +622,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FE812C291CC65ECC00691D31 /* Appcast.xml */,
 				FE812C281CC65D0E00691D31 /* 1.4.2.html */,
 				C9E2CA1610032AAF00ED920D /* Images */,
 				C939F0B91011F3E9002CBED3 /* Credits.rtf */,
