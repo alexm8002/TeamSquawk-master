@@ -10,7 +10,7 @@
             <sparkle:releaseNotesLink>
                 https://raw.githubusercontent.com/alexm8002/TeamSquawk-master/master/1.4.3.html
             </sparkle:releaseNotesLink>
-            <pubDate>Tue, 19 Apr 2016 13:24:11 +0000</pubDate>
+            <pubDate>Tue, 19 Apr 2016 15:22:11 +0000</pubDate>
             <enclosure url="https://github.com/alexm8002/TeamSquawk-master/releases/download/1.4.3/TeamSquawk-Release-190416-1458.dmg"
             sparkle:version="1.4.3" length="1472893" type="application/octet-stream"
             sparkle:dsaSignature="MC0CFQCGnV4MXq13pxgSq+oWzJZFA9e0pwIULfeKMQxHUwRTCCDm0hgT0j65oSc=" />
