@@ -110,6 +110,7 @@
 		C9E2D515100726B600ED920D /* Keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E2D514100726B600ED920D /* Keyboard.png */; };
 		C9E2E0801009667E00ED920D /* Servers.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E2E07F1009667E00ED920D /* Servers.png */; };
 		C9E2E0B41009698700ED920D /* RPImageAndTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2E0B31009698700ED920D /* RPImageAndTextCell.m */; };
+		FEE742821D141C7A002D5B23 /* Appcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = FEE742811D141C7A002D5B23 /* Appcast.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -521,6 +522,7 @@
 		C9E2E0B21009698700ED920D /* RPImageAndTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPImageAndTextCell.h; sourceTree = "<group>"; };
 		C9E2E0B31009698700ED920D /* RPImageAndTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPImageAndTextCell.m; sourceTree = "<group>"; };
 		FE812C2A1CC6675B00691D31 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		FEE742811D141C7A002D5B23 /* Appcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Appcast.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -595,6 +597,7 @@
 		29B97314FDCFA39411CA2CEA /* TeamSquawk */ = {
 			isa = PBXGroup;
 			children = (
+				FEE742811D141C7A002D5B23 /* Appcast.xml */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -1404,6 +1407,7 @@
 				C9E2D5091007265000ED920D /* addSquareWidget.png in Resources */,
 				C9E2D50A1007265000ED920D /* addSquareWidgetPressed.png in Resources */,
 				C9E2D50B1007265000ED920D /* deleteWidgetPressed.png in Resources */,
+				FEE742821D141C7A002D5B23 /* Appcast.xml in Resources */,
 				C9E2D50C1007265000ED920D /* deleteWidget.png in Resources */,
 				C9E2D515100726B600ED920D /* Keyboard.png in Resources */,
 				C9E2E0801009667E00ED920D /* Servers.png in Resources */,

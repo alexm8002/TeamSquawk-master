@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>TeamSquawk Changelog</title>
+        <link>https://raw.githubusercontent.com/alexm8002/TeamSquawk-master/master/Appcast.xml</link>
+        <description>Most recent changes with links to updates.</description>
+        <language>en</language>
+        <item>
+            <title>Version 1.4.6</title>
+            <sparkle:releaseNotesLink>
+                https://github.com/alexm8002/TeamSquawk-master/blob/master/1.4.6.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Tue, 19 Apr 2016 23:31 +0000</pubDate>
+            <enclosure url="https://github.com/alexm8002/TeamSquawk-master/releases/download/1.4.6/TeamSquawk-1.4.6.dmg"
+            sparkle:version="1.4.6" length="1472893" type="application/octet-stream"
+            sparkle:dsaSignature="MCwCFCLaqqQOf7Sf5HxF5yr6oz1bdXL4AhRqFlVl1anfy/V8vT4j7XIETqlGoA==" />
+        </item>
+        
+    </channel>
+</rss>
