@@ -6,13 +6,13 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
-            <title>Version 1.4.3.1</title>
+            <title>Version 1.4.6</title>
             <sparkle:releaseNotesLink>
-                https://github.com/alexm8002/TeamSquawk-master/blob/master/1.4.3.1.html
+                https://github.com/alexm8002/TeamSquawk-master/blob/master/1.4.6.html
             </sparkle:releaseNotesLink>
-            <pubDate>Tue, 19 Apr 2016 23:31 +0000</pubDate>
+            <pubDate>Tue, 17 Jun 2016 12:00 +0000</pubDate>
             <enclosure url="https://github.com/alexm8002/TeamSquawk-master/releases/download/1.4.3.1/TeamSquawk-Release-190416-2330.dmg"
-            sparkle:version="1.4.3.1" length="1472893" type="application/octet-stream"
+            sparkle:version="1.4.6" length="1472893" type="application/octet-stream"
             sparkle:dsaSignature="MC0CFEA7FLs+Q/OJmrnOMZfS3hi7xzqFAhUAsJPiwkBgH0k3RoMoqsKM15gO4Rw=" />
         </item>
 
