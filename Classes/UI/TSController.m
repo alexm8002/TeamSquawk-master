@@ -1064,13 +1064,8 @@
       {
           [teamspeakConnection changeChannelTo:[channel channelID] withPassword:nil];
       }
-      else
-      {
-          [teamspeakConnection changeChannelTo:[channel parent] withPassword:nil];
-      }
-
-
-    // root channels have a parent of 0xffffffff, if we've got a real parent and we haven't
+      
+      // root channels have a parent of 0xffffffff, if we've got a real parent and we haven't
     // encountered yet then we should crater
 
 	if ([channel parent] == 0xffffffff)
