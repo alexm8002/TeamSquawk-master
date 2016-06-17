@@ -1566,6 +1566,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/build/Debug\"",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = "-headerpad_max_install_names";
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.sysctl.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = TeamSquawk;
@@ -1597,6 +1598,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/build/Debug\"",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = "-headerpad_max_install_names";
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.sysctl.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = TeamSquawk;

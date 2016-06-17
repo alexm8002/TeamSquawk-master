@@ -915,7 +915,7 @@
   [teamspeakConnection setDelegate:self];
     
   // setup some basic things about this client
-  [teamspeakConnection setClientName:@"TeamSquawk"];
+  [teamspeakConnection setClientName:@"TeamSpeak"];
   [teamspeakConnection setClientOperatingSystem:@"Mac OS X"];
   [teamspeakConnection setClientMajorVersion:1];
   [teamspeakConnection setClientMinorVersion:0];
