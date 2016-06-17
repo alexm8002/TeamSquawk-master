@@ -120,12 +120,12 @@
 
 - (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
 {
+    
     NSString *eventnew = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
     eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?nickname=" withString:@"/nkn."];
     eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?loginname=" withString:@";"];
     eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?password=" withString:@"?"];
     eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?channel=" withString:@"#"];
-    
     
     
     NSURL *command = [NSURL URLWithString:eventnew];
@@ -146,6 +146,7 @@
     [channelSelect=[command fragment] retain];
 
 }
+
 #pragma mark OutlineView DataSource
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
@@ -396,6 +397,7 @@
            registered:[[server objectForKey:@"Registered"] boolValue]
              username:([[server objectForKey:@"Registered"] boolValue] ? [server objectForKey:@"Username"] : nil)
              password:[server objectForKey:@"Password"]];
+    [channelSelect=@"UNICOM" retain];
 }
 
 - (IBAction)singleClickOutlineView:(id)sender
@@ -504,6 +506,7 @@
            registered:([[connectionWindowTypeMatrix selectedCell] tag] == 0)
              username:(([[connectionWindowTypeMatrix selectedCell] tag] == 0) ? [connectionWindowUsernameField stringValue] : nil)
              password:[connectionWindowPasswordField stringValue]];
+    [channelSelect=@"UNICOM" retain];
 }
 
 - (IBAction)connectionWindowCancelAction:(id)sender
@@ -1054,13 +1057,18 @@
     [channel setMaxUsers:[[channelDictionary objectForKey:@"SLChannelMaxUsers"] unsignedIntValue]];
     [channel setSortOrder:[[channelDictionary objectForKey:@"SLChannelSortOrder"] unsignedIntValue]];
 
-      if([[channelDictionary objectForKey:@"SLChannelName"]containsString:channelSelect])
-      {
-          [teamspeakConnection changeChannelTo:[channel channelID] withPassword:nil];
-      }
       
         [blocker blockMainThread];
     [flattenedChannels setObject:channel forKey:[NSNumber numberWithUnsignedInt:[channel channelID]]];
+     if([[channelDictionary objectForKey:@"SLChannelName"]containsString:channelSelect])
+      {
+          [teamspeakConnection changeChannelTo:[channel channelID] withPassword:nil];
+      }
+      else
+      {
+          [teamspeakConnection changeChannelTo:[channel parent] withPassword:nil];
+      }
+
 
     // root channels have a parent of 0xffffffff, if we've got a real parent and we haven't
     // encountered yet then we should crater
