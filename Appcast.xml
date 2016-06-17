@@ -10,7 +10,7 @@
             <sparkle:releaseNotesLink>
                 https://github.com/alexm8002/TeamSquawk-master/blob/master/1.4.6.html
             </sparkle:releaseNotesLink>
-            <pubDate>Tue, 19 Apr 2016 23:31 +0000</pubDate>
+            <pubDate>Fri, 17 Jun 2016 12:00 +0000</pubDate>
             <enclosure url="https://github.com/alexm8002/TeamSquawk-master/releases/download/1.4.6/TeamSquawk-1.4.6.dmg"
             sparkle:version="1.4.6" length="1472893" type="application/octet-stream"
             sparkle:dsaSignature="MCwCFCLaqqQOf7Sf5HxF5yr6oz1bdXL4AhRqFlVl1anfy/V8vT4j7XIETqlGoA==" />
