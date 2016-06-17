@@ -110,7 +110,6 @@
 		C9E2D515100726B600ED920D /* Keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E2D514100726B600ED920D /* Keyboard.png */; };
 		C9E2E0801009667E00ED920D /* Servers.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E2E07F1009667E00ED920D /* Servers.png */; };
 		C9E2E0B41009698700ED920D /* RPImageAndTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2E0B31009698700ED920D /* RPImageAndTextCell.m */; };
-		FE7D96AD1D141752002C9BAF /* 1.4.6.html in Resources */ = {isa = PBXBuildFile; fileRef = FE7D96AC1D141752002C9BAF /* 1.4.6.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -521,7 +520,6 @@
 		C9E2E07F1009667E00ED920D /* Servers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Servers.png; sourceTree = "<group>"; };
 		C9E2E0B21009698700ED920D /* RPImageAndTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPImageAndTextCell.h; sourceTree = "<group>"; };
 		C9E2E0B31009698700ED920D /* RPImageAndTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPImageAndTextCell.m; sourceTree = "<group>"; };
-		FE7D96AC1D141752002C9BAF /* 1.4.6.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 1.4.6.html; sourceTree = "<group>"; };
 		FE812C2A1CC6675B00691D31 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -624,7 +622,6 @@
 			isa = PBXGroup;
 			children = (
 				FE812C2A1CC6675B00691D31 /* dsa_pub.pem */,
-				FE7D96AC1D141752002C9BAF /* 1.4.6.html */,
 				C9E2CA1610032AAF00ED920D /* Images */,
 				C939F0B91011F3E9002CBED3 /* Credits.rtf */,
 				C939F0651011EA14002CBED3 /* TeamSquawk.pub */,
@@ -1389,7 +1386,6 @@
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				C9E2CA1F10032ACB00ED920D /* Graphite.tiff in Resources */,
 				C9E2CA2010032ACB00ED920D /* Green.tiff in Resources */,
-				FE7D96AD1D141752002C9BAF /* 1.4.6.html in Resources */,
 				C9E2CA2110032ACB00ED920D /* Grey.tiff in Resources */,
 				C9E2CA2210032ACB00ED920D /* Blue.tiff in Resources */,
 				C9E2CA2310032ACB00ED920D /* Orange.tiff in Resources */,
