@@ -22,6 +22,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = C9E2E2241009EDFA00ED920D /* Build configuration list for PBXAggregateTarget "Packages" */;
 			buildPhases = (
+				FAE0400C2461B163006C37CF /* CopyFiles */,
 				C9E2E21C1009EDEB00ED920D /* ShellScript */,
 			);
 			dependencies = (
@@ -110,6 +111,7 @@
 		FAD13BBE24609EEA005837E0 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD13BBD24609EE9005837E0 /* Preferences.xib */; };
 		FAD13BC02460DAE5005837E0 /* TeamSquawkx64.icns in Resources */ = {isa = PBXBuildFile; fileRef = FAD13BBF2460DAE2005837E0 /* TeamSquawkx64.icns */; };
 		FAD13BC32460DE1B005837E0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD13BC22460DE1B005837E0 /* Images.xcassets */; };
+		FAE0400E2461B1F7006C37CF /* TeamSquawk-Template.sparseimage in CopyFiles */ = {isa = PBXBuildFile; fileRef = FAE0400B2461AF89006C37CF /* TeamSquawk-Template.sparseimage */; };
 		FEE742821D141C7A002D5B23 /* Appcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = FEE742811D141C7A002D5B23 /* Appcast.xml */; };
 		FEE742841D141D39002D5B23 /* 2.0a.html in Resources */ = {isa = PBXBuildFile; fileRef = FEE742831D141D39002D5B23 /* 2.0a.html */; };
 /* End PBXBuildFile section */
@@ -137,6 +139,16 @@
 				C9BD027E0FFC1BB400FC280A /* MTCoreAudio.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAE0400C2461B163006C37CF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				FAE0400E2461B1F7006C37CF /* TeamSquawk-Template.sparseimage in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -524,6 +536,7 @@
 		FAD13BBD24609EE9005837E0 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Preferences.xib; path = "../../../../Downloads/TeamSquawk-master-master/Classes/UI/Preferences.xib"; sourceTree = "<group>"; };
 		FAD13BBF2460DAE2005837E0 /* TeamSquawkx64.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TeamSquawkx64.icns; sourceTree = "<group>"; };
 		FAD13BC22460DE1B005837E0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TeamSquawk/Images.xcassets; sourceTree = "<group>"; };
+		FAE0400B2461AF89006C37CF /* TeamSquawk-Template.sparseimage */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TeamSquawk-Template.sparseimage"; sourceTree = "<group>"; };
 		FE812C2A1CC6675B00691D31 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		FEE742811D141C7A002D5B23 /* Appcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Appcast.xml; sourceTree = "<group>"; };
 		FEE742831D141D39002D5B23 /* 2.0a.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 2.0a.html; sourceTree = "<group>"; };
@@ -628,6 +641,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FAE0400B2461AF89006C37CF /* TeamSquawk-Template.sparseimage */,
 				FAD13BC22460DE1B005837E0 /* Images.xcassets */,
 				FAD13BBF2460DAE2005837E0 /* TeamSquawkx64.icns */,
 				FE812C2A1CC6675B00691D31 /* dsa_pub.pem */,
@@ -1473,7 +1487,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "if [ -z \"$PRODUCT_SETTINGS_PATH\" ]; then\n\techo \"error: PRODUCT_SETTINGS_PATH not defined. Please set INFOPLIST_FILE to your projects plist file.\"\n\texit 1\nfi\n\nVERSION=`pl < $PRODUCT_SETTINGS_PATH | perl -ne 'while (<STDIN>) { print $1 if ($_ =~ /CFBundleVersion\\s+=\\s+\"(.*?)\"/); }'`\nDATE=`date \"+%d%m%y-%H%M\"`\n\nDMG_NAME=\"$PROJECT-$CONFIGURATION-$DATE.dmg\"\nAPP_NAME=\"TeamSquawk.app\"\n\nfunction git_clean() {\n  git-status | fgrep 'working directory clean' 2>&1 > /dev/null\n  if [ $? -eq 1 ]; then\n    git-status | fgrep 'but untracked files present' 2>&1 > /dev/null\n  fi\n}\n\n#git_clean\n#if [[ $? != 0 ]]; then\n#\techo \"error: git repository is not clean\"\n#\texit 1\n#fi\n\nCOMPILED_GIT_VERSION=`pl < $BUILT_PRODUCTS_DIR/$APP_NAME/Contents/Info.plist | perl -ne 'while (<STDIN>) { print $1 if /NSGitRevision\\s+=\\s+(.*?);/ }'`\nREAL_GIT_VERSION=`git show --abbrev-commit | grep commit | head -n 1 | perl -ne '/^commit\\s+([^.]+)\\.\\.\\.$/; print $1;'`\n\nmkdir \"$TEMP_DIR/dmg\"\ncd \"$TEMP_DIR/dmg\"\necho \"Copying template DMG ($DMG_NAME)...\"\ncp $BUILT_PRODUCTS_DIR/../../TeamSquawk-Template.sparseimage .\nhdiutil mount TeamSquawk-Template.sparseimage\nif [ ! -e /Volumes/TeamSquawk/TeamSquawk.app ]; then\n\techo \"error: dmg template not mounted at /Volumes/TeamSquawk\"\n\texit 1\nfi\necho \"Copying Product...\"\nrm -rf \"/Volumes/TeamSquawk/TeamSquawk.app\"\ncp -Rf \"$TARGET_BUILD_DIR/$APP_NAME\" \"/Volumes/TeamSquawk/$APP_NAME\"\nhdiutil eject /Volumes/TeamSquawk\necho \"Removing old DMGs from products dir...\"\nrm -f \"$BUILT_PRODUCTS_DIR\"/*.dmg\necho \"Creating DMG...\"\nhdiutil convert TeamSquawk-Template.sparseimage -format UDBZ -o \"$BUILT_PRODUCTS_DIR/$DMG_NAME\"\nrm \"TeamSquawk-Template.sparseimage\"\n";
+			shellScript = "if [ -z \"$PRODUCT_SETTINGS_PATH\" ]; then\n\techo \"error: PRODUCT_SETTINGS_PATH not defined. Please set INFOPLIST_FILE to your projects plist file.\"\n\texit 1\nfi\n\nVERSION=`pl < $PRODUCT_SETTINGS_PATH | perl -ne 'while (<STDIN>) { print $1 if ($_ =~ /CFBundleVersion\\s+=\\s+\"(.*?)\"/); }'`\nDATE=`date \"+%d%m%y-%H%M\"`\n\nDMG_NAME=\"$PROJECT-$CONFIGURATION-$DATE.dmg\"\nAPP_NAME=\"TeamSquawk.app\"\n\nfunction git_clean() {\n  git-status | fgrep 'working directory clean' 2>&1 > /dev/null\n  if [ $? -eq 1 ]; then\n    git-status | fgrep 'but untracked files present' 2>&1 > /dev/null\n  fi\n}\n\n#git_clean\n#if [[ $? != 0 ]]; then\n#\techo \"error: git repository is not clean\"\n#\texit 1\n#fi\n\nCOMPILED_GIT_VERSION=`pl < $BUILT_PRODUCTS_DIR/$APP_NAME/Contents/Info.plist | perl -ne 'while (<STDIN>) { print $1 if /NSGitRevision\\s+=\\s+(.*?);/ }'`\nREAL_GIT_VERSION=`git show --abbrev-commit | grep commit | head -n 1 | perl -ne '/^commit\\s+([^.]+)\\.\\.\\.$/; print $1;'`\n\nmkdir \"$TEMP_DIR/dmg\"\ncd \"$TEMP_DIR/dmg\"\necho \"Copying template DMG ($DMG_NAME)...\"\ncp $BUILT_PRODUCTS_DIR/TeamSquawk-Template.sparseimage .\nhdiutil mount TeamSquawk-Template.sparseimage\nif [ ! -e /Volumes/TeamSquawk/TeamSquawk.app ]; then\n\techo \"error: dmg template not mounted at /Volumes/TeamSquawk\"\n\texit 1\nfi\necho \"Copying Product...\"\nrm -rf \"/Volumes/TeamSquawk/TeamSquawk.app\"\ncp -Rf \"$TARGET_BUILD_DIR/$APP_NAME\" \"/Volumes/TeamSquawk/$APP_NAME\"\nhdiutil eject /Volumes/TeamSquawk\n#echo \"Removing old DMGs from products dir...\"\n#rm -f \"$BUILT_PRODUCTS_DIR\"/*.dmg\necho \"Creating DMG...\"\nhdiutil convert TeamSquawk-Template.sparseimage -format UDBZ -o \"$BUILT_PRODUCTS_DIR/$DMG_NAME\"\nrm \"TeamSquawk-Template.sparseimage\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
