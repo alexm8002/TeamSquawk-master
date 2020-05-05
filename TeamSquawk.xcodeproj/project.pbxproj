@@ -111,7 +111,7 @@
 		FAD13BC02460DAE5005837E0 /* TeamSquawkx64.icns in Resources */ = {isa = PBXBuildFile; fileRef = FAD13BBF2460DAE2005837E0 /* TeamSquawkx64.icns */; };
 		FAD13BC32460DE1B005837E0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD13BC22460DE1B005837E0 /* Images.xcassets */; };
 		FEE742821D141C7A002D5B23 /* Appcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = FEE742811D141C7A002D5B23 /* Appcast.xml */; };
-		FEE742841D141D39002D5B23 /* 1.4.6.html in Resources */ = {isa = PBXBuildFile; fileRef = FEE742831D141D39002D5B23 /* 1.4.6.html */; };
+		FEE742841D141D39002D5B23 /* 2.0a.html in Resources */ = {isa = PBXBuildFile; fileRef = FEE742831D141D39002D5B23 /* 2.0a.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -526,7 +526,7 @@
 		FAD13BC22460DE1B005837E0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TeamSquawk/Images.xcassets; sourceTree = "<group>"; };
 		FE812C2A1CC6675B00691D31 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		FEE742811D141C7A002D5B23 /* Appcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Appcast.xml; sourceTree = "<group>"; };
-		FEE742831D141D39002D5B23 /* 1.4.6.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 1.4.6.html; sourceTree = "<group>"; };
+		FEE742831D141D39002D5B23 /* 2.0a.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 2.0a.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -601,7 +601,7 @@
 			isa = PBXGroup;
 			children = (
 				FEE742811D141C7A002D5B23 /* Appcast.xml */,
-				FEE742831D141D39002D5B23 /* 1.4.6.html */,
+				FEE742831D141D39002D5B23 /* 2.0a.html */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -1407,7 +1407,7 @@
 				C9E2CC0D1003F18F00ED920D /* TransmitGreen.png in Resources */,
 				C9E2CC0E1003F18F00ED920D /* TransmitOrange.png in Resources */,
 				C9E2CE0C1004823400ED920D /* TransmitGray.png in Resources */,
-				FEE742841D141D39002D5B23 /* 1.4.6.html in Resources */,
+				FEE742841D141D39002D5B23 /* 2.0a.html in Resources */,
 				C9E2CF5710053DE300ED920D /* Mute.tiff in Resources */,
 				C9E2CF6D10053F5200ED920D /* BlockWhispers.tiff in Resources */,
 				FAD13BC32460DE1B005837E0 /* Images.xcassets in Resources */,

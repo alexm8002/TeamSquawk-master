@@ -6,9 +6,9 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
-            <title>Version 1.4.6.2</title>
+            <title>Version 2.0a</title>
             <sparkle:releaseNotesLink>
-                https://github.com/alexm8002/TeamSquawk-master/blob/master/1.4.6.html
+                https://github.com/alexm8002/TeamSquawk-master/blob/master/2.0a.html
             </sparkle:releaseNotesLink>
             <pubDate>Fri, 17 Jun 2016 12:00 +0000</pubDate>
             <enclosure url="https://github.com/alexm8002/TeamSquawk-master/releases/download/1.4.6.2/TeamSquawk-1.4.6.2.dmg"
