@@ -64,14 +64,7 @@
     NSDivideRect(cellFrame, &transmissionRect, &cellFrame, compositeSize.width + 5, NSMaxXEdge);
     transmissionRect.origin.x += ceil((transmissionRect.size.width - compositeSize.width) / 2);
 
-    BOOL oldFlipped = [image isFlipped];
-    [image setFlipped:[controlView isFlipped]];
     
-    transmissionRect.size = compositeSize;    
-    transmissionRect.origin.y += ceil((cellFrame.size.height - transmissionRect.size.height) / 2);
-
-    [image drawInRect:transmissionRect fromRect:NSMakeRect(0, 0, [image size].width, [image size].height) operation:NSCompositeSourceOver fraction:opacity];
-    [image setFlipped:oldFlipped];
   }
   
   // draw the light
@@ -114,7 +107,7 @@
     else
       userLightRect.origin.y += ceil((cellFrame.size.height - userLightRect.size.height) / 2);
     
-    [image compositeToPoint:userLightRect.origin operation:NSCompositeSourceOver];
+      [image compositeToPoint:userLightRect.origin operation:NSCompositingOperationSourceOver];
   }
   
   // draw the player name

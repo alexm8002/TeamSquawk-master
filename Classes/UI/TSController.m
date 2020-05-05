@@ -18,16 +18,44 @@
 #import "TSPlayer.h"
 #import "TSChannel.h"
 #import "TSThreadBlocker.h"
+#import <AVFoundation/AVCaptureDevice.h>
 
 #define SPEECH_RATE 150.0f
 
 @implementation TSController
 
+
 - (void)awakeFromNib
 {  
-  [MWBetterCrashes createBetterCrashes];
-  UKCrashReporterCheckForCrash();
+  //[MWBetterCrashes createBetterCrashes];
+  //UKCrashReporterCheckForCrash();
+   NSString *mediaType = AVMediaTypeAudio;
+    if (@available(macOS 10.14, *)) {
+        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
+        if(authStatus == AVAuthorizationStatusAuthorized) {
+            // do your logic
+            
+        } else if(authStatus == AVAuthorizationStatusDenied){
+            exit(2);
+        } else if(authStatus == AVAuthorizationStatusRestricted){
+            // restricted, normally won't happen
+        } else if(authStatus == AVAuthorizationStatusNotDetermined){
+            // not determined?!
+            [AVCaptureDevice requestAccessForMediaType:mediaType completionHandler:^(BOOL granted) {
+                if(granted){
+                    NSLog(@"Granted access to %@", mediaType);
+                } else {
+                    NSLog(@"Not granted access to %@", mediaType);
+                }
+            }];
+        }
+    } else {
+        // Fallback on earlier versions
+    }
+
     
+   
+
   NSDictionary *defaults = [NSDictionary dictionaryWithObjectsAndKeys:
                             [NSNumber numberWithFloat:1.0], @"InputGain",
                             [NSNumber numberWithFloat:1.0], @"OutputGain",
@@ -104,6 +132,9 @@
   {
 		NSLog(@"NSZombieEnabled/NSAutoreleaseFreedObjectCheckEnabled enabled!");
 	}
+    
+    
+    
 }
 
 #pragma mark Connecttoserver Via URL

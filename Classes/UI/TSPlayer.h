@@ -42,7 +42,7 @@ typedef enum {
 
 @property (readonly) SpeexDecoder *decoder;
 @property (readonly) TSAudioConverter *converter;
-@property (retain) TSAUGraphPlayer *graphPlayer;
+@property (nonatomic, retain) TSAUGraphPlayer *graphPlayer;
 @property (readonly) NSOperationQueue *decodeQueue;
 @property (assign) unsigned int lastVoicePacketCount;
 @property (assign) unsigned int extendedFlags;

@@ -7,15 +7,15 @@
 //
 
 #import "NSApplication+Exceptions.h"
-#import <MWFramework/MWFramework.h>
+//#import <MWFramework/MWFramework.h>
 
 @implementation NSApplication (Exceptions)
 
 - (void)reportException:(NSException *)anException
 {
-  NSString *stackTraceLog = [NSString stringWithFormat:@"Exception:\n\n%@\n\nStack Trace:\n\n%@",
-                             anException,
-                             MWStackTraceFromException(anException)];
+    //NSString *stackTraceLog = [NSString stringWithFormat:@"Exception:\n\n%@\n\nStack Trace:\n\n%@",
+     //                       anException,
+     //                       MWStackTraceFromException(anException)];
   
   NSAlert *alert = [NSAlert alertWithMessageText:@"An unhandled exception occured"
                                    defaultButton:@"OK"
@@ -24,7 +24,7 @@
                        informativeTextWithFormat:@"An unhandled exception occured, it is displayed below. To aid debugging your crash, you are encouraged to press the \"Send Report\" button to transmit this exception to the author. Thank you."];
   
   NSTextView *stackTraceView = [[[NSTextView alloc] initWithFrame:NSMakeRect(0, 0, 400, 300)] autorelease];
-  [stackTraceView setString:stackTraceLog];
+  //[stackTraceView setString:stackTraceLog];
   [stackTraceView setHorizontallyResizable:YES];
   [stackTraceView setVerticallyResizable:YES];
   [stackTraceView sizeToFit];
@@ -39,7 +39,8 @@
   [alert beginSheetModalForWindow:[self keyWindow]
                     modalDelegate:self
                    didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:)
-                      contextInfo:[stackTraceLog retain]];
+                      //contextInfo:[stackTraceLog retain]
+   ];
 }
 
 - (void)alertDidEnd:(NSAlert*)alert returnCode:(int)returnCode contextInfo:(void*)context
@@ -48,7 +49,7 @@
   
   if (returnCode == 0)
   {
-    [[UKCrashReporter alloc] initWithLogString:(NSString*)context];
+    //[[UKCrashReporter alloc] initWithLogString:(NSString*)context];
     [(NSException*)context release];
   }
 }

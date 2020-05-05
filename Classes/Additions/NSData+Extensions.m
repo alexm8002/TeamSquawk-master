@@ -297,6 +297,7 @@ static __inline__ unsigned int udivroundup(unsigned int a, unsigned int b)
   int				i, bytec = 0, groupc = 0;
   unsigned int	numgroups, groupsPerLine, dataLength;
   
+  
   source = [self bytes];
   endOfSource = source + [self length];
   
@@ -305,7 +306,7 @@ static __inline__ unsigned int udivroundup(unsigned int a, unsigned int b)
   numgroups = udivroundup([self length], 3);
   groupsPerLine = lineLength / 4;
   if(groupsPerLine == 0)
-    [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Line length must be > 3", NSStringFromClass(isa), NSStringFromSelector(_cmd)];
+    [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Line length must be > 3",nil, NSStringFromSelector(_cmd)];
   dataLength = numgroups * 4;
   if(lineLength > 0)
     dataLength += udivroundup(numgroups, groupsPerLine) * 2;

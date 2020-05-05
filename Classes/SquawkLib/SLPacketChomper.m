@@ -41,7 +41,7 @@
                                     snarfPos += 1; \
                                     [snarfData getBytes:&dest##Buffer range:NSMakeRange(snarfPos, 255)]; \
                                     snarfPos += 255; \
-                                    dest = [[[NSString alloc] initWithCString:(const char*)dest##Buffer length:dest##Len] autorelease]
+dest = [[[NSString alloc] initWithBytes:(const char*)dest##Buffer length:dest##Len encoding:NSUTF8StringEncoding] autorelease]
 
 #define SNARF_30BYTE_STRING(dest)   unsigned char dest##Len; \
                                     unsigned char dest##Buffer[29]; \
@@ -50,11 +50,11 @@
                                     memset(dest##Buffer, '\0', 29); \
                                     [snarfData getBytes:&dest##Buffer range:NSMakeRange(snarfPos, 29)]; \
                                     snarfPos += 29; \
-                                    dest = [[[NSString alloc] initWithCString:(const char*)dest##Buffer length:dest##Len] autorelease]
+dest = [[[NSString alloc] initWithBytes:(const char*)dest##Buffer length:dest##Len encoding: NSUTF8StringEncoding] autorelease]
 
 #define SNARF_NULLTERM_STRING(dest) char *dest##DataPtr = (char*)[[snarfData subdataWithRange:NSMakeRange(snarfPos, [snarfData length] - snarfPos)] bytes]; \
                                     unsigned int dest##Len = (strlen(dest##DataPtr) < ([snarfData length] - snarfPos)) ? strlen(dest##DataPtr) : ([snarfData length] - snarfPos); \
-                                    dest = [[[NSString alloc] initWithCString:dest##DataPtr length:dest##Len] autorelease]; \
+                                    dest = [[[NSString alloc] initWithBytes:dest##DataPtr length:dest##Len encoding:NSUTF8StringEncoding] autorelease]; \
                                     snarfPos += dest##Len + 1
 
 #define SNARF_CRC()   unsigned int crc; \

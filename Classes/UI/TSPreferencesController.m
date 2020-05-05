@@ -258,19 +258,19 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
 
 - (IBAction)connectionEditorWindowOKAction:(id)sender
 {
-  [NSApp endSheet:connectionEditorWindow returnCode:NSOKButton];
+    [NSApp endSheet:connectionEditorWindow returnCode:NSModalResponseOK];
 }
 
 - (IBAction)connectionEditorWindowCancelAction:(id)sender
 {
-  [NSApp endSheet:connectionEditorWindow returnCode:NSCancelButton];
+    [NSApp endSheet:connectionEditorWindow returnCode:NSModalResponseCancel];
 }
 
 - (void)connectionEditorSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
 {
   [sheet orderOut:self];
   
-  if (returnCode == NSOKButton)
+    if (returnCode == NSModalResponseOK)
   {
     NSDictionary *server = [NSDictionary dictionaryWithObjectsAndKeys:
                             [connectionEditorServerTextField stringValue], @"ServerAddress",
@@ -600,7 +600,7 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
   if (row > -1)
   {
     [hotkeyEditorRecorder setRequiredFlags:0];
-    [hotkeyEditorRecorder setAllowedFlags:NSCommandKeyMask|NSAlternateKeyMask|NSControlKeyMask|NSShiftKeyMask];
+      [hotkeyEditorRecorder setAllowedFlags:NSEventModifierFlagCommand|NSEventModifierFlagOption|NSEventModifierFlagControl|NSEventModifierFlagShift];
     [hotkeyEditorRecorder setCanCaptureGlobalHotKeys:YES];
     [hotkeyEditorRecorder setAllowsKeyOnly:YES escapeKeysRecord:NO];
     [hotkeyEditorRecorder setDelegate:self];
@@ -639,7 +639,7 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
 {
   [sheet orderOut:self];
   
-  if (returnCode == NSOKButton)
+    if (returnCode == NSModalResponseOK)
   {
     int row = (int)contextInfo;
     NSMutableArray *hotkeys = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"Hotkeys"] mutableCopy];

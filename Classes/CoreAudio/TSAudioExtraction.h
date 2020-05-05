@@ -8,7 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import <AudioToolbox/AudioToolbox.h>
-#import <QuickTime/QuickTime.h>
+//#import <QuickTime/QuickTime.h>
+#import <AVFoundation/AVFoundation.h>
 #import <MTCoreAudio/MTCoreAudio.h>
 
 @interface TSAudioExtraction : NSObject {

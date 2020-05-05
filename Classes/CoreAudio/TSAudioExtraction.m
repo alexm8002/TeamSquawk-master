@@ -28,7 +28,9 @@
 
 - (BOOL)getFSRef:(FSRef *)aFSRef
 {
+    
   return FSPathMakeRef( (const UInt8 *)[self fileSystemRepresentation], aFSRef, NULL ) == noErr;
+
 }
 
 @end
