@@ -107,11 +107,11 @@
 		C9E2D515100726B600ED920D /* Keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E2D514100726B600ED920D /* Keyboard.png */; };
 		C9E2E0801009667E00ED920D /* Servers.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E2E07F1009667E00ED920D /* Servers.png */; };
 		C9E2E0B41009698700ED920D /* RPImageAndTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2E0B31009698700ED920D /* RPImageAndTextCell.m */; };
+		FA5957812461C83900FE2CF6 /* TeamSquawk-Template.sparseimage in CopyFiles */ = {isa = PBXBuildFile; fileRef = FA5957802461C83700FE2CF6 /* TeamSquawk-Template.sparseimage */; };
 		FA5B11C2245F66CA008B8E58 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA5B11C1245F66C9008B8E58 /* AVFoundation.framework */; };
 		FAD13BBE24609EEA005837E0 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD13BBD24609EE9005837E0 /* Preferences.xib */; };
 		FAD13BC02460DAE5005837E0 /* TeamSquawkx64.icns in Resources */ = {isa = PBXBuildFile; fileRef = FAD13BBF2460DAE2005837E0 /* TeamSquawkx64.icns */; };
 		FAD13BC32460DE1B005837E0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD13BC22460DE1B005837E0 /* Images.xcassets */; };
-		FAE0400E2461B1F7006C37CF /* TeamSquawk-Template.sparseimage in CopyFiles */ = {isa = PBXBuildFile; fileRef = FAE0400B2461AF89006C37CF /* TeamSquawk-Template.sparseimage */; };
 		FEE742821D141C7A002D5B23 /* Appcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = FEE742811D141C7A002D5B23 /* Appcast.xml */; };
 		FEE742841D141D39002D5B23 /* 2.0a.html in Resources */ = {isa = PBXBuildFile; fileRef = FEE742831D141D39002D5B23 /* 2.0a.html */; };
 /* End PBXBuildFile section */
@@ -147,7 +147,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				FAE0400E2461B1F7006C37CF /* TeamSquawk-Template.sparseimage in CopyFiles */,
+				FA5957812461C83900FE2CF6 /* TeamSquawk-Template.sparseimage in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,13 +530,13 @@
 		C9E2E07F1009667E00ED920D /* Servers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Servers.png; sourceTree = "<group>"; };
 		C9E2E0B21009698700ED920D /* RPImageAndTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPImageAndTextCell.h; sourceTree = "<group>"; };
 		C9E2E0B31009698700ED920D /* RPImageAndTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPImageAndTextCell.m; sourceTree = "<group>"; };
+		FA5957802461C83700FE2CF6 /* TeamSquawk-Template.sparseimage */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TeamSquawk-Template.sparseimage"; sourceTree = "<group>"; };
 		FA5B11BF245F6445008B8E58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		FA5B11C0245F6449008B8E58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FA5B11C1245F66C9008B8E58 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FAD13BBD24609EE9005837E0 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Preferences.xib; path = "../../../../Downloads/TeamSquawk-master-master/Classes/UI/Preferences.xib"; sourceTree = "<group>"; };
 		FAD13BBF2460DAE2005837E0 /* TeamSquawkx64.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TeamSquawkx64.icns; sourceTree = "<group>"; };
 		FAD13BC22460DE1B005837E0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TeamSquawk/Images.xcassets; sourceTree = "<group>"; };
-		FAE0400B2461AF89006C37CF /* TeamSquawk-Template.sparseimage */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TeamSquawk-Template.sparseimage"; sourceTree = "<group>"; };
 		FE812C2A1CC6675B00691D31 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		FEE742811D141C7A002D5B23 /* Appcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Appcast.xml; sourceTree = "<group>"; };
 		FEE742831D141D39002D5B23 /* 2.0a.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 2.0a.html; sourceTree = "<group>"; };
@@ -641,7 +641,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FAE0400B2461AF89006C37CF /* TeamSquawk-Template.sparseimage */,
+				FA5957802461C83700FE2CF6 /* TeamSquawk-Template.sparseimage */,
 				FAD13BC22460DE1B005837E0 /* Images.xcassets */,
 				FAD13BBF2460DAE2005837E0 /* TeamSquawkx64.icns */,
 				FE812C2A1CC6675B00691D31 /* dsa_pub.pem */,
