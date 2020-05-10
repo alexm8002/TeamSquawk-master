@@ -99,24 +99,17 @@ OSStatus InputRenderCallback(void *inRefCon,
 
 - (void)_createRenderThread
 {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-  
+    @autoreleasepool {
   // put a timer on the thread so that the runloop starts
   [NSTimer scheduledTimerWithTimeInterval:[[NSDate distantFuture] timeIntervalSinceNow] target:self selector:@selector(thatDoesntExist) userInfo:nil repeats:NO];
   
-  while (![[NSThread currentThread] isCancelled])
-  {
-    // run the runloop for a while
-    [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.25]];
-    
-    // recycle the autorelease pool
-    [pool release];
-    pool = [[NSAutoreleasePool alloc] init];
-  }
-  
+        while (![[NSThread currentThread] isCancelled])
+        {
+            // run the runloop for a while
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.25]];
+        }
   isInitialised = NO;
-  
-  [pool release];
+  }
 }
 
 - (void)_initWithAudioDevice:(MTCoreAudioDevice*)device
@@ -392,19 +385,16 @@ OSStatus InputRenderCallback(void *inRefCon,
                                  numberOfFrames:(UInt32)inNumberFrames
                                            data:(AudioBufferList*)ioData
 {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-  
+    @autoreleasepool{
   MTAudioBufferListClear(ioData, 0, inNumberFrames);
   if ([inputBuffers objectForKey:[NSNumber numberWithInt:inBusNumber]] != nil)
   {
     MTAudioBuffer *buffer = [inputBuffers objectForKey:[NSNumber numberWithInt:inBusNumber]];
     [buffer readToAudioBufferList:ioData maxFrames:inNumberFrames waitForData:NO];
   }
-  
-  [pool release];
   return noErr;
 }
-
+}
 #pragma mark Audio Queue
 
 - (unsigned int)writeAudioBufferList:(AudioBufferList*)abl toInputStream:(unsigned int)index withForRoom:(BOOL)waitForRoom

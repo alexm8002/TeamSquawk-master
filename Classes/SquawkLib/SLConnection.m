@@ -10,6 +10,7 @@
 #import "SLPacketBuilder.h"
 #import "SLPacketChomper.h"
 
+
 //#define PERMS_DEBUG 1
 
 @implementation SLConnection
@@ -57,9 +58,11 @@
 {
   if (self = [super init])
   {
+      
     sendReceiveLock = [[NSRecursiveLock alloc] init];
     
     connectionThread = [[NSThread alloc] initWithTarget:self selector:@selector(spawnThread) object:nil];
+    
     [connectionThread start];
     
     [self performSelector:@selector(initSocketOnThread) onThread:connectionThread withObject:nil waitUntilDone:YES];
@@ -96,6 +99,7 @@
     }
   }
   return self;
+   
 }
 
 - (void)dealloc
@@ -119,19 +123,18 @@
 }
 
 #pragma mark Threading
-    
+
 - (void)spawnThread
 {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+@autoreleasepool {
+  
   [NSTimer scheduledTimerWithTimeInterval:[[NSDate distantFuture] timeIntervalSinceNow] target:nil selector:nil userInfo:nil repeats:NO];
   
   while (![[NSThread currentThread] isCancelled])
-  {
-    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
-    [pool release];
-    pool = [[NSAutoreleasePool alloc] init];
-  }
-  [pool release];
+   [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
+    
+     }
 }
 
 - (void)initSocketOnThread
@@ -189,7 +192,7 @@
 
 - (void)beginAsynchronousLogin:(NSString*)username password:(NSString*)password nickName:(NSString*)nickName isRegistered:(BOOL)isRegistered
 {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool{
   connectionSequenceNumber = 1;
   
   SLPacketBuilder *packetBuilder = [SLPacketBuilder packetBuilder];
@@ -201,16 +204,17 @@
                                                     isRegistered:isRegistered
                                                        loginName:username
                                                    loginPassword:password
-                                                   loginNickName:nickName];  
+                                                   loginNickName:nickName];
+    
   // send the packet
   [self performSelector:@selector(sendData:) onThread:connectionThread withObject:packet waitUntilDone:YES];
-  
+    
   // queue up a read
   [self performSelector:@selector(queueReceiveData) onThread:connectionThread withObject:nil waitUntilDone:YES];
   
   connectionTimer = [[NSTimer scheduledTimerWithTimeInterval:TRANSMIT_TIMEOUT target:self selector:@selector(connectionTimer:) userInfo:nil repeats:NO] retain];
+    }
   
-  [pool release];
 }
 
 - (void)disconnect
@@ -246,7 +250,7 @@
 
 - (BOOL)onUdpSocket:(AsyncUdpSocket *)sock didReceiveData:(NSData *)data withTag:(long)tag fromHost:(NSString *)host port:(UInt16)port
 {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool{
   SLPacketChomper *chomper = [SLPacketChomper packetChomperWithSocket:socket];
   
   [sendReceiveLock lock];
@@ -675,12 +679,12 @@
     
     [sock receiveWithTimeout:RECEIVE_TIMEOUT tag:0];
     [sendReceiveLock unlock];
-    [pool release];
     return YES;
   }
   [sendReceiveLock unlock];
-  [pool release];
+
   return NO;
+}
 }
 
 - (void)onUdpSocket:(AsyncUdpSocket *)sock didNotReceiveDataWithTag:(long)tag dueToError:(NSError *)error
@@ -822,7 +826,7 @@
 
 - (void)pingTimer:(NSTimer*)timer
 {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool{
   
   if (pingReplysPending > 5)
   {
@@ -852,7 +856,8 @@
   
   pingReplysPending++;
   
-  [pool release];
+
+}
 }
 
 - (void)connectionTimer:(NSTimer*)timer
@@ -875,21 +880,21 @@
 
 - (void)sendTextMessage:(NSString*)message toPlayer:(unsigned int)playerID
 {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool{
   NSData *packet = [[SLPacketBuilder packetBuilder] buildTextMessagePacketWithConnectionID:connectionID
                                                                                   clientID:clientID
                                                                                 sequenceID:standardSequenceNumber++
                                                                                   playerID:playerID
                                                                                    message:message];
   [self performSelector:@selector(sendData:) onThread:connectionThread withObject:packet waitUntilDone:YES];
-  [pool release];
+    }
 }
 
 #pragma mark Voice Message
 
 - (void)sendVoiceMessage:(NSData*)audioCodecData frames:(unsigned char)frames packetCount:(unsigned short)packetCount transmissionID:(unsigned short)transmissionID codec:(SLAudioCodecType)codec
 {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool{
   NSData *packet = [[SLPacketBuilder packetBuilder] buildVoiceMessageWithConnectionID:connectionID
                                                                              clientID:clientID
                                                                                 codec:(codec & 0xff)
@@ -898,12 +903,12 @@
                                                                             audioData:audioCodecData
                                                                           audioFrames:frames];
   [self performSelector:@selector(sendData:) onThread:connectionThread withObject:packet waitUntilDone:YES];
-  [pool release];
+        }
 }
 
 - (void)sendVoiceWhisper:(NSData*)audioCodecData frames:(unsigned char)frames packetCount:(unsigned short)packetCount transmissionID:(unsigned short)transmissionID codec:(SLAudioCodecType)codec recipients:(NSArray*)recipients;
 {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool{
   NSData *packet = [[SLPacketBuilder packetBuilder] buildVoiceWhisperWithConnectionID:connectionID
                                                                              clientID:clientID 
                                                                                 codec:(codec & 0xff) 
@@ -913,72 +918,74 @@
                                                                           audioFrames:frames
                                                                            recipients:recipients];
   [self performSelector:@selector(sendData:) onThread:connectionThread withObject:packet waitUntilDone:YES];
-  [pool release];
+        }
 }
 
 #pragma mark Channel/Status
 
 - (void)changeChannelTo:(unsigned int)newChannel withPassword:(NSString*)password
 {
-    
+    @autoreleasepool{
 
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
   NSData *packet = [[SLPacketBuilder packetBuilder] buildSwitchChannelMessageWithConnectionID:connectionID
                                                                                      clientID:clientID
                                                                                    sequenceID:standardSequenceNumber++
                                                                                  newChannelID:newChannel
                                                                                      password:password];
   [self performSelector:@selector(sendData:) onThread:connectionThread withObject:packet waitUntilDone:NO];
-  [pool release];
+}
+    
 }
 
 - (void)changeStatusTo:(unsigned short)flags
 {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool{
+  
   NSData *packet = [[SLPacketBuilder packetBuilder] buildChangePlayerStatusMessageWithConnectionID:connectionID
                                                                                           clientID:clientID
                                                                                         sequenceID:standardSequenceNumber++
                                                                                     newStatusFlags:flags];
   [self performSelector:@selector(sendData:) onThread:connectionThread withObject:packet waitUntilDone:NO];
-  [pool release];
+        }
 }
 
 - (void)changeMute:(BOOL)isMuted onOtherPlayerID:(unsigned int)playerID
 {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool{
+  
   NSData *packet = [[SLPacketBuilder packetBuilder] buildChangeOtherPlayerMuteStatusWithConnectionID:connectionID
                                                                                             clientID:clientID
                                                                                           sequenceID:standardSequenceNumber++
                                                                                             playerID:playerID
                                                                                                muted:isMuted];
   [self performSelector:@selector(sendData:) onThread:connectionThread withObject:packet waitUntilDone:NO];
-  [pool release];
+        }
 }
 
 #pragma mark Admin Functions
 
 - (void)kickPlayer:(unsigned int)player withReason:(NSString*)reason
 {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool{
   NSData *packet = [[SLPacketBuilder packetBuilder] buildKickMessageWithConnectionID:connectionID 
                                                                             clientID:clientID
                                                                           sequenceID:standardSequenceNumber++
                                                                             playerID:player
                                                                               reason:reason];
   [self performSelector:@selector(sendData:) onThread:connectionThread withObject:packet waitUntilDone:NO];
-  [pool release];
+        }
 }
 
 - (void)kickPlayerFromChannel:(unsigned int)player withReason:(NSString*)reason
 {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool{
   NSData *packet = [[SLPacketBuilder packetBuilder] buildChannelKickMessageWithConnectionID:connectionID
                                                                                    clientID:clientID 
                                                                                  sequenceID:standardSequenceNumber++
                                                                                    playerID:player
                                                                                      reason:reason];
   [self performSelector:@selector(sendData:) onThread:connectionThread withObject:packet waitUntilDone:NO];
-  [pool release];
+        }
 }
 
 @end

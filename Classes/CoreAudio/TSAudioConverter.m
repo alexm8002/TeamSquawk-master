@@ -58,7 +58,7 @@ OSStatus AudioConverterInput(AudioConverterRef inAudioConverter, UInt32*ioNumber
   if (userData->audioBufferList)
   {
     unsigned long packets = userData->audioBufferList->mBuffers[0].mDataByteSize / [userData->streamDesc bytesPerPacket];
-    *ioNumberDataPackets = packets;
+    *ioNumberDataPackets = (int)packets;
     
     ioData->mBuffers[0].mData = userData->audioBufferList->mBuffers[0].mData;
     ioData->mBuffers[0].mDataByteSize = userData->audioBufferList->mBuffers[0].mDataByteSize;
@@ -84,7 +84,7 @@ OSStatus AudioConverterInput(AudioConverterRef inAudioConverter, UInt32*ioNumber
   AudioConverterGetProperty(audioConverterRef, kAudioConverterPropertyCalculateOutputBufferSize, (UInt32*)&propertyDataSize, &outputBufferSize);
   
   unsigned long outputFrameCount = outputBufferSize / [outputStreamDescription bytesPerFrame];
-  AudioBufferList *outputList = MTAudioBufferListNew([outputStreamDescription channelsPerFrame], outputFrameCount, YES);
+  AudioBufferList *outputList = MTAudioBufferListNew([outputStreamDescription channelsPerFrame], (int)outputFrameCount, YES);
   
   TSAudioConverterProc userData;
   userData.audioBufferList = inputList;

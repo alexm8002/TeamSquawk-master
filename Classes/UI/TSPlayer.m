@@ -124,8 +124,8 @@
 - (void)backgroundDecodeData:(NSData*)audioCodecData
 {
   // to try and control our memory usage
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-  
+    @autoreleasepool{
+        
   unsigned int decodedFrames = 0;
   NSData *data = [[self decoder] audioDataForEncodedData:audioCodecData framesDecoded:&decodedFrames];
   AudioBufferList *decodedBufferList = MTAudioBufferListNew(1, decodedFrames * [[self decoder] frameSize], NO);
@@ -151,7 +151,7 @@
   MTAudioBufferListDispose(resampledBufferList);
   MTAudioBufferListDispose(decodedBufferList);
   [audioCodecData release];
-  [pool release];
+        }
 }
 
 - (NSString*)playerName

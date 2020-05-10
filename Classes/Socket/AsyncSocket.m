@@ -162,6 +162,7 @@ static void MyCFWriteStreamCallback(CFWriteStreamRef stream, CFStreamEventType t
 	long tag;
 	NSData *term;
 	BOOL readAllAvailableData;
+    
 }
 - (id)initWithData:(NSMutableData *)d
 		   timeout:(NSTimeInterval)t
@@ -213,7 +214,7 @@ static void MyCFWriteStreamCallback(CFWriteStreamRef stream, CFStreamEventType t
 	// and we can only read that amount.
 	// Otherwise, we're safe to read the entire length of the term.
 	
-	unsigned result = [term length];
+    unsigned result = (int)[term length];
 	
 	// Shortcut when term is a single byte
 	if(result == 1) return result;
@@ -233,7 +234,7 @@ static void MyCFWriteStreamCallback(CFWriteStreamRef stream, CFStreamEventType t
 		
 		if(memcmp(subBuffer, [term bytes], j) == 0)
 		{
-			result = [term length] - j;
+			result = (int)([term length] - j);
 			break;
 		}
 		
@@ -241,8 +242,9 @@ static void MyCFWriteStreamCallback(CFWriteStreamRef stream, CFStreamEventType t
 		j--;
 	}
 	
-	if(maxLength > 0)
-		return MIN(result, (maxLength - bytesDone));
+    if(maxLength > 0){
+
+        return MIN(result, (int)(maxLength - bytesDone));}
 	else
 		return result;
 }
@@ -253,8 +255,9 @@ static void MyCFWriteStreamCallback(CFWriteStreamRef stream, CFStreamEventType t
 **/
 - (unsigned)prebufferReadLengthForTerm
 {
-	if(maxLength > 0)
-		return MIN(READALL_CHUNKSIZE, (maxLength - bytesDone));
+    if(maxLength > 0){
+        
+        return MIN(READALL_CHUNKSIZE, (int)(maxLength - bytesDone));}
 	else
 		return READALL_CHUNKSIZE;
 }
@@ -537,7 +540,7 @@ static void MyCFWriteStreamCallback(CFWriteStreamRef stream, CFStreamEventType t
 
 - (void)runLoopAddSource:(CFRunLoopSourceRef)source
 {
-	unsigned i, count = [theRunLoopModes count];
+    unsigned i, count = (int)[theRunLoopModes count];
 	for(i = 0; i < count; i++)
 	{
 		CFStringRef runLoopMode = (CFStringRef)[theRunLoopModes objectAtIndex:i];
@@ -547,7 +550,7 @@ static void MyCFWriteStreamCallback(CFWriteStreamRef stream, CFStreamEventType t
 
 - (void)runLoopRemoveSource:(CFRunLoopSourceRef)source
 {
-	unsigned i, count = [theRunLoopModes count];
+	unsigned i, count = (int)[theRunLoopModes count];
 	for(i = 0; i < count; i++)
 	{
 		CFStringRef runLoopMode = (CFStringRef)[theRunLoopModes objectAtIndex:i];
@@ -557,7 +560,7 @@ static void MyCFWriteStreamCallback(CFWriteStreamRef stream, CFStreamEventType t
 
 - (void)runLoopAddTimer:(NSTimer *)timer
 {
-	unsigned i, count = [theRunLoopModes count];
+	unsigned i, count = (int)[theRunLoopModes count];
 	for(i = 0; i < count; i++)
 	{
 		CFStringRef runLoopMode = (CFStringRef)[theRunLoopModes objectAtIndex:i];
@@ -567,7 +570,7 @@ static void MyCFWriteStreamCallback(CFWriteStreamRef stream, CFStreamEventType t
 
 - (void)runLoopRemoveTimer:(NSTimer *)timer
 {
-	unsigned i, count = [theRunLoopModes count];
+	unsigned i, count = (int)[theRunLoopModes count];
 	for(i = 0; i < count; i++)		
 	{
 		CFStringRef runLoopMode = (CFStringRef)[theRunLoopModes objectAtIndex:i];
@@ -577,7 +580,7 @@ static void MyCFWriteStreamCallback(CFWriteStreamRef stream, CFStreamEventType t
 
 - (void)runLoopUnscheduleReadStream
 {
-	unsigned i, count = [theRunLoopModes count];
+	unsigned i, count = (int)[theRunLoopModes count];
 	for(i = 0; i < count; i++)
 	{
 		CFStringRef runLoopMode = (CFStringRef)[theRunLoopModes objectAtIndex:i];
@@ -588,7 +591,7 @@ static void MyCFWriteStreamCallback(CFWriteStreamRef stream, CFStreamEventType t
 
 - (void)runLoopUnscheduleWriteStream
 {
-	unsigned i, count = [theRunLoopModes count];
+	unsigned i, count = (int)[theRunLoopModes count];
 	for(i = 0; i < count; i++)
 	{
 		CFStringRef runLoopMode = (CFStringRef)[theRunLoopModes objectAtIndex:i];
@@ -1391,7 +1394,7 @@ Failed:
 	
 	// Add read and write streams to run loop
 	
-	unsigned i, count = [theRunLoopModes count];
+	unsigned i, count = (int)[theRunLoopModes count];
 	for(i = 0; i < count; i++)
 	{
 		CFStringRef runLoopMode = (CFStringRef)[theRunLoopModes objectAtIndex:i];
@@ -2439,7 +2442,7 @@ Failed:
 				// We don't want to increase the buffer any more than this or we'll waste space.
 				// With prebuffering it's possible to read in a small chunk on the first read.
 				
-				unsigned buffInc = READALL_CHUNKSIZE - ([theCurrentRead->buffer length] - theCurrentRead->bytesDone);
+				unsigned buffInc = (int)(READALL_CHUNKSIZE - ([theCurrentRead->buffer length] - theCurrentRead->bytesDone));
 				[theCurrentRead->buffer increaseLengthBy:buffInc];
 			}
 
@@ -2455,7 +2458,7 @@ Failed:
 				{
 					unsigned maxToRead = [theCurrentRead readLengthForTerm];
 					
-					unsigned bufInc = maxToRead - ([theCurrentRead->buffer length] - theCurrentRead->bytesDone);
+					unsigned bufInc = (int)(maxToRead - ([theCurrentRead->buffer length] - theCurrentRead->bytesDone));
 					[theCurrentRead->buffer increaseLengthBy:bufInc];
 				}
 				else
@@ -2463,7 +2466,7 @@ Failed:
 					didPreBuffer = YES;
 					unsigned maxToRead = [theCurrentRead prebufferReadLengthForTerm];
 					
-					unsigned buffInc = maxToRead - ([theCurrentRead->buffer length] - theCurrentRead->bytesDone);
+					unsigned buffInc = (int)(maxToRead - ([theCurrentRead->buffer length] - theCurrentRead->bytesDone));
 					[theCurrentRead->buffer increaseLengthBy:buffInc];
 
 				}
@@ -2518,7 +2521,7 @@ Failed:
 					else
 					{
 						// Search for the terminating sequence at the end of the buffer
-						int termlen = [theCurrentRead->term length];
+						int termlen = (int)[theCurrentRead->term length];
 						if(theCurrentRead->bytesDone >= termlen)
 						{
 							const void *buf = [theCurrentRead->buffer bytes] + (theCurrentRead->bytesDone - termlen);
@@ -2895,7 +2898,7 @@ Failed:
 			[self doAcceptWithSocket: *((CFSocketNativeHandle *)pData)];
 			break;
 		default:
-			NSLog (@"AsyncSocket %p received unexpected CFSocketCallBackType %d.", self, type);
+			NSLog (@"AsyncSocket %p received unexpected CFSocketCallBackType %d.", self, (int)type);
 			break;
 	}
 }
@@ -2923,7 +2926,7 @@ Failed:
 			[self closeWithError: [self errorFromCFStreamError:err]];
 			break;
 		default:
-			NSLog (@"AsyncSocket %p received unexpected CFReadStream callback, CFStreamEventType %d.", self, type);
+			NSLog (@"AsyncSocket %p received unexpected CFReadStream callback, CFStreamEventType %d.", self, (int)type);
 	}
 }
 
@@ -2950,7 +2953,7 @@ Failed:
 			[self closeWithError: [self errorFromCFStreamError:err]];
 			break;
 		default:
-			NSLog (@"AsyncSocket %p received unexpected CFWriteStream callback, CFStreamEventType %d.", self, type);
+			NSLog (@"AsyncSocket %p received unexpected CFWriteStream callback, CFStreamEventType %d.", self, (int)type);
 	}
 }
 
@@ -2960,12 +2963,10 @@ Failed:
 **/
 static void MyCFSocketCallback (CFSocketRef sref, CFSocketCallBackType type, CFDataRef address, const void *pData, void *pInfo)
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
+    @autoreleasepool{
 	AsyncSocket *theSocket = [[(AsyncSocket *)pInfo retain] autorelease];
 	[theSocket doCFSocketCallback:type forSocket:sref withAddress:(NSData *)address withData:pData];
-	
-	[pool release];
+        }
 }
 
 /**
@@ -2974,12 +2975,10 @@ static void MyCFSocketCallback (CFSocketRef sref, CFSocketCallBackType type, CFD
 **/
 static void MyCFReadStreamCallback (CFReadStreamRef stream, CFStreamEventType type, void *pInfo)
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
+    @autoreleasepool{
 	AsyncSocket *theSocket = [[(AsyncSocket *)pInfo retain] autorelease];
 	[theSocket doCFReadStreamCallback:type forStream:stream];
-	
-	[pool release];
+    }
 }
 
 /**
@@ -2988,12 +2987,10 @@ static void MyCFReadStreamCallback (CFReadStreamRef stream, CFStreamEventType ty
 **/
 static void MyCFWriteStreamCallback (CFWriteStreamRef stream, CFStreamEventType type, void *pInfo)
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
+    @autoreleasepool{
 	AsyncSocket *theSocket = [[(AsyncSocket *)pInfo retain] autorelease];
 	[theSocket doCFWriteStreamCallback:type forStream:stream];
-	
-	[pool release];
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

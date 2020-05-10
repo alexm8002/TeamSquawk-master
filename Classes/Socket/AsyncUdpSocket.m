@@ -163,7 +163,8 @@ static void MyCFSocketCallback(CFSocketRef, CFSocketCallBackType, CFDataRef, con
 @public
 	NSTimeInterval timeout;
 	long tag;
-	NSMutableData *buffer;
+	//NSMutableData *buffer;
+    NSData *buffer;
 	NSString *host;
 	UInt16 port;
 }
@@ -356,7 +357,7 @@ static void MyCFSocketCallback(CFSocketRef, CFSocketCallBackType, CFDataRef, con
 
 - (void)runLoopAddSource:(CFRunLoopSourceRef)source
 {
-	unsigned i, count = [theRunLoopModes count];
+	unsigned i, count = (int)[theRunLoopModes count];
 	for(i = 0; i < count; i++)
 	{
 		CFStringRef runLoopMode = (CFStringRef)[theRunLoopModes objectAtIndex:i];
@@ -366,7 +367,7 @@ static void MyCFSocketCallback(CFSocketRef, CFSocketCallBackType, CFDataRef, con
 
 - (void)runLoopRemoveSource:(CFRunLoopSourceRef)source
 {
-	unsigned i, count = [theRunLoopModes count];
+	unsigned i, count = (int)[theRunLoopModes count];
 	for(i = 0; i < count; i++)
 	{
 		CFStringRef runLoopMode = (CFStringRef)[theRunLoopModes objectAtIndex:i];
@@ -376,7 +377,7 @@ static void MyCFSocketCallback(CFSocketRef, CFSocketCallBackType, CFDataRef, con
 
 - (void)runLoopAddTimer:(NSTimer *)timer
 {
-	unsigned i, count = [theRunLoopModes count];
+	unsigned i, count = (int)[theRunLoopModes count];
 	for(i = 0; i < count; i++)
 	{
 		CFStringRef runLoopMode = (CFStringRef)[theRunLoopModes objectAtIndex:i];
@@ -386,7 +387,7 @@ static void MyCFSocketCallback(CFSocketRef, CFSocketCallBackType, CFDataRef, con
 
 - (void)runLoopRemoveTimer:(NSTimer *)timer
 {
-	unsigned i, count = [theRunLoopModes count];
+	unsigned i, count = (int)[theRunLoopModes count];
 	for(i = 0; i < count; i++)		
 	{
 		CFStringRef runLoopMode = (CFStringRef)[theRunLoopModes objectAtIndex:i];
@@ -2315,7 +2316,7 @@ static void MyCFSocketCallback(CFSocketRef, CFSocketCallBackType, CFDataRef, con
 			[self doSend:sock];
 			break;
 		default:
-			NSLog (@"AsyncUdpSocket %p received unexpected CFSocketCallBackType %d.", self, type);
+            NSLog (@"AsyncUdpSocket %p received unexpected CFSocketCallBackType %lu.", self, type);
 			break;
 	}
 }
@@ -2326,12 +2327,10 @@ static void MyCFSocketCallback(CFSocketRef, CFSocketCallBackType, CFDataRef, con
 **/
 static void MyCFSocketCallback(CFSocketRef sref, CFSocketCallBackType type, CFDataRef address, const void *pData, void *pInfo)
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
+    @autoreleasepool{
 	AsyncUdpSocket *theSocket = [[(AsyncUdpSocket *)pInfo retain] autorelease];
 	[theSocket doCFSocketCallback:type forSocket:sref withAddress:(NSData *)address withData:pData];
-	
-	[pool release];
+	}
 }
 
 @end

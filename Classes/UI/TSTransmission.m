@@ -113,7 +113,7 @@
                    outputTime:(const AudioTimeStamp *)inOutputTime
                    clientData:(void *)inClientData
 {
-  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool{
   unsigned int outFrames = 0, i, inFramesCount = (inInputData->mBuffers[0].mDataByteSize / [inputDeviceStreamDescription bytesPerFrame]);
   float inputGain = [[[NSUserDefaults standardUserDefaults] objectForKey:@"InputGain"] floatValue];
   
@@ -159,8 +159,7 @@
   }
     
   MTAudioBufferListDispose(downsampledBufferList);
-  
-  [pool release];
+  }
   return noErr;
 }
 

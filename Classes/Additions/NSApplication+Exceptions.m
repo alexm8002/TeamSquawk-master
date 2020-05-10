@@ -15,7 +15,7 @@
 {
     //NSString *stackTraceLog = [NSString stringWithFormat:@"Exception:\n\n%@\n\nStack Trace:\n\n%@",
      //                       anException,
-     //                       MWStackTraceFromException(anException)];
+      //                      MWStackTraceFromException(anException)];
   
   NSAlert *alert = [NSAlert alertWithMessageText:@"An unhandled exception occured"
                                    defaultButton:@"OK"
@@ -36,11 +36,11 @@
   [scrollView setHasHorizontalRuler:YES];
   
   [alert setAccessoryView:scrollView];
-  [alert beginSheetModalForWindow:[self keyWindow]
-                    modalDelegate:self
-                   didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:)
-                      //contextInfo:[stackTraceLog retain]
-   ];
+  //[alert beginSheetModalForWindow:[self keyWindow]
+   //                 modalDelegate:self
+   //                didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:)
+    //                  contextInfo:[stackTraceLog retain]
+   //];
 }
 
 - (void)alertDidEnd:(NSAlert*)alert returnCode:(int)returnCode contextInfo:(void*)context

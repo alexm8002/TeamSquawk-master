@@ -522,5 +522,27 @@
   
   return packetData;
 }
-
+- (NSData*)buildCreateChannelMessageWithConnectionID:(unsigned int)connectionID clientID:(unsigned int)clientID sequenceID:(unsigned int)sequenceID
+{
+  VOMIT_INIT();
+  
+  // packet header
+  unsigned char headerChunk[] = { 0xf0, 0xbe, 0x2f, 0x01 };
+  VOMIT_BYTES(headerChunk, 4);
+  
+  // connection id + client id
+  VOMIT_INT(connectionID);
+  VOMIT_INT(clientID);
+  VOMIT_INT(sequenceID);
+  
+  unsigned short resendCount = 0, fragmentCount = 0;
+  VOMIT_SHORT(resendCount);
+  VOMIT_SHORT(fragmentCount);
+  
+  VOMIT_CRC_BLANKS();
+    
+  VOMIT_CRC();
+  
+  return packetData;
+}
 @end

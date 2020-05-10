@@ -99,7 +99,7 @@
 - (NSData*)audioDataForEncodedData:(NSData*)data framesDecoded:(unsigned int*)frames
 {
   NSMutableData *mutableData = [NSMutableData data];
-  speex_bits_read_from(&speexBits, (char*)[data bytes], [data length]);
+  speex_bits_read_from(&speexBits, (char*)[data bytes], (int)[data length]);
   
   *frames = 0;
   

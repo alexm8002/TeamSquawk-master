@@ -66,18 +66,20 @@ typedef enum {
   BOOL isConnected;
 
   NSString *currentServerAddress;
-    NSString *channelSelect;
+  NSString *channelSelect;
   NSMutableDictionary *players;
   NSMutableDictionary *channels;
   NSMutableDictionary *flattenedChannels;
   NSArray *sortedChannels;
   TSChannel *currentChannel;
+  NSURL *command;
   
   // main graph player
   TSAUGraphPlayer *graphPlayer;
   
   // background stuff
-  SLConnection *teamspeakConnection;
+    SLConnection *teamspeakConnection;
+  
   
   // transmission stuff
   TSTransmission *transmission;
@@ -124,6 +126,7 @@ typedef enum {
 - (IBAction)disconnectMenuAction:(id)sender;
 - (IBAction)preferencesMenuAction:(id)sender;
 - (IBAction)connectToHistoryAction:(id)sender;
+- (IBAction)unusedSelfDisablingAction: (id)sender;
 - (IBAction)singleClickOutlineView:(id)sender;
 - (IBAction)doubleClickOutlineView:(id)sender;
 - (IBAction)changeUserStatusAction:(id)sender;
@@ -150,7 +153,8 @@ typedef enum {
 - (void)setupChannelsMenu;
 - (void)setupDisconnectedToolbarStatusPopupButton;
 - (void)setupConnectedToolbarStatusPopupButton;
-
+- (void) applicationWillFinishLaunching:(NSNotification *)aNotification;
+- (void) handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent;
 #pragma mark Menu Validation
 
 - (BOOL)validateUserInterfaceItem:(id < NSValidatedUserInterfaceItem >)anItem;

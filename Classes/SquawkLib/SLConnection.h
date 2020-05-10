@@ -167,7 +167,6 @@ typedef enum {
 - (void)dealloc;
 
 #pragma mark Threading
-
 - (void)spawnThread;
 - (void)initSocketOnThread;
 - (void)sendData:(NSData*)data;
@@ -176,7 +175,6 @@ typedef enum {
 - (void)queueReceiveDataAndWait;
 
 #pragma mark Commands
-
 - (void)beginAsynchronousLogin:(NSString*)username password:(NSString*)password nickName:(NSString*)nickName isRegistered:(BOOL)isRegistered;
 - (void)disconnect;
 

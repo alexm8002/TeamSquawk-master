@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0a</string>
+	<string>2.0b</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2.0a</string>
+	<string>2.0b</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright (c) Matt Wright 2009. Alex Martinez 2015</string>
 	<key>NSMainNibFile</key>

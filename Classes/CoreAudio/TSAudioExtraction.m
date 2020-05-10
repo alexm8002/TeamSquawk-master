@@ -97,7 +97,7 @@ OSStatus ExtractionAudioFileRead (void *inClientData, SInt64 inPosition, UInt32 
   ByteCount availableBytes = [audio length] - inPosition;
   
   if (requestOffset > [audio length]) {
-    *actualCount = availableBytes;
+    *actualCount = (int)availableBytes;
   } else {
     *actualCount = requestCount;
   }
@@ -184,9 +184,9 @@ SInt64 ExtractionFileSize (void *inClientData)
 
 - (AudioBufferList*)extractNumberOfFrames:(unsigned long)frames
 {
-  AudioBufferList *buffer = MTAudioBufferListNew([outputStreamDescription channelsPerFrame], frames, !([outputStreamDescription formatFlags] & kAudioFormatFlagIsNonInterleaved));
+  AudioBufferList *buffer = MTAudioBufferListNew([outputStreamDescription channelsPerFrame], (int)frames, !([outputStreamDescription formatFlags] & kAudioFormatFlagIsNonInterleaved));
   
-  UInt32 numberOfFrames = frames;
+  UInt32 numberOfFrames = (int)frames;
   OSErr err = ExtAudioFileRead(extAudioRef, &numberOfFrames, buffer);
   if (err != noErr)
   {

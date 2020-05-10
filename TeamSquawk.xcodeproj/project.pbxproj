@@ -113,7 +113,7 @@
 		FAD13BC02460DAE5005837E0 /* TeamSquawkx64.icns in Resources */ = {isa = PBXBuildFile; fileRef = FAD13BBF2460DAE2005837E0 /* TeamSquawkx64.icns */; };
 		FAD13BC32460DE1B005837E0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD13BC22460DE1B005837E0 /* Images.xcassets */; };
 		FEE742821D141C7A002D5B23 /* Appcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = FEE742811D141C7A002D5B23 /* Appcast.xml */; };
-		FEE742841D141D39002D5B23 /* 2.0a.html in Resources */ = {isa = PBXBuildFile; fileRef = FEE742831D141D39002D5B23 /* 2.0a.html */; };
+		FEE742841D141D39002D5B23 /* 2.0b.html in Resources */ = {isa = PBXBuildFile; fileRef = FEE742831D141D39002D5B23 /* 2.0b.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -534,12 +534,13 @@
 		FA5B11BF245F6445008B8E58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		FA5B11C0245F6449008B8E58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FA5B11C1245F66C9008B8E58 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		FAD13BBD24609EE9005837E0 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Preferences.xib; path = "../../../../Downloads/TeamSquawk-master-master/Classes/UI/Preferences.xib"; sourceTree = "<group>"; };
+		FAD13BBD24609EE9005837E0 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		FAD13BBF2460DAE2005837E0 /* TeamSquawkx64.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TeamSquawkx64.icns; sourceTree = "<group>"; };
 		FAD13BC22460DE1B005837E0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TeamSquawk/Images.xcassets; sourceTree = "<group>"; };
+		FAF8BC4F24634139009DA73E /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		FE812C2A1CC6675B00691D31 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		FEE742811D141C7A002D5B23 /* Appcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Appcast.xml; sourceTree = "<group>"; };
-		FEE742831D141D39002D5B23 /* 2.0a.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 2.0a.html; sourceTree = "<group>"; };
+		FEE742831D141D39002D5B23 /* 2.0b.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 2.0b.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -614,7 +615,7 @@
 			isa = PBXGroup;
 			children = (
 				FEE742811D141C7A002D5B23 /* Appcast.xml */,
-				FEE742831D141D39002D5B23 /* 2.0a.html */,
+				FEE742831D141D39002D5B23 /* 2.0b.html */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -724,6 +725,7 @@
 				C9E2E0B21009698700ED920D /* RPImageAndTextCell.h */,
 				C9E2E0B31009698700ED920D /* RPImageAndTextCell.m */,
 				FAD13BBD24609EE9005837E0 /* Preferences.xib */,
+				FAF8BC4F24634139009DA73E /* Preferences.xib */,
 				C939EB211010FD61002CBED3 /* TSThreadBlocker.h */,
 				C939EB221010FD61002CBED3 /* TSThreadBlocker.m */,
 			);
@@ -1376,7 +1378,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1140;
 				TargetAttributes = {
 					8D1107260486CEB800E47090 = {
 						DevelopmentTeam = 4BV6J54P25;
@@ -1421,7 +1423,7 @@
 				C9E2CC0D1003F18F00ED920D /* TransmitGreen.png in Resources */,
 				C9E2CC0E1003F18F00ED920D /* TransmitOrange.png in Resources */,
 				C9E2CE0C1004823400ED920D /* TransmitGray.png in Resources */,
-				FEE742841D141D39002D5B23 /* 2.0a.html in Resources */,
+				FEE742841D141D39002D5B23 /* 2.0b.html in Resources */,
 				C9E2CF5710053DE300ED920D /* Mute.tiff in Resources */,
 				C9E2CF6D10053F5200ED920D /* BlockWhispers.tiff in Resources */,
 				FAD13BC32460DE1B005837E0 /* Images.xcassets in Resources */,
@@ -1573,7 +1575,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
@@ -1615,7 +1618,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

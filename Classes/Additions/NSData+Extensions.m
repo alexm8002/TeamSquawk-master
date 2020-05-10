@@ -303,7 +303,7 @@ static __inline__ unsigned int udivroundup(unsigned int a, unsigned int b)
   
   if(lineLength == 0)
     lineLength = UINT_MAX;
-  numgroups = udivroundup([self length], 3);
+  numgroups = udivroundup((int)[self length], 3);
   groupsPerLine = lineLength / 4;
   if(groupsPerLine == 0)
     [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Line length must be > 3",nil, NSStringFromSelector(_cmd)];

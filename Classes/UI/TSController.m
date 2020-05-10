@@ -20,6 +20,7 @@
 #import "TSThreadBlocker.h"
 #import <AVFoundation/AVCaptureDevice.h>
 
+
 #define SPEECH_RATE 150.0f
 
 @implementation TSController
@@ -29,6 +30,8 @@
 {  
   //[MWBetterCrashes createBetterCrashes];
   //UKCrashReporterCheckForCrash();
+    
+    // Grant access for Microphone on OSX10.14++
    NSString *mediaType = AVMediaTypeAudio;
     if (@available(macOS 10.14, *)) {
         AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
@@ -52,10 +55,6 @@
     } else {
         // Fallback on earlier versions
     }
-
-    
-   
-
   NSDictionary *defaults = [NSDictionary dictionaryWithObjectsAndKeys:
                             [NSNumber numberWithFloat:1.0], @"InputGain",
                             [NSNumber numberWithFloat:1.0], @"OutputGain",
@@ -133,49 +132,41 @@
 		NSLog(@"NSZombieEnabled/NSAutoreleaseFreedObjectCheckEnabled enabled!");
 	}
     
-    
-    
 }
 
+//Handle the connection through X-Ivap for X-Plane connexion on Ivao
 #pragma mark Connecttoserver Via URL
-
--(void)applicationWillFinishLaunching:(NSNotification *)aNotification
+   
+-(void) applicationWillFinishLaunching:(NSNotification *)aNotification
 {
     NSAppleEventManager *appleEventManager = [NSAppleEventManager sharedAppleEventManager];
     [appleEventManager setEventHandler:self
                            andSelector:@selector(handleGetURLEvent:withReplyEvent:)
                          forEventClass:kInternetEventClass andEventID:kAEGetURL];
-    
-    
-}
+ }
 
-- (void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
+-(void) handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
 {
-    
     NSString *eventnew = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
-    eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?nickname=" withString:@"/nkn."];
-    eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?loginname=" withString:@";"];
-    eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?password=" withString:@"?"];
-    eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?channel=" withString:@"#"];
+    eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?nickname=" withString:@"/"];
+    eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?loginname=" withString:@"/"];
+    eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?password=" withString:@"/"];
+    eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?channel=" withString:@"/"];
     
-    
-    NSURL *command = [NSURL URLWithString:eventnew];
-    
+    command = [NSURL URLWithString:eventnew];
     if([command host]==nil)
         {
             [teamspeakConnection disconnect];
         }
-    
         else
-            
+    [teamspeakConnection disconnect];
     [self loginToServer:[command host]
-                   port:8767
-               nickname:[command pathExtension]
-             registered:1
-               username:[command parameterString]
-               password:[command query]];
-    [channelSelect=[command fragment] retain];
-
+          port:8767
+          nickname:[command.pathComponents objectAtIndex:1]
+          registered:true
+          username:[command.pathComponents objectAtIndex:2]
+          password:[command.pathComponents objectAtIndex:3]];
+          [channelSelect=[command.pathComponents objectAtIndex:4] retain];
 }
 
 #pragma mark OutlineView DataSource
@@ -436,6 +427,11 @@
   
 }
 
+- (IBAction)unusedSelfDisablingAction:(id)sender
+{
+
+}
+
 - (IBAction)doubleClickOutlineView:(id)sender
 {
   id item = [(NSOutlineView*)sender itemAtRow:[(NSOutlineView*)sender selectedRow]];
@@ -640,7 +636,7 @@
   {
     if ([item tag] == -1)
     {
-      recentServersIndex = [fileMenu indexOfItem:item] + 1;
+      recentServersIndex = (int)[fileMenu indexOfItem:item] + 1;
       break;
     }
   }
@@ -1094,6 +1090,7 @@
      if([[channelDictionary objectForKey:@"SLChannelName"]containsString:channelSelect])
       {
           [teamspeakConnection changeChannelTo:[channel channelID] withPassword:nil];
+          
       }
       
       // root channels have a parent of 0xffffffff, if we've got a real parent and we haven't

@@ -151,7 +151,7 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
   // setup the speex encoder and decoder
   encoder = [[SpeexEncoder alloc] initWithMode:SpeexEncodeWideBandMode];
   decoder = [[SpeexDecoder alloc] initWithMode:SpeexDecodeWideBandMode];
-  [encoder setBitrate:[SLConnection bitrateForCodec:[loopbackCodecButton selectedTag]]];
+  [encoder setBitrate:[SLConnection bitrateForCodec:(int)[loopbackCodecButton selectedTag]]];
   [encoder setInputSampleRate:(unsigned int)([[inputPreviewDevice streamDescriptionForChannel:0 forDirection:kMTCoreAudioDeviceRecordDirection] sampleRate])];
   
   // setup the IO converters  
@@ -167,9 +167,10 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
   [inputPreviewDevice deviceStart];
   [inputPreviewDevice setDevicePaused:NO];
 }
-
+ 
 - (void)setupHotkeyPreferences
-{  
+
+   {
   [hotkeyTableView setDataSource:self];
   [hotkeyTableView setDelegate:self];
   [hotkeyTableView setTarget:self];
@@ -178,7 +179,9 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
   [hotkeyTableView reloadData];
   
   [hotkeyDeleteHotkeyButton setEnabled:([hotkeyTableView selectedRow] != -1)];
+    
 }
+
 
 #pragma mark General Toolbar
 
@@ -413,8 +416,8 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
     
     if (outputPreviewDevice)
     {
-      NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-      
+        @autoreleasepool{
+          
       AudioBufferList *resampledInputAudio = [inputConverter audioBufferListByConvertingList:(AudioBufferList*)inInputData framesConverted:(unsigned int*)&frames];
       unsigned int bufferedBytes = [preEncodingBuffer writeFromBytes:resampledInputAudio->mBuffers[0].mData count:resampledInputAudio->mBuffers[0].mDataByteSize waitForRoom:NO];
       if (bufferedBytes < resampledInputAudio->mBuffers[0].mDataByteSize)
@@ -447,7 +450,7 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
         [preEncodingBuffer writeFromBytes:(resampledInputAudio->mBuffers[0].mData + bufferedBytes) count:(resampledInputAudio->mBuffers[0].mDataByteSize - bufferedBytes) waitForRoom:NO];
         MTAudioBufferListDispose(compressionBuffer);
       }
-      [pool release];
+            }
     }
   }
   
@@ -527,7 +530,7 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
 
 - (IBAction)loopbackCodecButtonChange:(id)sender
 {
-  [encoder setBitrate:[SLConnection bitrateForCodec:[loopbackCodecButton selectedTag]]];
+  [encoder setBitrate:[SLConnection bitrateForCodec:(int)[loopbackCodecButton selectedTag]]];
 }
 
 - (void)windowWillClose:(NSNotification*)notification
@@ -578,7 +581,7 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
 
 - (IBAction)deleteHotkeyAction:(id)sender
 {
-  int row = [hotkeyTableView selectedRow];
+  int row = (int)[hotkeyTableView selectedRow];
   
   if (row > -1)
   {
@@ -595,7 +598,7 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
 
 - (IBAction)doubleClickHotkeyTableView:(id)sender
 {
-  int row = [hotkeyTableView selectedRow];
+  int row = (int)[hotkeyTableView selectedRow];
   
   if (row > -1)
   {
@@ -644,12 +647,12 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
     int row = (int)contextInfo;
     NSMutableArray *hotkeys = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"Hotkeys"] mutableCopy];
     
-    int keycode = [hotkeyEditorRecorder keyCombo].code;
-    unsigned int modifiers = [hotkeyEditorRecorder cocoaToCarbonFlags:[hotkeyEditorRecorder keyCombo].flags];
+    int keycode = (int)[hotkeyEditorRecorder keyCombo].code;
+    unsigned int modifiers = (int)[hotkeyEditorRecorder cocoaToCarbonFlags:[hotkeyEditorRecorder keyCombo].flags];
     
     // right, setup a new dictionary for this entry
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                          [NSNumber numberWithInt:[hotkeyEditorActionPopup selectedTag]], @"HotkeyAction",
+                          [NSNumber numberWithInt:(int)[hotkeyEditorActionPopup selectedTag]], @"HotkeyAction",
                           [NSNumber numberWithInt:keycode], @"HotkeyKeycode",
                           [NSNumber numberWithUnsignedInt:modifiers], @"HotkeyModifiers",
                           nil];

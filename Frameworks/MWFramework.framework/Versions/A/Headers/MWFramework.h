@@ -19,12 +19,6 @@ FOUNDATION_EXPORT const unsigned char MWFrameworkVersionString[];
 #import <MWFramework/UKCrashreporter.h>
 
 NSString *MWStackTrace(void);
+NSString *MWStackTraceFromException(NSException *e);
 
-//#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5
-// Returns a string containing a nicely formatted stack trace from the
-// exception.  Only available on 10.5 or later, uses
-// -[NSException callStackReturnAddresses].
-//
-//NSString *MWStackTraceFromException(NSException *e);
-//#endif
 
