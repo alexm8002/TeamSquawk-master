@@ -6,8 +6,8 @@
 //  Copyright (c) 2004 Michael Thornburgh. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 
+#import <Foundation/Foundation.h>
 
 @interface MTBuffer : NSObject {
 	id condition;
