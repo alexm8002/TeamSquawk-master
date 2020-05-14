@@ -34,8 +34,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
-		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		C90586E31000DFFC003BD88A /* TSPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C90586E21000DFFC003BD88A /* TSPlayer.m */; };
@@ -65,8 +63,6 @@
 		C9BD01F90FFB440900FC280A /* libspeexdsp.1.5.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BD01F70FFB440900FC280A /* libspeexdsp.1.5.0.dylib */; };
 		C9BD020C0FFB47BE00FC280A /* SpeexDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BD020B0FFB47BE00FC280A /* SpeexDecoder.m */; };
 		C9BD020F0FFB47C600FC280A /* SpeexEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BD020E0FFB47C600FC280A /* SpeexEncoder.m */; };
-		C9BD02570FFC1B7C00FC280A /* MTCoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BD02560FFC1B7C00FC280A /* MTCoreAudio.framework */; };
-		C9BD027E0FFC1BB400FC280A /* MTCoreAudio.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C9BD02560FFC1B7C00FC280A /* MTCoreAudio.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C9BD027F0FFC1BB900FC280A /* libspeex.1.5.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C9BD01F60FFB440900FC280A /* libspeex.1.5.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C9BD02800FFC1BBC00FC280A /* libspeexdsp.1.5.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C9BD01F70FFB440900FC280A /* libspeexdsp.1.5.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C9BD02840FFC942200FC280A /* TSAudioExtraction.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BD02830FFC942200FC280A /* TSAudioExtraction.m */; };
@@ -112,6 +108,11 @@
 		FAD13BBE24609EEA005837E0 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD13BBD24609EE9005837E0 /* Preferences.xib */; };
 		FAD13BC02460DAE5005837E0 /* TeamSquawkx64.icns in Resources */ = {isa = PBXBuildFile; fileRef = FAD13BBF2460DAE2005837E0 /* TeamSquawkx64.icns */; };
 		FAD13BC32460DE1B005837E0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD13BC22460DE1B005837E0 /* Images.xcassets */; };
+		FE4D9ADA246D5F0E00B27E96 /* MTCoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE4D9AD5246D5D6C00B27E96 /* MTCoreAudio.framework */; };
+		FE4D9ADB246D5F0E00B27E96 /* MTCoreAudio.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FE4D9AD5246D5D6C00B27E96 /* MTCoreAudio.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FEA6EB61246C5851008E4F63 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA6EB60246C5851008E4F63 /* MainMenu.xib */; };
+		FEC5EBF4246C506A00224E0F /* BlueTransmit.tiff in Resources */ = {isa = PBXBuildFile; fileRef = FEC5EBF2246C506A00224E0F /* BlueTransmit.tiff */; };
+		FEC5EBF5246C506A00224E0F /* GreenTransmit.tiff in Resources */ = {isa = PBXBuildFile; fileRef = FEC5EBF3246C506A00224E0F /* GreenTransmit.tiff */; };
 		FEE742821D141C7A002D5B23 /* Appcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = FEE742811D141C7A002D5B23 /* Appcast.xml */; };
 		FEE742841D141D39002D5B23 /* 2.0b.html in Resources */ = {isa = PBXBuildFile; fileRef = FEE742831D141D39002D5B23 /* 2.0b.html */; };
 /* End PBXBuildFile section */
@@ -134,9 +135,9 @@
 			dstSubfolderSpec = 10;
 			files = (
 				C939F0221011E7CC002CBED3 /* Sparkle.framework in Copy Frameworks */,
+				FE4D9ADB246D5F0E00B27E96 /* MTCoreAudio.framework in Copy Frameworks */,
 				C9BD027F0FFC1BB900FC280A /* libspeex.1.5.0.dylib in Copy Frameworks */,
 				C9BD02800FFC1BBC00FC280A /* libspeexdsp.1.5.0.dylib in Copy Frameworks */,
-				C9BD027E0FFC1BB400FC280A /* MTCoreAudio.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,7 +380,6 @@
 		C9BD020B0FFB47BE00FC280A /* SpeexDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeexDecoder.m; sourceTree = "<group>"; };
 		C9BD020D0FFB47C600FC280A /* SpeexEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeexEncoder.h; sourceTree = "<group>"; };
 		C9BD020E0FFB47C600FC280A /* SpeexEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeexEncoder.m; sourceTree = "<group>"; };
-		C9BD02560FFC1B7C00FC280A /* MTCoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MTCoreAudio.framework; sourceTree = "<group>"; };
 		C9BD02820FFC942200FC280A /* TSAudioExtraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAudioExtraction.h; sourceTree = "<group>"; };
 		C9BD02830FFC942200FC280A /* TSAudioExtraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAudioExtraction.m; sourceTree = "<group>"; };
 		C9BD02890FFC96DC00FC280A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -531,14 +531,17 @@
 		C9E2E0B21009698700ED920D /* RPImageAndTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPImageAndTextCell.h; sourceTree = "<group>"; };
 		C9E2E0B31009698700ED920D /* RPImageAndTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPImageAndTextCell.m; sourceTree = "<group>"; };
 		FA3D48722461CEE700B63EBA /* TeamSquawk-Template.sparseimage */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TeamSquawk-Template.sparseimage"; sourceTree = "<group>"; };
-		FA5B11BF245F6445008B8E58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		FA5B11C0245F6449008B8E58 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FA5B11C1245F66C9008B8E58 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FAD13BBD24609EE9005837E0 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		FAD13BBF2460DAE2005837E0 /* TeamSquawkx64.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TeamSquawkx64.icns; sourceTree = "<group>"; };
 		FAD13BC22460DE1B005837E0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TeamSquawk/Images.xcassets; sourceTree = "<group>"; };
 		FAF8BC4F24634139009DA73E /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
+		FE4D9AD5246D5D6C00B27E96 /* MTCoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MTCoreAudio.framework; sourceTree = "<group>"; };
 		FE812C2A1CC6675B00691D31 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		FEA6EB60246C5851008E4F63 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		FEB9DB3D246C9B3200B73AFE /* TeamSquawk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamSquawk.entitlements; sourceTree = "<group>"; };
+		FEC5EBF2246C506A00224E0F /* BlueTransmit.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = BlueTransmit.tiff; sourceTree = SOURCE_ROOT; };
+		FEC5EBF3246C506A00224E0F /* GreenTransmit.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = GreenTransmit.tiff; sourceTree = SOURCE_ROOT; };
 		FEE742811D141C7A002D5B23 /* Appcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Appcast.xml; sourceTree = "<group>"; };
 		FEE742831D141D39002D5B23 /* 2.0b.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 2.0b.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -552,9 +555,9 @@
 				C9BD01F90FFB440900FC280A /* libspeexdsp.1.5.0.dylib in Frameworks */,
 				FA5B11C2245F66CA008B8E58 /* AVFoundation.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				C9BD02570FFC1B7C00FC280A /* MTCoreAudio.framework in Frameworks */,
 				C9BD028A0FFC96DC00FC280A /* AudioToolbox.framework in Frameworks */,
 				C9E2D1B1100662B700ED920D /* Carbon.framework in Frameworks */,
+				FE4D9ADA246D5F0E00B27E96 /* MTCoreAudio.framework in Frameworks */,
 				C939E1E7100DB5FA002CBED3 /* AudioUnit.framework in Frameworks */,
 				C939EDCE1011E7A1002CBED3 /* Sparkle.framework in Frameworks */,
 			);
@@ -594,9 +597,9 @@
 		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FE4D9AD5246D5D6C00B27E96 /* MTCoreAudio.framework */,
 				C95468FB101540CD00FCF935 /* MWFramework.framework */,
 				C939EDCD1011E7A1002CBED3 /* Sparkle.framework */,
-				C9BD02560FFC1B7C00FC280A /* MTCoreAudio.framework */,
 				C9BD01F60FFB440900FC280A /* libspeex.1.5.0.dylib */,
 				C9BD01F70FFB440900FC280A /* libspeexdsp.1.5.0.dylib */,
 			);
@@ -614,6 +617,7 @@
 		29B97314FDCFA39411CA2CEA /* TeamSquawk */ = {
 			isa = PBXGroup;
 			children = (
+				FEB9DB3D246C9B3200B73AFE /* TeamSquawk.entitlements */,
 				FEE742811D141C7A002D5B23 /* Appcast.xml */,
 				FEE742831D141D39002D5B23 /* 2.0b.html */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -642,6 +646,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FEA6EB60246C5851008E4F63 /* MainMenu.xib */,
 				FA3D48722461CEE700B63EBA /* TeamSquawk-Template.sparseimage */,
 				FAD13BC22460DE1B005837E0 /* Images.xcassets */,
 				FAD13BBF2460DAE2005837E0 /* TeamSquawkx64.icns */,
@@ -651,9 +656,7 @@
 				C939F0651011EA14002CBED3 /* TeamSquawk.pub */,
 				C939F06C1011EE86002CBED3 /* TeamSquawk.icns */,
 				8D1107310486CEB800E47090 /* Info.plist */,
-				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				C95466F71015318E00FCF935 /* UKCrashReporter.strings */,
-				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1295,6 +1298,8 @@
 		C9E2CA1610032AAF00ED920D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FEC5EBF2246C506A00224E0F /* BlueTransmit.tiff */,
+				FEC5EBF3246C506A00224E0F /* GreenTransmit.tiff */,
 				C9E2D5051007265000ED920D /* addSquareWidget.png */,
 				C9E2D5061007265000ED920D /* addSquareWidgetPressed.png */,
 				C9E2D5071007265000ED920D /* deleteWidgetPressed.png */,
@@ -1383,6 +1388,15 @@
 					8D1107260486CEB800E47090 = {
 						DevelopmentTeam = 4BV6J54P25;
 						LastSwiftMigration = 1120;
+						ProvisioningStyle = Automatic;
+					};
+					C9BD01D10FFB403000FC280A = {
+						DevelopmentTeam = 4BV6J54P25;
+						ProvisioningStyle = Automatic;
+					};
+					C9E2E21D1009EDEB00ED920D = {
+						DevelopmentTeam = 4BV6J54P25;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -1410,8 +1424,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
-				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				C9E2CA1F10032ACB00ED920D /* Graphite.tiff in Resources */,
 				C9E2CA2010032ACB00ED920D /* Green.tiff in Resources */,
 				C9E2CA2110032ACB00ED920D /* Grey.tiff in Resources */,
@@ -1419,6 +1431,7 @@
 				C9E2CA2310032ACB00ED920D /* Orange.tiff in Resources */,
 				C9E2CA2410032ACB00ED920D /* Purple.tiff in Resources */,
 				C9E2CA2510032ACB00ED920D /* Red.tiff in Resources */,
+				FEA6EB61246C5851008E4F63 /* MainMenu.xib in Resources */,
 				C9E2CC0C1003F18F00ED920D /* TransmitBlue.png in Resources */,
 				C9E2CC0D1003F18F00ED920D /* TransmitGreen.png in Resources */,
 				C9E2CC0E1003F18F00ED920D /* TransmitOrange.png in Resources */,
@@ -1428,6 +1441,7 @@
 				C9E2CF6D10053F5200ED920D /* BlockWhispers.tiff in Resources */,
 				FAD13BC32460DE1B005837E0 /* Images.xcassets in Resources */,
 				C9E2CF7D1005403000ED920D /* ChannelCommander.png in Resources */,
+				FEC5EBF4246C506A00224E0F /* BlueTransmit.tiff in Resources */,
 				C9E2D08710055FC800ED920D /* Away.png in Resources */,
 				C9E2D2B310067ED000ED920D /* Mic.png in Resources */,
 				C9E2D5091007265000ED920D /* addSquareWidget.png in Resources */,
@@ -1440,6 +1454,7 @@
 				C9E2E0801009667E00ED920D /* Servers.png in Resources */,
 				C939E2EF100DCA07002CBED3 /* TransmitRed.png in Resources */,
 				C939E513100E8DB3002CBED3 /* General.tiff in Resources */,
+				FEC5EBF5246C506A00224E0F /* GreenTransmit.tiff in Resources */,
 				C939F0661011EA14002CBED3 /* TeamSquawk.pub in Resources */,
 				C939F06D1011EE86002CBED3 /* TeamSquawk.icns in Resources */,
 				C939F0BA1011F3E9002CBED3 /* Credits.rtf in Resources */,
@@ -1542,25 +1557,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FA5B11C0245F6449008B8E58 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		1DDD58140DA1D0A300B32029 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FA5B11BF245F6445008B8E58 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1568,10 +1564,13 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_ENTITLEMENTS = TeamSquawk.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 4BV6J54P25;
+				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
@@ -1596,9 +1595,11 @@
 					"\"$(SRCROOT)/build/Debug\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = "-headerpad_max_install_names";
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.sysctl.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = TeamSquawk;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/UI/TeamSquawk-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1611,10 +1612,13 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_ENTITLEMENTS = TeamSquawk.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 4BV6J54P25;
+				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
@@ -1637,9 +1641,12 @@
 					"\"$(SRCROOT)/build/Debug\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = "-headerpad_max_install_names";
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.sysctl.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = TeamSquawk;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/UI/TeamSquawk-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
@@ -1666,6 +1673,9 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: alex.m.a.martinez@icloud.com (Z4697VQVVL)";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
+				CODE_SIGN_STYLE = Automatic;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -1679,6 +1689,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -1704,6 +1715,9 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: alex.m.a.martinez@icloud.com (Z4697VQVVL)";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
+				CODE_SIGN_STYLE = Automatic;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1714,6 +1728,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -1722,7 +1737,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: alex.m.a.martinez@icloud.com (Z4697VQVVL)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 4BV6J54P25;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				PRODUCT_NAME = Speex;
@@ -1733,8 +1750,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: alex.m.a.martinez@icloud.com (Z4697VQVVL)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4BV6J54P25;
 				PRODUCT_NAME = Speex;
 				ZERO_LINK = NO;
 			};
@@ -1744,7 +1763,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: alex.m.a.martinez@icloud.com (Z4697VQVVL)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 4BV6J54P25;
+				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
@@ -1757,8 +1779,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: alex.m.a.martinez@icloud.com (Z4697VQVVL)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4BV6J54P25;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.sysctl.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = Packages;

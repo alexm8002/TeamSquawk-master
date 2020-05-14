@@ -101,7 +101,7 @@ OSStatus InputRenderCallback(void *inRefCon,
 {
     @autoreleasepool {
   // put a timer on the thread so that the runloop starts
-  [NSTimer scheduledTimerWithTimeInterval:[[NSDate distantFuture] timeIntervalSinceNow] target:self selector:@selector(thatDoesntExist) userInfo:nil repeats:NO];
+  [NSTimer scheduledTimerWithTimeInterval:[[NSDate distantFuture] timeIntervalSinceNow] target:self selector:@selector(nilSymbol) userInfo:nil repeats:NO];
   
         while (![[NSThread currentThread] isCancelled])
         {
@@ -124,7 +124,7 @@ OSStatus InputRenderCallback(void *inRefCon,
   
   {
     // output unit
-    ComponentDescription outputComponentDescription;
+    AudioComponentDescription outputComponentDescription;
     outputComponentDescription.componentType = kAudioUnitType_Output;
     outputComponentDescription.componentSubType = kAudioUnitSubType_HALOutput;
     outputComponentDescription.componentManufacturer = kAudioUnitManufacturer_Apple;
@@ -168,7 +168,7 @@ OSStatus InputRenderCallback(void *inRefCon,
   
   {
     // converter unit
-    ComponentDescription converterComponentDescription;
+    AudioComponentDescription converterComponentDescription;
     converterComponentDescription.componentManufacturer = kAudioUnitManufacturer_Apple;
     converterComponentDescription.componentType = kAudioUnitType_FormatConverter;
     converterComponentDescription.componentSubType = kAudioUnitSubType_AUConverter;
@@ -191,7 +191,7 @@ OSStatus InputRenderCallback(void *inRefCon,
   {
     // mixer unit
     
-    ComponentDescription mixerComponentDescription;
+    AudioComponentDescription mixerComponentDescription;
     mixerComponentDescription.componentType = kAudioUnitType_Mixer;
     mixerComponentDescription.componentSubType = kAudioUnitSubType_StereoMixer;
     mixerComponentDescription.componentManufacturer = kAudioUnitManufacturer_Apple;

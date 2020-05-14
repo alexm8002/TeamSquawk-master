@@ -91,7 +91,7 @@ OSStatus AudioConverterInput(AudioConverterRef inAudioConverter, UInt32*ioNumber
   userData.streamDesc = inputStreamDescription;
   userData.bytesRemaining = inputList->mBuffers[0].mDataByteSize;
 
-  OSStatus err = AudioConverterFillComplexBuffer(audioConverterRef, AudioConverterInput, &userData, &outputFrameCount, outputList, NULL);
+  OSStatus err = AudioConverterFillComplexBuffer(audioConverterRef, AudioConverterInput, &userData, (unsigned int*)&outputFrameCount, outputList, NULL);
   if (err != noErr)
   {
     NSLog(@"AudioConverterFillBuffer failed with %d. %@", (int)err, [NSError errorWithDomain:NSOSStatusErrorDomain code:err userInfo:nil]);

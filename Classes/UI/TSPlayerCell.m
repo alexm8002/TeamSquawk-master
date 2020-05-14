@@ -87,6 +87,10 @@
     else if ([player isChannelCommander])
     {
       image = [NSImage imageNamed:@"Blue"];
+        if ([player isTalking])
+        {
+            image = [NSImage imageNamed:@"BlueTransmit"];
+        }
     }
     else if ([player isServerAdmin])
     {
@@ -95,6 +99,10 @@
     else
     {
       image = [NSImage imageNamed:@"Green"];
+        if ([player isTalking])
+        {
+            image = [NSImage imageNamed:@"GreenTransmit"];
+        }
     }
     
     NSDivideRect(cellFrame, &userLightRect, &cellFrame, [image size].width + 5, NSMinXEdge);
@@ -102,12 +110,12 @@
     userLightRect.origin.y -= ceil((userLightRect.size.height - [image size].height) / 2);
     userLightRect.origin.x += ceil((userLightRect.size.width - [image size].width) / 2);
     
-    if ([controlView isFlipped])
+    /*if ([controlView isFlipped])
       userLightRect.origin.y += ceil((cellFrame.size.height + userLightRect.size.height) / 2);
     else
       userLightRect.origin.y += ceil((cellFrame.size.height - userLightRect.size.height) / 2);
-    
-      [image compositeToPoint:userLightRect.origin operation:NSCompositingOperationSourceOver];
+    */
+      [image drawAtPoint:userLightRect.origin fromRect:userLightRect operation:NSCompositingOperationSourceOver fraction:1];
   }
   
   // draw the player name
