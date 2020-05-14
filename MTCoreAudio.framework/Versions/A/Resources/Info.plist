@@ -3,15 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>19B88</string>
+	<string>19E287</string>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>English</string>
+	<string>en</string>
 	<key>CFBundleExecutable</key>
 	<string>MTCoreAudio</string>
-	<key>CFBundleGetInfoString</key>
-	<string>MTCoreAudio Framework 1.3.2</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.armory.zenomt.MTCoreAudio</string>
+	<string>Alexm8002.MTCoreAudio</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -19,30 +17,32 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3.2</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
+	<string>2.0</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.3.2</string>
+	<string>1</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>11B52</string>
+	<string>11E503a</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>19B81</string>
+	<string>19E258</string>
 	<key>DTSDKName</key>
 	<string>macosx10.15</string>
 	<key>DTXcode</key>
-	<string>1120</string>
+	<string>1141</string>
 	<key>DTXcodeBuild</key>
-	<string>11B52</string>
+	<string>11E503a</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.15</string>
+	<string>10.12</string>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>2</integer>
+	</array>
 </dict>
 </plist>
