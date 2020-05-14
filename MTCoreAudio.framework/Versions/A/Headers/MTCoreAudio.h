@@ -16,3 +16,10 @@
 #import <MTCoreAudio/MTAudioBuffer.h>
 #import <MTCoreAudio/MTAudioBufferListUtils.h>
 #import <MTCoreAudio/MTDecibelTransformer.h>
+#import "MTCoreAudioTypes.h"
+#import "MTBuffer.h"
+#import "MTByteBuffer.h"
+#import "MTAudioBuffer.h"
+#import "MTCoreAudioDevice.h"
+#import "MTCoreAudioStream.h"
+#import "MTCoreAudioIOProcMux.h"
