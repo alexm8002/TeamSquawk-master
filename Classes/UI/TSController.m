@@ -147,6 +147,7 @@
 
 -(void) handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent
 {
+   
     NSString *eventnew = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
     eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?nickname=" withString:@"/"];
     eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?loginname=" withString:@"/"];
@@ -154,19 +155,23 @@
     eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?channel=" withString:@"/"];
     
     command = [NSURL URLWithString:eventnew];
+    
     if([command host]==nil)
-        {
-            [teamspeakConnection disconnect];
-        }
-        else
-    [teamspeakConnection disconnect];
-    [self loginToServer:[command host]
+    {
+        id sender = [channelsMenu itemAtIndex:0];
+        [teamspeakConnection changeChannelTo:(unsigned int)[sender tag] withPassword:nil];
+    }
+    else
+    {
+        [teamspeakConnection disconnect];
+        [self loginToServer:[command host]
           port:8767
           nickname:[command.pathComponents objectAtIndex:1]
           registered:true
           username:[command.pathComponents objectAtIndex:2]
           password:[command.pathComponents objectAtIndex:3]];
-          [channelSelect=[command.pathComponents objectAtIndex:4] retain];
+        [channelSelect=[command.pathComponents objectAtIndex:4] retain];
+    }
 }
 
 #pragma mark OutlineView DataSource
