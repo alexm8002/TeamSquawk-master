@@ -237,12 +237,13 @@ CGFloat SRAnimationEaseInOut(CGFloat t) {
 //---------------------------------------------------------- 
 + (NSAlert *) alertWithNonRecoverableError:(NSError *)error;
 {
+    NSAlert *alert = [[NSAlert alloc] init];
 	NSString *reason = [error localizedRecoverySuggestion];
-	return [self alertWithMessageText:[error localizedDescription]
-						defaultButton:[[error localizedRecoveryOptions] objectAtIndex:0U]
-					  alternateButton:nil
-						  otherButton:nil
-            informativeTextWithFormat:@"%@", (reason ? reason : @"")];
+    [alert addButtonWithTitle:[[error localizedRecoveryOptions] objectAtIndex:0U]];
+    [alert setMessageText:[error localizedDescription]];
+    [alert setInformativeText:((void)(reason), @"@")];
+    [alert setAlertStyle:NSAlertStyleInformational];
+	return alert;
 }
 
 @end
@@ -287,7 +288,6 @@ static NSMutableDictionary *SRSharedImageCache = nil;
 	NSImage *returnImage = [[NSImage alloc] initWithSize:size];
 	[returnImage addRepresentation:customImageRep];
 	[customImageRep release];
-	[returnImage setScalesWhenResized:YES];
 	[SRSharedImageCache setObject:returnImage forKey:name];
 	
 #ifdef SRCommonWriteDebugImagery
