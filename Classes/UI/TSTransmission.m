@@ -143,10 +143,12 @@
     NSData *encodedData = [encoder encodedData];
     if (isWhispering)
     {
+        
       if (whisperRecipients && ([whisperRecipients count] > 0))
       {
         [connection sendVoiceWhisper:encodedData frames:encodedPackets packetCount:packetCount++ transmissionID:transmissionCount codec:codec recipients:whisperRecipients];
       }
+        
     }
     else
     {

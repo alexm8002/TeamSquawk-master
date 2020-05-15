@@ -105,17 +105,10 @@
         }
     }
     
-    NSDivideRect(cellFrame, &userLightRect, &cellFrame, [image size].width + 5, NSMinXEdge);
-    
-    userLightRect.origin.y -= ceil((userLightRect.size.height - [image size].height) / 2);
-    userLightRect.origin.x += ceil((userLightRect.size.width - [image size].width) / 2);
-    
-    /*if ([controlView isFlipped])
-      userLightRect.origin.y += ceil((cellFrame.size.height + userLightRect.size.height) / 2);
-    else
-      userLightRect.origin.y += ceil((cellFrame.size.height - userLightRect.size.height) / 2);
-    */
-      [image drawAtPoint:userLightRect.origin fromRect:userLightRect operation:NSCompositingOperationSourceOver fraction:1];
+    NSDivideRect(cellFrame, &userLightRect, &cellFrame, [image size].width+5, NSMinXEdge);
+      
+      userLightRect.origin.y = userLightRect.origin.y + (userLightRect.size.height -[image size].height)/2;
+      [image drawAtPoint:userLightRect.origin fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1];
   }
   
   // draw the player name

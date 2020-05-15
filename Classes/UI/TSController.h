@@ -56,7 +56,7 @@ typedef enum {
   IBOutlet NSTextField *toolbarViewNicknameField;
   IBOutlet NSPopUpButton *toolbarViewStatusPopupButton;
   IBOutlet NSImageView *toolbarViewStatusImageView;
-  
+    
   // outline view stuff
   NSTextFieldCell *sharedTextFieldCell;
   TSPlayerCell *sharedPlayerCell;

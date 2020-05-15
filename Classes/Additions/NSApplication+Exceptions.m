@@ -17,12 +17,13 @@
      //                       anException,
       //                      MWStackTraceFromException(anException)];
   
-  NSAlert *alert = [NSAlert alertWithMessageText:@"An unhandled exception occured"
-                                   defaultButton:@"OK"
-                                 alternateButton:@"Send Report"
-                                     otherButton:nil
-                       informativeTextWithFormat:@"An unhandled exception occured, it is displayed below. To aid debugging your crash, you are encouraged to press the \"Send Report\" button to transmit this exception to the author. Thank you."];
-  
+  NSAlert *alert =[[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"OK"];
+    [alert addButtonWithTitle:@"Send Report"];
+    [alert setMessageText:@"An unhandled exception occured"];
+    [alert setInformativeText:@"An unhandled exception occured, it is displayed below. To aid debugging your crash, you are encouraged to press the \"Send Report\" button to transmit this exception to the author. Thank you."];
+    [alert setAlertStyle:NSAlertStyleInformational];
+    
   NSTextView *stackTraceView = [[[NSTextView alloc] initWithFrame:NSMakeRect(0, 0, 400, 300)] autorelease];
   //[stackTraceView setString:stackTraceLog];
   [stackTraceView setHorizontallyResizable:YES];

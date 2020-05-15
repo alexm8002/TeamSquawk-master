@@ -70,8 +70,8 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
 
 - (void)setupServersPreferences
 {
-  [serversTableView setDataSource:self];
-  [serversTableView setDelegate:self];
+  [serversTableView setDataSource:(id)self];
+  [serversTableView setDelegate:(id)self];
   [serversTableView setTarget:self];
   [serversTableView setDoubleAction:@selector(doubleClickServersTableView:)];
   
@@ -171,9 +171,9 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
 - (void)setupHotkeyPreferences
 
    {
-  [hotkeyTableView setDataSource:self];
-  [hotkeyTableView setDelegate:self];
-  [hotkeyTableView setTarget:self];
+  [hotkeyTableView setDataSource:(id)self];
+  [hotkeyTableView setDelegate:(id)self];
+  [hotkeyTableView setTarget:(id)self];
   [hotkeyTableView setDoubleAction:@selector(doubleClickHotkeyTableView:)];
   
   [hotkeyTableView reloadData];
@@ -208,18 +208,18 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
   [connectionEditorPasswordTextField setStringValue:@""];
   
   [self connectionEditorWindowUpdateType:self];
-  
+    //[connectionEditorWindow beginSheet:[self window] completionHandler:nil];
   [NSApp beginSheet:connectionEditorWindow
      modalForWindow:[self window]
-      modalDelegate:self
+     modalDelegate:self
      didEndSelector:@selector(connectionEditorSheetDidEnd:returnCode:contextInfo:)
-        contextInfo:nil];
+     contextInfo:nil];
 }
 
 - (IBAction)deleteServerAction:(id)sender
 {
   NSMutableArray *recentServers = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"RecentServers"] mutableCopy];
-  int row = [serversTableView selectedRow];      
+  int row = (int)[serversTableView selectedRow];
 
   [recentServers removeObjectAtIndex:row];
   [[NSUserDefaults standardUserDefaults] setObject:recentServers forKey:@"RecentServers"];
@@ -245,12 +245,12 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
     [connectionEditorPasswordTextField setStringValue:[server objectForKey:@"Password"]];
     
     [self connectionEditorWindowUpdateType:self];
-    
+      
     [NSApp beginSheet:connectionEditorWindow
-       modalForWindow:[self window]
-        modalDelegate:self
-       didEndSelector:@selector(connectionEditorSheetDidEnd:returnCode:contextInfo:)
-          contextInfo:server];
+    modalForWindow:[self window]
+    modalDelegate:self
+    didEndSelector:@selector(connectionEditorSheetDidEnd:returnCode:contextInfo:)
+    contextInfo:server];
   }
 }
 
@@ -290,7 +290,7 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
     // if we've got a contextinfo then we were editing. not creating.
     if (contextInfo)
     {
-      int row = [serversTableView selectedRow];      
+      int row = (int)[serversTableView selectedRow];
       [recentServers replaceObjectAtIndex:row withObject:server];
       [[NSUserDefaults standardUserDefaults] setObject:recentServers forKey:@"RecentServers"];
     }
@@ -356,7 +356,7 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
       return NO;
     }
     
-    int rowIndex = [indexes firstIndex];
+    int rowIndex = (int)[indexes firstIndex];
     NSMutableArray *recentServers = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"RecentServers"] mutableCopy];
     
     // if we're about to remove a row thats below this one, we need to change the index
@@ -412,8 +412,9 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
       data[i] *= inputGain;
       level += fabs(data[i]);
     }
-    [inputLevelIndicator setFloatValue:10.0 * (level / (float)frames)];
-    
+      dispatch_async(dispatch_get_main_queue(), ^{
+          [inputLevelIndicator setFloatValue:10.0 * (level / (float)frames)];
+      });
     if (outputPreviewDevice)
     {
         @autoreleasepool{
@@ -438,8 +439,8 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
         unsigned int decodedFrames = 0;
         NSData *decodedData = [decoder audioDataForEncodedData:encodedData framesDecoded:&decodedFrames];
         
-        AudioBufferList *compressedAudioList = MTAudioBufferListNew(1, [decodedData length] / sizeof(float), NO);
-        compressedAudioList->mBuffers[0].mDataByteSize = [decodedData length];
+        AudioBufferList *compressedAudioList = MTAudioBufferListNew(1, (unsigned int)[decodedData length] / sizeof(float), NO);
+        compressedAudioList->mBuffers[0].mDataByteSize = (unsigned int)[decodedData length];
         [decodedData getBytes:compressedAudioList->mBuffers[0].mData length:[decodedData length]];
         
         AudioBufferList *uncompressedAudioList = [outputConverter audioBufferListByConvertingList:compressedAudioList framesConverted:&decodedFrames];

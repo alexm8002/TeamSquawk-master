@@ -7,7 +7,7 @@
 //
 
 #import "TSAudioExtraction.h"
-#import <MTCoreAudio/MTCoreAudio.h>
+#import <MTCoreAudio64/MTCoreAudio64.h>
 
 @interface NSString (Extras)
 

@@ -10,7 +10,7 @@
 #import <speex/speex.h>
 #import <speex/speex_preprocess.h>
 #import <speex/speex_resampler.h>
-#import <MTCoreAudio/MTCoreAudio.h>
+#import <MTCoreAudio64/MTCoreAudio64.h>
 
 typedef enum {
   SpeexEncodeNarrowBandMode,

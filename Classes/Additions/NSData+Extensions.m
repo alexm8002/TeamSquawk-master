@@ -151,7 +151,7 @@ static const unsigned long crc32table[] =
 	bytes = [self bytes];
   
   crc = 0xffff;
-	for (i = 0, n = [self length]; i < n; i++)
+	for (i = 0, n = (unsigned int)[self length]; i < n; i++)
   {
 		crc = (crc << 8) ^ (*((unsigned char *)bytes + i)) ^ crc16table[((crc >> 8) & 0xff)];
   }
@@ -173,7 +173,7 @@ static const unsigned long crc32table[] =
 	bytes = [self bytes];
   
   crc = 0xffffffff;
-  for (i = 0, n = [self length]; i < n; i++)
+  for (i = 0, n = (unsigned int)[self length]; i < n; i++)
 	{
 		crc = ((crc >> 8) & 0x00ffffff) ^ crc32table[(crc ^ (*((unsigned char *)bytes + i))) & 0xff];
 	}

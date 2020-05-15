@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <MTCoreAudio/MTCoreAudio.h>
+#import <MTCoreAudio64/MTCoreAudio64.h>
 
 
 #import <AudioToolbox/AudioToolbox.h>

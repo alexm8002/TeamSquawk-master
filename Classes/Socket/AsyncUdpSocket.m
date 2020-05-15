@@ -1877,7 +1877,7 @@ static void MyCFSocketCallback(CFSocketRef, CFSocketCallBackType, CFDataRef, con
 			CFSocketNativeHandle theNativeSocket = CFSocketGetNative(theSocket);
 			
 			const void *buf  = [theCurrentSend->buffer bytes];
-			unsigned bufSize = [theCurrentSend->buffer length];
+			unsigned bufSize = (unsigned int)[theCurrentSend->buffer length];
 			
 			if([self isConnected])
 			{
@@ -1886,7 +1886,7 @@ static void MyCFSocketCallback(CFSocketRef, CFSocketCallBackType, CFDataRef, con
 			else
 			{
 				const void *dst  = [theCurrentSend->address bytes];
-				unsigned dstSize = [theCurrentSend->address length];
+				unsigned dstSize = (int)[theCurrentSend->address length];
 				
 				result = sendto(theNativeSocket, buf, bufSize, 0, dst, dstSize);
 			}

@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "DBPrefsWindowController.h"
-#import <MTCoreAudio/MTCoreAudio.h>
+#import <MTCoreAudio64/MTCoreAudio64.h>
 #import "SRCommon.h"
 #import "SRRecorderControl.h"
 #import "TSAudioConverter.h"

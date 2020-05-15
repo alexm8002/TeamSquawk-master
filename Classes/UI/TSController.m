@@ -9,7 +9,7 @@
 #import <Sparkle/Sparkle.h>
 #import "TSStandardVersionComparator.h"
 
-#import <MTCoreAudio/MTCoreAudio.h>
+#import <MTCoreAudio64/MTCoreAudio64.h>
 #import <MWFramework/MWFramework.h>
 
 #import "TSPreferencesController.h"
@@ -79,8 +79,8 @@
   [self setupRecentServersMenu];
   
   // setup the outline view
-  [mainWindowOutlineView setDelegate:self];
-  [mainWindowOutlineView setDataSource:self];
+  [mainWindowOutlineView setDelegate:(id)self];
+  [mainWindowOutlineView setDataSource:(id)self];
   [mainWindowOutlineView setAction:@selector(singleClickOutlineView:)];
   [mainWindowOutlineView setDoubleAction:@selector(doubleClickOutlineView:)];
   [mainWindowOutlineView setTarget:self];
@@ -90,7 +90,7 @@
   
   // setup the toolbar
   toolbar = [[NSToolbar alloc] initWithIdentifier:@"MainWindowToolbar"];
-  [toolbar setDelegate:self];
+  [toolbar setDelegate:(id)self];
   [toolbar setDisplayMode:NSToolbarDisplayModeIconOnly];
   [toolbar setSizeMode:NSToolbarSizeModeSmall];
   [mainWindow setToolbar:toolbar];
@@ -114,7 +114,7 @@
   graphPlayer = nil;
   
   // point NSApp here
-  [NSApp setDelegate:self];
+  [NSApp setDelegate:(id)self];
   
   // get the output device going
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(outputDeviceHasChanged:) name:@"TSOutputDeviceChanged" object:nil];
@@ -513,7 +513,7 @@
 
 - (IBAction)menuChangeChannelAction:(id)sender
 {
-  [teamspeakConnection changeChannelTo:[sender tag] withPassword:nil];
+  [teamspeakConnection changeChannelTo:(unsigned int)[sender tag] withPassword:nil];
 }
 
 #pragma mark Connection Window Actions
@@ -932,8 +932,9 @@
                               @"Could not resolve the address of the server you specified, please check the address and try again. Alternatively, the server may not exist.", NSLocalizedRecoverySuggestionErrorKey, nil];
         error = [NSError errorWithDomain:[error domain] code:[error code] userInfo:dict];
       }
-      
-      [[NSAlert alertWithError:error] beginSheetModalForWindow:mainWindow modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+        [[NSAlert alertWithError:error] beginSheetModalForWindow:mainWindow completionHandler:^(NSModalResponse returnCode) {
+            [NSApp stopModalWithCode:returnCode];
+        }];
     }
     
     return;
@@ -1025,7 +1026,9 @@
   
   if (error)
   {
-    [[NSAlert alertWithError:error] beginSheetModalForWindow:mainWindow modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+    [[NSAlert alertWithError:error] beginSheetModalForWindow:mainWindow completionHandler:^(NSModalResponse returnCode) {
+        [NSApp stopModalWithCode:returnCode];
+    }];
   }
 }
 
@@ -1057,7 +1060,9 @@
 
   if (error)
   {
-    [[NSAlert alertWithError:error] beginSheetModalForWindow:mainWindow modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+    [[NSAlert alertWithError:error] beginSheetModalForWindow:mainWindow completionHandler:^(NSModalResponse returnCode) {
+        [NSApp stopModalWithCode:returnCode];
+    }];
   }
   
   [self speakVoiceEvent:@"Link Disengaged." alternativeText:@"Disconnected."];
@@ -1167,7 +1172,15 @@
             unsigned int newFlags = (([player playerFlags] & ~(TSPlayerHasMutedSpeakers | TSPlayerHasMutedMicrophone)) | TSPlayerHasMutedSpeakers);
             [teamspeakConnection changeStatusTo:newFlags];
             
-            NSAlert *alert = [NSAlert alertWithMessageText:@"Incompatible codec." defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"This channel uses a non-Speex codec, you can't listen or talk on this channel."];
+            NSAlert *alert = [NSAlert init];
+            [alert addButtonWithTitle:@"OK"];
+            [alert setMessageText:@"Incompatible codec."];
+            [alert setInformativeText:@"This channel uses a non-Speex codec, you can't listen or talk on this channel."];
+            [alert setAlertStyle:NSAlertStyleCritical ];
+            [alert beginSheetModalForWindow:mainWindow completionHandler:^(NSModalResponse returnCode) {
+                [NSApp stopModalWithCode:returnCode];
+            }];
+            
             
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[alert methodSignatureForSelector:@selector(beginSheetModalForWindow:modalDelegate:didEndSelector:contextInfo:)]];
             [invocation setSelector:@selector(beginSheetModalForWindow:modalDelegate:didEndSelector:contextInfo:)];
@@ -1358,7 +1371,7 @@
 - (void)connection:(SLConnection*)connection receivedVoiceMessage:(NSData*)audioCodecData codec:(SLAudioCodecType)codec playerID:(unsigned int)playerID isWhisper:(BOOL)isWhisper senderPacketCounter:(unsigned short)count
 {
   TSPlayer *player = [players objectForKey:[NSNumber numberWithUnsignedInt:playerID]];
-  
+    
   // out-of-band, I know, least messy way though
   [player setIsWhispering:isWhisper];
   

@@ -7,9 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <MTCoreAudio/MTCoreAudio.h>
-#import <MTCoreAudio/MTCoreAudioDevice.h>
-#import <MTCoreAudio/MTAudioBuffer.h>
+#import <MTCoreAudio64/MTCoreAudio64.h>
 
 @interface TSCoreAudioPlayer : NSObject {
   MTAudioBuffer *audioBuffer;
