@@ -56,7 +56,7 @@ static DBPrefsWindowController *_sharedPrefsWindowController = nil;
 		viewAnimation = [[NSViewAnimation alloc] init];
 		[viewAnimation setAnimationBlockingMode:NSAnimationNonblocking];
 		[viewAnimation setAnimationCurve:NSAnimationEaseInOut];
-		[viewAnimation setDelegate:self];
+		[viewAnimation setDelegate:(id)self];
 		
 		[self setCrossFade:YES]; 
 		[self setShiftSlowsAnimation:YES];
