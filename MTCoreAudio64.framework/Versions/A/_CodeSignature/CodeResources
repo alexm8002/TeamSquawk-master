@@ -6,15 +6,7 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		/V1Ozx3avv5ny94fza1BmIEr77w=
-		</data>
-		<key>Resources/InfoPlist.strings</key>
-		<data>
-		PqQd4alJeDz7arN9zvL/eQLMb2M=
-		</data>
-		<key>Resources/StreamDescription.strings</key>
-		<data>
-		lfAPkrKFJ6UbNBwVqWBEDQV99M0=
+		FAqJpvtb78g67DVigrvpEt6kGqg=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -23,7 +15,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			iJNpf+oFeRovC3Cz1BrKZ9T3QgaGqDCIWyWA5QuhwEw=
+			bZNABPlc4v7eOc5x5Ssv2bPzB2peUOt3pMNgC/+pzyc=
 			</data>
 		</dict>
 		<key>Headers/MTAudioBufferListUtils.h</key>
@@ -44,14 +36,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YhCMVD/QTMO3jV05Hni3eTQjSJast/UcfGyfr/e2Kuo=
+			0slKqTBUppg4VzoKNBdUuSl6Ktm6GeOknZaUx8yeW7s=
 			</data>
 		</dict>
-		<key>Headers/MTCoreAudio.h</key>
+		<key>Headers/MTCoreAudio64.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			018BJ270wiLKhLZsbFLD8FdWI6DY8SvqoyWEdJPJ5Ck=
+			kutpkr5zsKUYbsrOZ582vpg7IvYLuP32e56GMCfolm8=
 			</data>
 		</dict>
 		<key>Headers/MTCoreAudioDevice.h</key>
@@ -59,20 +51,6 @@
 			<key>hash2</key>
 			<data>
 			yrVicXpwNiXjdsK5TR58m1/FIF6vlq3kOXa76N/gTfk=
-			</data>
-		</dict>
-		<key>Headers/MTCoreAudioDevicePrivateAdditions.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			nBEilD7829gvHQWraB5csoGyw5z6YkIllyPDfsqqrM0=
-			</data>
-		</dict>
-		<key>Headers/MTCoreAudioIOProcMux.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			CCwIUw9x8KuqC1XjypXRHwynFcia3kfboCOIpjF5ffY=
 			</data>
 		</dict>
 		<key>Headers/MTCoreAudioStream.h</key>
@@ -107,28 +85,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			e9tA5x+jPrun38QBwQ0pWfKnV17C8U0Pm0KfjKgOqVk=
+			d7yPirxKGGFfpwtJ3E5AT9mEUr0LTLcAtmAeyryT01E=
 			</data>
 		</dict>
 		<key>Resources/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			nYIfDhUewX9C+KNZmqiAZjRpWMkxVCc/nEp+s2TYcgY=
-			</data>
-		</dict>
-		<key>Resources/InfoPlist.strings</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			IXPLUboFaALpXRZCR1p1KzJMKh349Z7uLxNvAFEZ/Z8=
-			</data>
-		</dict>
-		<key>Resources/StreamDescription.strings</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Atz0epIt8PDMnBpPUyDfpOfmjgwOCBbz6Qm42MVzBJw=
+			AuYERvMwe0u8ZrQ7T5kXOUjd57vqsbSQeBzf1DO7Ogg=
 			</data>
 		</dict>
 	</dict>

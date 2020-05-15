@@ -1,0 +1,6 @@
+framework module MTCoreAudio64 {
+  umbrella header "MTCoreAudio64.h"
+
+  export *
+  module * { export * }
+}

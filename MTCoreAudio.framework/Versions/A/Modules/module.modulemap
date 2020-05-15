@@ -1,6 +1,0 @@
-framework module MTCoreAudio {
-  umbrella header "MTCoreAudio.h"
-
-  export *
-  module * { export * }
-}

@@ -7,17 +7,17 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
-	<string>MTCoreAudio</string>
+	<string>MTCoreAudio64</string>
 	<key>CFBundleIdentifier</key>
-	<string>Alexm8002.MTCoreAudio</string>
+	<string>Alexm8002.MTCoreAudio64</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>MTCoreAudio</string>
+	<string>MTCoreAudio64</string>
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0</string>
+	<string>1.0</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
@@ -40,9 +40,7 @@
 	<string>11E503a</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.12</string>
-	<key>UIDeviceFamily</key>
-	<array>
-		<integer>2</integer>
-	</array>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2020 Alexandre Martinez. All rights reserved.</string>
 </dict>
 </plist>
