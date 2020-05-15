@@ -83,13 +83,9 @@
     }
     imageFrame.origin.x += 3;
     imageFrame.size = imageSize;
-    
-    if ([controlView isFlipped])
-      imageFrame.origin.y += ceil((cellFrame.size.height + imageFrame.size.height) / 2);
-    else
+
       imageFrame.origin.y += ceil((cellFrame.size.height - imageFrame.size.height) / 2);
-    
-      [image compositeToPoint:imageFrame.origin operation:NSCompositingOperationSourceOver];
+      [image drawAtPoint:imageFrame.origin fromRect:NSZeroRect operation:NSCompositingOperationSourceOver fraction:1];
   }
 	
 	NSMutableParagraphStyle *paraStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
