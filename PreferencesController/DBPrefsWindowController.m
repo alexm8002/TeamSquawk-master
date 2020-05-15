@@ -63,7 +63,7 @@ static DBPrefsWindowController *_sharedPrefsWindowController = nil;
 	}
 	return self;
 
-	(void)window;  // To prevent compiler warnings.
+	//(void)window;  // To prevent compiler warnings.
 }
 
 
@@ -206,7 +206,7 @@ static DBPrefsWindowController *_sharedPrefsWindowController = nil;
 		[toolbar setAutosavesConfiguration:NO];
 		[toolbar setSizeMode:NSToolbarSizeModeDefault];
 		[toolbar setDisplayMode:NSToolbarDisplayModeIconAndLabel];
-		[toolbar setDelegate:self];
+		[toolbar setDelegate:(id)self];
 		[[self window] setToolbar:toolbar];
 		[toolbar release];
 	}
@@ -231,7 +231,7 @@ static DBPrefsWindowController *_sharedPrefsWindowController = nil;
 {
 	return toolbarIdentifiers;
 
-	(void)toolbar;
+	//(void)toolbar;
 }
 
 
@@ -241,7 +241,7 @@ static DBPrefsWindowController *_sharedPrefsWindowController = nil;
 {
 	return toolbarIdentifiers;
 
-	(void)toolbar;
+	//(void)toolbar;
 }
 
 
@@ -250,7 +250,7 @@ static DBPrefsWindowController *_sharedPrefsWindowController = nil;
 - (NSArray *)toolbarSelectableItemIdentifiers:(NSToolbar *)toolbar
 {
 	return toolbarIdentifiers;
-	(void)toolbar;
+	//(void)toolbar;
 }
 
 
@@ -259,8 +259,8 @@ static DBPrefsWindowController *_sharedPrefsWindowController = nil;
 - (NSToolbarItem *)toolbar:(NSToolbar *)toolbar itemForItemIdentifier:(NSString *)identifier willBeInsertedIntoToolbar:(BOOL)willBeInserted 
 {
 	return [toolbarItems objectForKey:identifier];
-	(void)toolbar;
-	(void)willBeInserted;
+	//(void)toolbar;
+	//(void)willBeInserted;
 }
 
 

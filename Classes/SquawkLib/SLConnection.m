@@ -119,6 +119,8 @@
   [connectionThread release];
   [textFragments release];
   [sendReceiveLock release];
+    [clientName release];
+    [clientOperatingSystem release];
   [super dealloc];
 }
 
@@ -129,7 +131,7 @@
     
 @autoreleasepool {
   
-  [NSTimer scheduledTimerWithTimeInterval:[[NSDate distantFuture] timeIntervalSinceNow] target:nil selector:nil userInfo:nil repeats:NO];
+  [NSTimer scheduledTimerWithTimeInterval:[[NSDate distantFuture] timeIntervalSinceNow] target:self selector:nil userInfo:nil repeats:NO];
   
   while (![[NSThread currentThread] isCancelled])
    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];

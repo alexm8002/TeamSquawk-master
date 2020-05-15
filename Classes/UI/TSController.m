@@ -968,7 +968,10 @@
   [self performSelectorOnMainThread:@selector(setupConnectedToolbarStatusPopupButton) withObject:nil waitUntilDone:YES];
   [self performSelectorOnMainThread:@selector(updatePlayerStatusView) withObject:nil waitUntilDone:YES];
   [self performSelectorOnMainThread:@selector(setupChannelsMenu) withObject:nil waitUntilDone:YES];
-  [toolbarViewStatusPopupButton setTitle:currentServerAddress];
+    dispatch_async(dispatch_get_main_queue(), ^{
+         [toolbarViewStatusPopupButton setTitle:currentServerAddress];
+    });
+ 
     
   // get the TSPlayer for who we are
   TSPlayer *me = [players objectForKey:[NSNumber numberWithUnsignedInt:[teamspeakConnection clientID]]];

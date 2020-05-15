@@ -48,7 +48,7 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
   NSArray *maleVoices = [voices filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.VoiceGender == %@", @"VoiceGenderMale"]];
   NSArray *femaleVoices = [voices filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.VoiceGender == %@", @"VoiceGenderFemale"]];
     
-  [[[generalVoicesPopupButton menu] addItemWithTitle:@"Male" action:nil keyEquivalent:@""] setEnabled:NO];
+  [[[generalVoicesPopupButton menu] addItemWithTitle:NSLocalizedString(@"Male", nil) action:nil keyEquivalent:@""] setEnabled:NO];
   for (NSDictionary *voice in maleVoices)
   {
     NSMenuItem *item = [[generalVoicesPopupButton menu] addItemWithTitle:[voice objectForKey:@"VoiceName"] action:nil keyEquivalent:@""];
@@ -57,7 +57,7 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
   }
   
   [[generalVoicesPopupButton menu] addItem:[NSMenuItem separatorItem]];
-  [[[generalVoicesPopupButton menu] addItemWithTitle:@"Female" action:nil keyEquivalent:@""] setEnabled:NO];
+  [[[generalVoicesPopupButton menu] addItemWithTitle:NSLocalizedString(@"Female", nil) action:nil keyEquivalent:@""] setEnabled:NO];
   for (NSDictionary *voice in femaleVoices)
   {
     NSMenuItem *item = [[generalVoicesPopupButton menu] addItemWithTitle:[voice objectForKey:@"VoiceName"] action:nil keyEquivalent:@""];

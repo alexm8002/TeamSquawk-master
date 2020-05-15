@@ -11,7 +11,7 @@
 
 @implementation NSApplication (Exceptions)
 
-- (void)reportException:(NSException *)anException
+- (void)Exception:(NSException *)anException
 {
     //NSString *stackTraceLog = [NSString stringWithFormat:@"Exception:\n\n%@\n\nStack Trace:\n\n%@",
      //                       anException,

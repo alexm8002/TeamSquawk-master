@@ -40,22 +40,18 @@
     if ([player isLocallyMuted])
     {
       image = [NSImage imageNamed:@"TransmitGray"];
-      opacity = 1.0;
     }
     else if ([player isTalking] && [player isWhispering])
     {
       image = [NSImage imageNamed:@"TransmitRed"];
-      opacity = 1.0;
     }
     else if ([player isTalking])
     {
       image = [NSImage imageNamed:@"TransmitOrange"];
-      opacity = 1.0;
     }
     else
     {
       image = [NSImage imageNamed:@"TransmitGray"];
-      opacity = 0.25;
     }
     
     // gah bit of a cheat, draw at 16x16 if we're small or 24x24 if we're large

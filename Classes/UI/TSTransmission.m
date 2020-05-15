@@ -56,6 +56,7 @@
 
 - (void)dealloc
 {
+  [whisperRecipients release];
   [fragmentBuffer release];
   [connection release];
   [converter release];

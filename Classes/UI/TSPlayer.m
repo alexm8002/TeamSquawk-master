@@ -131,7 +131,7 @@
   AudioBufferList *decodedBufferList = MTAudioBufferListNew(1, decodedFrames * [[self decoder] frameSize], NO);
   
   decodedBufferList->mBuffers[0].mNumberChannels = 1;
-  decodedBufferList->mBuffers[0].mDataByteSize = [data length];
+  decodedBufferList->mBuffers[0].mDataByteSize = (unsigned int)[data length];
   [data getBytes:decodedBufferList->mBuffers[0].mData length:[data length]];
   
   unsigned int convertedFrameCount = 0;
