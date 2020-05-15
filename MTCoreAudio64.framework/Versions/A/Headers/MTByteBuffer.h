@@ -6,7 +6,7 @@
 //  Copyright (c) 2004 Michael Thornburgh. All rights reserved.
 //
 
-#import <MTCoreAudio/MTBuffer.h>
+#import <MTCoreAudio64/MTBuffer.h>
 
 
 @interface MTByteBuffer : MTBuffer {
