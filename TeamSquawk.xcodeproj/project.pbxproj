@@ -87,11 +87,6 @@
 		C9E2D08710055FC800ED920D /* Away.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E2D08610055FC800ED920D /* Away.png */; };
 		C9E2D1AD10065F2400ED920D /* TSHotkeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2D1AC10065F2400ED920D /* TSHotkeyManager.m */; };
 		C9E2D1B1100662B700ED920D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E2D1B0100662B700ED920D /* Carbon.framework */; };
-		C9E2D2701006712700ED920D /* SRCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2D2671006712700ED920D /* SRCommon.m */; };
-		C9E2D2711006712700ED920D /* SRKeyCodeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2D2691006712700ED920D /* SRKeyCodeTransformer.m */; };
-		C9E2D2721006712700ED920D /* SRRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2D26B1006712700ED920D /* SRRecorderCell.m */; };
-		C9E2D2731006712700ED920D /* SRRecorderControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2D26D1006712700ED920D /* SRRecorderControl.m */; };
-		C9E2D2741006712700ED920D /* SRValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2D26F1006712700ED920D /* SRValidator.m */; };
 		C9E2D27F1006744300ED920D /* DBPrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2D27E1006744300ED920D /* DBPrefsWindowController.m */; };
 		C9E2D282100674FB00ED920D /* TSPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E2D281100674FB00ED920D /* TSPreferencesController.m */; };
 		C9E2D2B310067ED000ED920D /* Mic.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E2D2B210067ED000ED920D /* Mic.png */; };
@@ -113,8 +108,11 @@
 		FEA6EB61246C5851008E4F63 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA6EB60246C5851008E4F63 /* MainMenu.xib */; };
 		FEC5EBF4246C506A00224E0F /* BlueTransmit.tiff in Resources */ = {isa = PBXBuildFile; fileRef = FEC5EBF2246C506A00224E0F /* BlueTransmit.tiff */; };
 		FEC5EBF5246C506A00224E0F /* GreenTransmit.tiff in Resources */ = {isa = PBXBuildFile; fileRef = FEC5EBF3246C506A00224E0F /* GreenTransmit.tiff */; };
-		FECC1A922476C55700B09DD5 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECC1A902476C4B900B09DD5 /* ShortcutRecorder.framework */; };
-		FECC1A932476C55700B09DD5 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FECC1A902476C4B900B09DD5 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FECC1A9F2476C76200B09DD5 /* SRKeyCodeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = FECC1A952476C76200B09DD5 /* SRKeyCodeTransformer.m */; };
+		FECC1AA02476C76200B09DD5 /* SRValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = FECC1A992476C76200B09DD5 /* SRValidator.m */; };
+		FECC1AA12476C76200B09DD5 /* SRCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = FECC1A9A2476C76200B09DD5 /* SRCommon.m */; };
+		FECC1AA22476C76200B09DD5 /* SRRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FECC1A9C2476C76200B09DD5 /* SRRecorderCell.m */; };
+		FECC1AA32476C76200B09DD5 /* SRRecorderControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FECC1A9E2476C76200B09DD5 /* SRRecorderControl.m */; };
 		FEE742821D141C7A002D5B23 /* Appcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = FEE742811D141C7A002D5B23 /* Appcast.xml */; };
 		FEE742841D141D39002D5B23 /* 2.0b3.html in Resources */ = {isa = PBXBuildFile; fileRef = FEE742831D141D39002D5B23 /* 2.0b3.html */; };
 /* End PBXBuildFile section */
@@ -137,7 +135,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				C939F0221011E7CC002CBED3 /* Sparkle.framework in Copy Frameworks */,
-				FECC1A932476C55700B09DD5 /* ShortcutRecorder.framework in Copy Frameworks */,
 				FE17CD8C24729E0C008DA4BB /* MTCoreAudio64.framework in Copy Frameworks */,
 				C9BD027F0FFC1BB900FC280A /* libspeex.1.5.0.dylib in Copy Frameworks */,
 				C9BD02800FFC1BBC00FC280A /* libspeexdsp.1.5.0.dylib in Copy Frameworks */,
@@ -508,16 +505,6 @@
 		C9E2D1AB10065F2400ED920D /* TSHotkeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSHotkeyManager.h; sourceTree = "<group>"; };
 		C9E2D1AC10065F2400ED920D /* TSHotkeyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSHotkeyManager.m; sourceTree = "<group>"; };
 		C9E2D1B0100662B700ED920D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		C9E2D2661006712700ED920D /* SRCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCommon.h; sourceTree = "<group>"; };
-		C9E2D2671006712700ED920D /* SRCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCommon.m; sourceTree = "<group>"; };
-		C9E2D2681006712700ED920D /* SRKeyCodeTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRKeyCodeTransformer.h; sourceTree = "<group>"; };
-		C9E2D2691006712700ED920D /* SRKeyCodeTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRKeyCodeTransformer.m; sourceTree = "<group>"; };
-		C9E2D26A1006712700ED920D /* SRRecorderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecorderCell.h; sourceTree = "<group>"; };
-		C9E2D26B1006712700ED920D /* SRRecorderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderCell.m; sourceTree = "<group>"; };
-		C9E2D26C1006712700ED920D /* SRRecorderControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecorderControl.h; sourceTree = "<group>"; };
-		C9E2D26D1006712700ED920D /* SRRecorderControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderControl.m; sourceTree = "<group>"; };
-		C9E2D26E1006712700ED920D /* SRValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRValidator.h; sourceTree = "<group>"; };
-		C9E2D26F1006712700ED920D /* SRValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRValidator.m; sourceTree = "<group>"; };
 		C9E2D27D1006744300ED920D /* DBPrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPrefsWindowController.h; sourceTree = "<group>"; };
 		C9E2D27E1006744300ED920D /* DBPrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrefsWindowController.m; sourceTree = "<group>"; };
 		C9E2D280100674FB00ED920D /* TSPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPreferencesController.h; sourceTree = "<group>"; };
@@ -547,7 +534,16 @@
 		FEB9DB3D246C9B3200B73AFE /* TeamSquawk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamSquawk.entitlements; sourceTree = "<group>"; };
 		FEC5EBF2246C506A00224E0F /* BlueTransmit.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = BlueTransmit.tiff; sourceTree = SOURCE_ROOT; };
 		FEC5EBF3246C506A00224E0F /* GreenTransmit.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = GreenTransmit.tiff; sourceTree = SOURCE_ROOT; };
-		FECC1A902476C4B900B09DD5 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShortcutRecorder.framework; sourceTree = "<group>"; };
+		FECC1A952476C76200B09DD5 /* SRKeyCodeTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRKeyCodeTransformer.m; sourceTree = "<group>"; };
+		FECC1A962476C76200B09DD5 /* SRCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCommon.h; sourceTree = "<group>"; };
+		FECC1A972476C76200B09DD5 /* SRRecorderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecorderCell.h; sourceTree = "<group>"; };
+		FECC1A982476C76200B09DD5 /* SRRecorderControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRRecorderControl.h; sourceTree = "<group>"; };
+		FECC1A992476C76200B09DD5 /* SRValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRValidator.m; sourceTree = "<group>"; };
+		FECC1A9A2476C76200B09DD5 /* SRCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCommon.m; sourceTree = "<group>"; };
+		FECC1A9B2476C76200B09DD5 /* SRKeyCodeTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRKeyCodeTransformer.h; sourceTree = "<group>"; };
+		FECC1A9C2476C76200B09DD5 /* SRRecorderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderCell.m; sourceTree = "<group>"; };
+		FECC1A9D2476C76200B09DD5 /* SRValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRValidator.h; sourceTree = "<group>"; };
+		FECC1A9E2476C76200B09DD5 /* SRRecorderControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderControl.m; sourceTree = "<group>"; };
 		FEE742811D141C7A002D5B23 /* Appcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Appcast.xml; sourceTree = "<group>"; };
 		FEE742831D141D39002D5B23 /* 2.0b3.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 2.0b3.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -563,7 +559,6 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				C9BD028A0FFC96DC00FC280A /* AudioToolbox.framework in Frameworks */,
 				C9E2D1B1100662B700ED920D /* Carbon.framework in Frameworks */,
-				FECC1A922476C55700B09DD5 /* ShortcutRecorder.framework in Frameworks */,
 				FE17CD8B24729E0C008DA4BB /* MTCoreAudio64.framework in Frameworks */,
 				C939E1E7100DB5FA002CBED3 /* AudioUnit.framework in Frameworks */,
 				C939EDCE1011E7A1002CBED3 /* Sparkle.framework in Frameworks */,
@@ -604,7 +599,6 @@
 		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FECC1A902476C4B900B09DD5 /* ShortcutRecorder.framework */,
 				FE17CD8924729E04008DA4BB /* MTCoreAudio64.framework */,
 				C95468FB101540CD00FCF935 /* MWFramework.framework */,
 				C939EDCD1011E7A1002CBED3 /* Sparkle.framework */,
@@ -640,10 +634,10 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				FECC1A942476C76200B09DD5 /* SRRecorder */,
 				C95462C81013579B00FCF935 /* TSStandardVersionComparator.h */,
 				C95462C91013579B00FCF935 /* TSStandardVersionComparator.m */,
 				C9E2D27B1006740A00ED920D /* PreferencesController */,
-				C9E2D2641006710E00ED920D /* SRRecorder */,
 				C9BDFF9A0FFA02CD00FC280A /* speex-1.2rc1 */,
 				32CA4F630368D1EE00C91783 /* TeamSquawk_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
@@ -1338,23 +1332,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		C9E2D2641006710E00ED920D /* SRRecorder */ = {
-			isa = PBXGroup;
-			children = (
-				C9E2D2661006712700ED920D /* SRCommon.h */,
-				C9E2D2671006712700ED920D /* SRCommon.m */,
-				C9E2D2681006712700ED920D /* SRKeyCodeTransformer.h */,
-				C9E2D2691006712700ED920D /* SRKeyCodeTransformer.m */,
-				C9E2D26A1006712700ED920D /* SRRecorderCell.h */,
-				C9E2D26B1006712700ED920D /* SRRecorderCell.m */,
-				C9E2D26C1006712700ED920D /* SRRecorderControl.h */,
-				C9E2D26D1006712700ED920D /* SRRecorderControl.m */,
-				C9E2D26E1006712700ED920D /* SRValidator.h */,
-				C9E2D26F1006712700ED920D /* SRValidator.m */,
-			);
-			path = SRRecorder;
-			sourceTree = "<group>";
-		};
 		C9E2D27B1006740A00ED920D /* PreferencesController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1362,6 +1339,23 @@
 				C9E2D27E1006744300ED920D /* DBPrefsWindowController.m */,
 			);
 			path = PreferencesController;
+			sourceTree = "<group>";
+		};
+		FECC1A942476C76200B09DD5 /* SRRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				FECC1A952476C76200B09DD5 /* SRKeyCodeTransformer.m */,
+				FECC1A962476C76200B09DD5 /* SRCommon.h */,
+				FECC1A972476C76200B09DD5 /* SRRecorderCell.h */,
+				FECC1A982476C76200B09DD5 /* SRRecorderControl.h */,
+				FECC1A992476C76200B09DD5 /* SRValidator.m */,
+				FECC1A9A2476C76200B09DD5 /* SRCommon.m */,
+				FECC1A9B2476C76200B09DD5 /* SRKeyCodeTransformer.h */,
+				FECC1A9C2476C76200B09DD5 /* SRRecorderCell.m */,
+				FECC1A9D2476C76200B09DD5 /* SRValidator.h */,
+				FECC1A9E2476C76200B09DD5 /* SRRecorderControl.m */,
+			);
+			path = SRRecorder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1529,26 +1523,26 @@
 				C97174960FF76700008FC21C /* SLConnection.m in Sources */,
 				C971749A0FF7688E008FC21C /* SLPacketBuilder.m in Sources */,
 				C97174A20FF7756B008FC21C /* NSData+Extensions.m in Sources */,
+				FECC1A9F2476C76200B09DD5 /* SRKeyCodeTransformer.m in Sources */,
 				C97174D70FF777CF008FC21C /* TSController.m in Sources */,
 				C97174E50FF778E8008FC21C /* SLPacketChomper.m in Sources */,
 				C9BD020C0FFB47BE00FC280A /* SpeexDecoder.m in Sources */,
 				C9BD020F0FFB47C600FC280A /* SpeexEncoder.m in Sources */,
+				FECC1AA02476C76200B09DD5 /* SRValidator.m in Sources */,
 				C9BD02840FFC942200FC280A /* TSAudioExtraction.m in Sources */,
 				C9BD02940FFC972400FC280A /* TSCoreAudioPlayer.m in Sources */,
 				C9BD05F60FFD692C00FC280A /* TSAudioConverter.m in Sources */,
 				C90586E31000DFFC003BD88A /* TSPlayer.m in Sources */,
 				C90587301000E813003BD88A /* TSChannel.m in Sources */,
 				C9E2CBBB1003EDC500ED920D /* TSPlayerCell.m in Sources */,
+				FECC1AA12476C76200B09DD5 /* SRCommon.m in Sources */,
 				C9E2D1AD10065F2400ED920D /* TSHotkeyManager.m in Sources */,
-				C9E2D2701006712700ED920D /* SRCommon.m in Sources */,
-				C9E2D2711006712700ED920D /* SRKeyCodeTransformer.m in Sources */,
-				C9E2D2721006712700ED920D /* SRRecorderCell.m in Sources */,
-				C9E2D2731006712700ED920D /* SRRecorderControl.m in Sources */,
-				C9E2D2741006712700ED920D /* SRValidator.m in Sources */,
+				FECC1AA32476C76200B09DD5 /* SRRecorderControl.m in Sources */,
 				C9E2D27F1006744300ED920D /* DBPrefsWindowController.m in Sources */,
 				C9E2D282100674FB00ED920D /* TSPreferencesController.m in Sources */,
 				C9E2D4D01006BCBA00ED920D /* TSTransmission.m in Sources */,
 				C9E2E0B41009698700ED920D /* RPImageAndTextCell.m in Sources */,
+				FECC1AA22476C76200B09DD5 /* SRRecorderCell.m in Sources */,
 				C939E194100D3C61002CBED3 /* TSAUGraphPlayer.m in Sources */,
 				C939EB231010FD61002CBED3 /* TSThreadBlocker.m in Sources */,
 				C95462CA1013579B00FCF935 /* TSStandardVersionComparator.m in Sources */,
