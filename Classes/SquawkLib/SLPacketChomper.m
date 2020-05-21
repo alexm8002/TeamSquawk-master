@@ -224,7 +224,7 @@ dest = [[[NSString alloc] initWithBytes:(const char*)dest##Buffer length:dest##L
     
       case PACKET_TYPE_NEW_CHANNEL:
       {
-          NSDictionary *chompedPacket = [self chompChannelList:data];
+          NSDictionary *chompedPacket = [self chompNewChannel:data];
           NSData *ackPacket = [[SLPacketBuilder packetBuilder] buildAcknowledgePacketWithConnectionID:connectionID clientID:clientID sequenceID:sequenceNumber];
           [socket sendData:ackPacket withTimeout:TRANSMIT_TIMEOUT tag:0];
           [socket maybeDequeueSend];
@@ -232,18 +232,12 @@ dest = [[[NSString alloc] initWithBytes:(const char*)dest##Buffer length:dest##L
       }
       case PACKET_TYPE_CHANNEL_LEFT:
       {
-          NSDictionary *chompedPacket = [self chompChannelList:data];
+          NSDictionary *chompedPacket = [self chompChannelLeft:data];
           NSData *ackPacket = [[SLPacketBuilder packetBuilder] buildAcknowledgePacketWithConnectionID:connectionID clientID:clientID sequenceID:sequenceNumber];
           [socket sendData:ackPacket withTimeout:TRANSMIT_TIMEOUT tag:0];
           [socket maybeDequeueSend];
           return chompedPacket;
       }
-      
-      
-      
-      
-      
-      
       case PACKET_TYPE_NEW_PLAYER:
     {
       NSDictionary *chompedPacket = [self chompNewPlayer:data];
@@ -655,64 +649,54 @@ dest = [[[NSString alloc] initWithBytes:(const char*)dest##Buffer length:dest##L
     // number of channels
     unsigned int currentChannel = 0, numberOfChannels = 0;
     SNARF_INT(numberOfChannels);
+    unsigned int channelID = 0;
+    SNARF_INT(channelID);
+    
+    unsigned short flags = 0;
+    SNARF_SHORT(flags);
+    
+    unsigned short codec = 0;
+    SNARF_SHORT(codec);
+    
+    unsigned int parentID = 0;
+    SNARF_INT(parentID);
+    
+    unsigned short sortOrder = 0;
+    SNARF_SHORT(sortOrder);
+    
+    unsigned short maxUsers;
+    SNARF_SHORT(maxUsers);
+    
+    // we have to start reading null-terminated strings here :(
+    NSString *channelName;
+    SNARF_NULLTERM_STRING(channelName);
+    
+    NSString *channelTopic;
+    SNARF_NULLTERM_STRING(channelTopic);
+    
+    NSString *channelDescription;
+    SNARF_NULLTERM_STRING(channelDescription);
     
     NSMutableArray *channels = [NSMutableArray array];
     NSDictionary *packetDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                      [NSNumber numberWithUnsignedInt:PACKET_TYPE_CHANNEL_LIST], @"SLPacketType",
+                                      [NSNumber numberWithUnsignedInt:PACKET_TYPE_NEW_CHANNEL], @"SLPacketType",
                                       [NSNumber numberWithUnsignedInt:crc], @"SLCRC32",
                                       [NSNumber numberWithUnsignedInt:clientID], @"SLClientID",
                                       [NSNumber numberWithUnsignedInt:connectionID], @"SLConnectionID",
                                       [NSNumber numberWithUnsignedInt:sequenceNumber], @"SLSequenceNumber",
                                       [NSNumber numberWithUnsignedInt:numberOfChannels], @"SLNumberOfChannels",
+                                      [NSNumber numberWithUnsignedInt:channelID], @"SLChannelID",
+                                      [NSNumber numberWithUnsignedShort:flags], @"SLChannelFlags",
+                                      [NSNumber numberWithUnsignedShort:codec], @"SLChannelCodec",
+                                      [NSNumber numberWithUnsignedInt:parentID], @"SLChannelParentID",
+                                      channelName, @"SLChannelName",
+                                      channelTopic, @"SLChannelTopic",
+                                      channelDescription, @"SLChannelDescription",
+                                      [NSNumber numberWithUnsignedShort:maxUsers], @"SLChannelMaxUsers",
+                                      [NSNumber numberWithUnsignedShort:sortOrder], @"SLChannelSortOrder",
                                       channels, @"SLChannels",
                                       nil];
-    if (numberOfChannels > 100) {
-        return packetDictionary;
-    }
-    while (currentChannel < numberOfChannels)
-    {
-        unsigned int channelID = 0;
-        SNARF_INT(channelID);
-        
-        unsigned short flags = 0;
-        SNARF_SHORT(flags);
-        
-        unsigned short codec = 0;
-        SNARF_SHORT(codec);
-        
-        unsigned int parentID = 0;
-        SNARF_INT(parentID);
-        
-        unsigned short sortOrder = 0;
-        SNARF_SHORT(sortOrder);
-        
-        unsigned short maxUsers;
-        SNARF_SHORT(maxUsers);
-        
-        // we have to start reading null-terminated strings here :(
-        NSString *channelName;
-        SNARF_NULLTERM_STRING(channelName);
-        
-        NSString *channelTopic;
-        SNARF_NULLTERM_STRING(channelTopic);
-        
-        NSString *channelDescription;
-        SNARF_NULLTERM_STRING(channelDescription);
-        
-        NSDictionary *channelDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                           [NSNumber numberWithUnsignedInt:channelID], @"SLChannelID",
-                                           [NSNumber numberWithUnsignedShort:flags], @"SLChannelFlags",
-                                           [NSNumber numberWithUnsignedShort:codec], @"SLChannelCodec",
-                                           [NSNumber numberWithUnsignedInt:parentID], @"SLChannelParentID",
-                                           channelName, @"SLChannelName",
-                                           channelTopic, @"SLChannelTopic",
-                                           channelDescription, @"SLChannelDescription",
-                                           [NSNumber numberWithUnsignedShort:maxUsers], @"SLChannelMaxUsers",
-                                           [NSNumber numberWithUnsignedShort:sortOrder], @"SLChannelSortOrder",
-                                           nil];
-        [channels addObject:channelDictionary];    
-        currentChannel++;
-    }
+    
     
     return packetDictionary;
 }
@@ -738,68 +722,27 @@ dest = [[[NSString alloc] initWithBytes:(const char*)dest##Buffer length:dest##L
     // crc
     SNARF_CRC();
     
-    // number of channels
-    unsigned int currentChannel = 0, numberOfChannels = 0;
-    SNARF_INT(numberOfChannels);
+    //channel ID to remove
+    unsigned int channelID = 0;
+    SNARF_SHORT(channelID);
     
+    //playerID who removed the channel
+    unsigned int PlayerID = 0;
+    SNARF_SHORT(PlayerID);
+    
+        
     NSMutableArray *channels = [NSMutableArray array];
     NSDictionary *packetDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                      [NSNumber numberWithUnsignedInt:PACKET_TYPE_CHANNEL_LIST], @"SLPacketType",
+                                      [NSNumber numberWithUnsignedInt:PACKET_TYPE_CHANNEL_LEFT], @"SLPacketType",
                                       [NSNumber numberWithUnsignedInt:crc], @"SLCRC32",
                                       [NSNumber numberWithUnsignedInt:clientID], @"SLClientID",
                                       [NSNumber numberWithUnsignedInt:connectionID], @"SLConnectionID",
                                       [NSNumber numberWithUnsignedInt:sequenceNumber], @"SLSequenceNumber",
-                                      [NSNumber numberWithUnsignedInt:numberOfChannels], @"SLNumberOfChannels",
+                                      [NSNumber numberWithUnsignedInt:channelID], @"SLChannelID",
+                                      [NSNumber numberWithUnsignedInt:PlayerID], @"SLPlayerID",
                                       channels, @"SLChannels",
                                       nil];
-    if (numberOfChannels > 100) {
-        return packetDictionary;
-    }
-    while (currentChannel < numberOfChannels)
-    {
-        unsigned int channelID = 0;
-        SNARF_INT(channelID);
-        
-        unsigned short flags = 0;
-        SNARF_SHORT(flags);
-        
-        unsigned short codec = 0;
-        SNARF_SHORT(codec);
-        
-        unsigned int parentID = 0;
-        SNARF_INT(parentID);
-        
-        unsigned short sortOrder = 0;
-        SNARF_SHORT(sortOrder);
-        
-        unsigned short maxUsers;
-        SNARF_SHORT(maxUsers);
-        
-        // we have to start reading null-terminated strings here :(
-        NSString *channelName;
-        SNARF_NULLTERM_STRING(channelName);
-        
-        NSString *channelTopic;
-        SNARF_NULLTERM_STRING(channelTopic);
-        
-        NSString *channelDescription;
-        SNARF_NULLTERM_STRING(channelDescription);
-        
-        NSDictionary *channelDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                           [NSNumber numberWithUnsignedInt:channelID], @"SLChannelID",
-                                           [NSNumber numberWithUnsignedShort:flags], @"SLChannelFlags",
-                                           [NSNumber numberWithUnsignedShort:codec], @"SLChannelCodec",
-                                           [NSNumber numberWithUnsignedInt:parentID], @"SLChannelParentID",
-                                           channelName, @"SLChannelName",
-                                           channelTopic, @"SLChannelTopic",
-                                           channelDescription, @"SLChannelDescription",
-                                           [NSNumber numberWithUnsignedShort:maxUsers], @"SLChannelMaxUsers",
-                                           [NSNumber numberWithUnsignedShort:sortOrder], @"SLChannelSortOrder",
-                                           nil];
-        [channels addObject:channelDictionary];    
-        currentChannel++;
-    }
-    
+
     return packetDictionary;
 }
 
@@ -970,6 +913,8 @@ dest = [[[NSString alloc] initWithBytes:(const char*)dest##Buffer length:dest##L
   unsigned int newChannelID;
   SNARF_INT(newChannelID);
   
+  unsigned char privFlag;
+    SNARF_BYTE(privFlag);
   // 2 bytes of unknown + possible other crc?
   
   NSDictionary *packetDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -981,6 +926,7 @@ dest = [[[NSString alloc] initWithBytes:(const char*)dest##Buffer length:dest##L
                                     [NSNumber numberWithUnsignedInt:playerID], @"SLPlayerID",
                                     [NSNumber numberWithUnsignedInt:previousChannelID], @"SLPreviousChannelID",
                                     [NSNumber numberWithUnsignedInt:newChannelID], @"SLNewChannelID",
+                                    [NSNumber numberWithUnsignedChar:privFlag], @"SLPrivFlag",
                                     nil];
   
   return packetDictionary;

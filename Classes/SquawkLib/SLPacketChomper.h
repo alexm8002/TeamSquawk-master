@@ -18,6 +18,7 @@
 
 #define PACKET_TYPE_NEW_CHANNEL       0x006ebef0
 #define PACKET_TYPE_CHANNEL_LEFT      0x0073bef0
+#define PACKET_TYPE_CREATE_CHANNEL    0x00c9bef0
 
 #define PACKET_TYPE_NEW_PLAYER        0x0064bef0
 #define PACKET_TYPE_PLAYER_LEFT       0x0065bef0
@@ -84,6 +85,7 @@
 - (NSDictionary*)chompPlayerList:(NSData*)data;
 - (NSDictionary*)chompPlayerListupdte:(NSData *)data;
 
+
 - (NSDictionary*)chompServerInfoUpdate:(NSData*)data;
 
 #pragma mark Status Updates
@@ -105,7 +107,5 @@
 #pragma mark Voice Packet
 
 - (NSDictionary*)chompVoiceMessage:(NSData*)data;
-
-#pragma mark Channels
 
 @end

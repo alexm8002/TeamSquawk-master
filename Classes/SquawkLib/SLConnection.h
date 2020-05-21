@@ -178,6 +178,7 @@ typedef enum {
 - (void)beginAsynchronousLogin:(NSString*)username password:(NSString*)password nickName:(NSString*)nickName isRegistered:(BOOL)isRegistered;
 - (void)disconnect;
 
+
 #pragma mark Incoming Events
 
 - (BOOL)onUdpSocket:(AsyncUdpSocket *)sock didReceiveData:(NSData *)data withTag:(long)tag fromHost:(NSString *)host port:(UInt16)port;
@@ -208,6 +209,7 @@ typedef enum {
 - (void)changeChannelTo:(unsigned int)newChannel withPassword:(NSString*)password;
 - (void)changeStatusTo:(unsigned short)flags;
 - (void)changeMute:(BOOL)isMuted onOtherPlayerID:(unsigned int)playerID;
+- (void)createNewChannel:(NSString*)newChannelName topic:(NSString*)newChannelTopic description:(NSString*)newChannelDescription password:(NSString*)newChannelPassword maxuser:(NSUInteger)newChannelMaxUser;
 
 #pragma mark Admin Functions
 
@@ -220,13 +222,15 @@ typedef enum {
 
 - (void)connection:(SLConnection*)connection didLoginTo:(NSString*)host port:(int)port serverName:(NSString*)serverName platform:(NSString*)platform
       majorVersion:(int)majorVersion minorVersion:(int)minorVersion subLevelVersion:(int)subLevelVersion subsubLevelVersion:(int)subsubLevelVersion welcomeMessage:(NSString*)welcomeMessage;
-
 - (void)connectionFinishedLogin:(SLConnection*)connection;
 - (void)connectionFailedToLogin:(SLConnection*)connection withError:(NSError*)error;
 - (void)connectionDisconnected:(SLConnection*)connection withError:(NSError*)error;
 
 - (void)connection:(SLConnection*)connection receivedChannelList:(NSDictionary*)channelDictionary;
+- (void)connection:(SLConnection*)connection receivedNewChannel:(NSDictionary*)channelDictionary;
+- (void)connection:(SLConnection*)connection receivedChannelLeftNotification:(unsigned int)channelID;
 - (void)connection:(SLConnection*)connection receivedPlayerList:(NSDictionary*)playerDictionary;
+- (void)connection:(SLConnection*)connection receivedPlayerListUpdate:(NSDictionary*)playerDictionary;
 
 
 

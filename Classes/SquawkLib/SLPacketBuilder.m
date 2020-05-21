@@ -140,6 +140,74 @@
   return packetData;
 }
 
+
+
+
+
+#pragma mark Create channel
+
+- (NSData*)buildCreateChannelPacketWithConnectionID:(unsigned int)connectionID
+                                           clientID:(unsigned int)clientID
+                                         sequenceID:(unsigned int)sequenceID
+                                     newChannelName:(NSString*)newChannelName
+                                    newChannelTopic:(NSString*)newChannelTopic
+                              newChannelDescription:(NSString*)newChannelDescription
+                                 newChannelPassword:(NSString*)newChannelPassword
+                                  newChannelMaxUser:(NSUInteger)newChannelMaxUser;
+{
+  // See http://fiasko-nw.net/~thomas/2006/TeamTapper/protocol/f4/be/03/index.php.en
+  VOMIT_INIT();
+  
+  // This is the "I'm a create channel packet" header
+  unsigned char headerChunk[] = { 0xf0, 0xbe, 0xc9, 0x00 };
+  VOMIT_BYTES(headerChunk, 4);
+  
+  // connection/session id + clientID
+  VOMIT_INT(connectionID);
+  VOMIT_INT(clientID);
+  
+  // sequence id
+  VOMIT_INT(sequenceID);
+     
+    // resend and fragment count, according to wireshark are both 2 bytes each.
+    unsigned short resendCount = 0, fragmentCount = 0;
+    VOMIT_SHORT(resendCount);
+    VOMIT_SHORT(fragmentCount);
+    
+    
+    VOMIT_CRC_BLANKS();
+
+    
+    unsigned char newChannelFlags[] = { 0x00, 0x00, 0x00, 0x00, 0x01, 0x00 };
+    VOMIT_BYTES(newChannelFlags, 6);
+    
+    unsigned char channelCodec[] = {0x0c, 0x00};
+    VOMIT_BYTES(channelCodec,2);
+    
+    unsigned char unknownBytes[] = { 0xff, 0xff, 0xff, 0xff, 0x80, 0x0c };
+    VOMIT_BYTES(unknownBytes, 6);
+    
+    // Number of players
+    VOMIT_SHORT(newChannelMaxUser);
+    
+    //Channel name
+    VOMIT_STRING(newChannelName);
+
+    // Login password
+    VOMIT_STRING(newChannelTopic);
+    
+    // New channel description
+    VOMIT_STRING(newChannelDescription);
+    
+    // New channel description
+    VOMIT_STRING(newChannelPassword);
+    // crc spacer
+     VOMIT_CRC();
+  
+  return packetData;
+}
+
+
 - (NSData*)buildLoginResponsePacketWithConnectionID:(unsigned int)connectionID
                                            clientID:(unsigned int)clientID
                                          sequenceID:(unsigned int)sequenceID

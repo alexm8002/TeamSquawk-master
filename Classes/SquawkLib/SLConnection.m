@@ -247,6 +247,7 @@
     [[self delegate] connectionDisconnected:self withError:nil];
   }
 }
+        
 
 #pragma mark Incoming Events
 
@@ -548,8 +549,27 @@
           unsigned int playerID = [[packet objectForKey:@"SLPlayerID"] unsignedIntValue];
           unsigned int oldChannelID = [[packet objectForKey:@"SLPreviousChannelID"] unsignedIntValue];
           unsigned int newChannelID = [[packet objectForKey:@"SLNewChannelID"] unsignedIntValue];
-          
-          [[self delegate] connection:self receivedChannelChangeNotification:playerID fromChannel:oldChannelID toChannel:newChannelID];
+          unsigned int flag = 0;
+            BOOL addNotRemove = YES;
+            switch ([[packet objectForKey:@"SLPrivFlag"] unsignedIntValue])
+            {
+              case 0x00:
+                    addNotRemove = NO;
+                    flag = SLConnectionChannelAdmin;
+                    break;
+              case 0x01:
+                flag = SLConnectionChannelAdmin;
+                break;
+              case 0x02:
+                flag = SLConnectionOperator;
+                break;
+              case 0x03:
+                flag = SLConnectionVoice;
+                break;
+            }
+                [[self delegate] connection:self receivedChannelChangeNotification:playerID fromChannel:oldChannelID toChannel:newChannelID ];
+                [[self delegate] connection:self receivedPlayerPriviledgeChangeNotification:playerID byPlayerID:newChannelID changeType:addNotRemove privFlag:flag];
+            
         }
         break;
       }
@@ -578,7 +598,7 @@
             
         case PACKET_TYPE_PLAYER_LIST_UPDTE:
         {
-            if (!isDisconnecting && [self delegate] && [[self delegate] respondsToSelector:@selector(connection:receivedPlayerListUpdate::)])
+            if (!isDisconnecting && [self delegate] && [[self delegate] respondsToSelector:@selector(connection:receivedPlayerListUpdate:)])
             {
                 [[self delegate] connection:self receivedPlayerList:packet];
             }
@@ -587,19 +607,20 @@
 
         case PACKET_TYPE_NEW_CHANNEL:
         {
-            if (!isDisconnecting && [self delegate] && [[self delegate] respondsToSelector:@selector(connection:receivedChannelList:)])
+            if (!isDisconnecting && [self delegate] && [[self delegate] respondsToSelector:@selector(connection:receivedNewChannel:)])
             {
-                [[self delegate] connection:self receivedChannelList:packet];
+                [[self delegate] connection:self receivedNewChannel:packet];
             }
             break;
         }
             
-            
         case PACKET_TYPE_CHANNEL_LEFT:
         {
-            if (!isDisconnecting && [self delegate] && [[self delegate] respondsToSelector:@selector(connection:receivedChannelList:)])
+            if (!isDisconnecting && [self delegate] && [[self delegate] respondsToSelector:@selector(connection:receivedChannelLeftNotification:)])
             {
-                [[self delegate] connection:self receivedChannelList:packet];
+                
+               unsigned int channelID = [[packet objectForKey:@"SLChannelID"] unsignedIntValue];
+                [[self delegate] connection:self receivedChannelLeftNotification:channelID];
             }
             break;
         }
@@ -935,8 +956,24 @@
                                                                                  newChannelID:newChannel
                                                                                      password:password];
   [self performSelector:@selector(sendData:) onThread:connectionThread withObject:packet waitUntilDone:NO];
-}
+    }
     
+}
+
+- (void)createNewChannel:(NSString*)newChannelName topic:(NSString*)newChannelTopic description:(NSString*)newChannelDescription password:(NSString*)newChannelPassword maxuser:(NSUInteger)newChannelMaxUser
+{
+    @autoreleasepool{
+      NSData *packet = [[SLPacketBuilder packetBuilder] buildCreateChannelPacketWithConnectionID:connectionID
+                                                                  clientID:clientID
+                                                                sequenceID:standardSequenceNumber++
+                                                            newChannelName:newChannelName
+                                                           newChannelTopic:newChannelTopic
+                                                     newChannelDescription:newChannelDescription
+                                                        newChannelPassword:newChannelPassword
+                                                         newChannelMaxUser:newChannelMaxUser];
+      
+       [self performSelector:@selector(sendData:) onThread:connectionThread withObject:packet waitUntilDone:YES];
+    }
 }
 
 - (void)changeStatusTo:(unsigned short)flags
@@ -963,6 +1000,9 @@
   [self performSelector:@selector(sendData:) onThread:connectionThread withObject:packet waitUntilDone:NO];
         }
 }
+
+
+
 
 #pragma mark Admin Functions
 

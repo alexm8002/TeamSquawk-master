@@ -152,21 +152,25 @@
     eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?nickname=" withString:@"/"];
     eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?loginname=" withString:@"/"];
     eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?password=" withString:@"/"];
-    eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?channel=" withString:@"/"];
-    
-    command = [NSURL URLWithString:eventnew];
-    
-    if([command host]==nil)
-        {
-        if(isConnected == YES)
+    if ([eventnew rangeOfString:@"?channel="].location != NSNotFound){
+        eventnew = [eventnew stringByReplacingOccurrencesOfString:@"?channel=" withString:@"/"];
+        command = [NSURL URLWithString:eventnew];
+        [teamspeakConnection disconnect];
+            [self loginToServer:[command host]
+                           port:8767
+                       nickname:[command.pathComponents objectAtIndex:1]
+                     registered:true
+                       username:[command.pathComponents objectAtIndex:2]
+                       password:[command.pathComponents objectAtIndex:3]];
+        [channelSelect=[command.pathComponents objectAtIndex:4] retain];
+    }
+    else
+    {
+        command = [NSURL URLWithString:eventnew];
+    if([command host]==nil && isConnected==YES)
             {
-            id sender = [channelsMenu itemAtIndex:0];
-            [teamspeakConnection changeChannelTo:(unsigned int)[sender tag] withPassword:nil];
+            [teamspeakConnection changeChannelTo:1 withPassword:nil];
             }
-        else{
-            [teamspeakConnection disconnect];
-            }
-        }
     else
         {
             [teamspeakConnection disconnect];
@@ -176,8 +180,9 @@
                      registered:true
                        username:[command.pathComponents objectAtIndex:2]
                        password:[command.pathComponents objectAtIndex:3]];
-            [channelSelect=[command.pathComponents objectAtIndex:4] retain];
-        }
+            [channelSelect=@"UNICOM" retain];
+            }
+    }
 }
 
 #pragma mark OutlineView DataSource
@@ -406,6 +411,17 @@
   [connectionWindow makeKeyAndOrderFront:sender];
 }
 
+- (IBAction)createChannel:(id)sender
+{
+  [newChannelName setStringValue:@""];
+  [newChannelTopic setStringValue:@""];
+  [newChannelDescription setStringValue:@""];
+  [newChannelPasswordField setStringValue:@""];
+  [newChannelMaxUsers setIntegerValue:500];
+  [newChannelWindow center];
+  [newChannelWindow makeKeyAndOrderFront:sender];
+}
+
 - (IBAction)disconnectMenuAction:(id)sender
 {
   if (isConnected)
@@ -525,6 +541,24 @@
 - (IBAction)menuChangeChannelAction:(id)sender
 {
   [teamspeakConnection changeChannelTo:(unsigned int)[sender tag] withPassword:nil];
+}
+
+
+#pragma mark New Channel Window Actions
+
+- (IBAction)newChannelWindowOKAction:(id)sender
+{
+    [newChannelWindow orderOut:sender];
+    [teamspeakConnection createNewChannel:[newChannelName stringValue]
+                                    topic:[newChannelTopic stringValue]
+                              description:[newChannelDescription stringValue]
+                                 password:[newChannelPasswordField stringValue]
+                                  maxuser:[newChannelMaxUsers integerValue]];
+}
+
+- (IBAction)newChannelWindowCancelAction:(id)sender
+{
+    [newChannelWindow orderOut:sender];
 }
 
 #pragma mark Connection Window Actions
@@ -698,6 +732,8 @@
   if (isConnected)
   {
     TSPlayer *me = [players objectForKey:[NSNumber numberWithUnsignedInt:[teamspeakConnection clientID]]];
+      [channelsMenu addItemWithTitle:@"Create Channel" action:@selector(createChannel:) keyEquivalent:@""];
+      [channelsMenu addItem:[NSMenuItem separatorItem]];
         
     for (TSChannel *channel in sortedChannels)
     {
@@ -1084,11 +1120,32 @@
   [blocker release];
 }
 
+-(void)connection:(SLConnection*)connection receivedChannelLeftNotification:(unsigned int)channelID
+{
+   TSThreadBlocker *blocker = [[TSThreadBlocker alloc] init];
+    [blocker blockMainThread];
+
+                [flattenedChannels removeObjectForKey:[NSNumber numberWithUnsignedInt:channelID]];
+                 [channels removeObjectForKey:[NSNumber numberWithUnsignedInt:channelID]];
+    [sortedChannels autorelease];
+      
+    NSArray *sortDescriptors = [NSArray arrayWithObjects:
+                                [[[NSSortDescriptor alloc] initWithKey:@"sortOrder" ascending:YES] autorelease],
+                                [[[NSSortDescriptor alloc] initWithKey:@"channelName" ascending:YES] autorelease],
+                                nil];
+    sortedChannels = [[[channels allValues] sortedArrayUsingDescriptors:sortDescriptors] retain];
+    
+    [blocker unblockThread];
+    [blocker release];
+    [self performSelectorOnMainThread:@selector(setupChannelsMenu) withObject:nil waitUntilDone:YES];
+}
+
 - (void)connection:(SLConnection*)connection receivedChannelList:(NSDictionary*)channelDictionary
 {
+    
   NSArray *channelsDictionary = [channelDictionary objectForKey:@"SLChannels"];
   TSThreadBlocker *blocker = [[TSThreadBlocker alloc] init];
-  
+    //[channelsDictionary release];
   for (NSDictionary *channelDictionary in channelsDictionary)
   {
     TSChannel *channel = [[TSChannel alloc] init];
@@ -1103,16 +1160,14 @@
     [channel setMaxUsers:[[channelDictionary objectForKey:@"SLChannelMaxUsers"] unsignedIntValue]];
     [channel setSortOrder:[[channelDictionary objectForKey:@"SLChannelSortOrder"] unsignedIntValue]];
 
-      
-        [blocker blockMainThread];
+    [blocker blockMainThread];
     [flattenedChannels setObject:channel forKey:[NSNumber numberWithUnsignedInt:[channel channelID]]];
      if([[channelDictionary objectForKey:@"SLChannelName"]containsString:channelSelect])
       {
           [teamspeakConnection changeChannelTo:[channel channelID] withPassword:nil];
-          
       }
       
-      // root channels have a parent of 0xffffffff, if we've got a real parent and we haven't
+    // root channels have a parent of 0xffffffff, if we've got a real parent and we haven't
     // encountered yet then we should crater
 
 	if ([channel parent] == 0xffffffff)
@@ -1142,13 +1197,63 @@
                               [[[NSSortDescriptor alloc] initWithKey:@"channelName" ascending:YES] autorelease],
                               nil];
   sortedChannels = [[[channels allValues] sortedArrayUsingDescriptors:sortDescriptors] retain];
-[blocker unblockThread];
+  [blocker unblockThread];
   [blocker release];
-    
   [self performSelectorOnMainThread:@selector(setupChannelsMenu) withObject:nil waitUntilDone:YES];
+}
+
+- (void)connection:(SLConnection*)connection receivedNewChannel:(NSDictionary *)channelDictionary
+{
+    TSThreadBlocker *blocker = [[TSThreadBlocker alloc] init];
+    //[channelsDictionary release];
+    [flattenedChannels addEntriesFromDictionary:channelDictionary];
+    TSChannel *channel = [[TSChannel alloc] init];
     
-    //if([[channels objectForKey:@"channelName"]containsObject:channelSelect])
+    [channel setChannelName:[channelDictionary objectForKey:@"SLChannelName"]];
+    [channel setChannelDescription:[channelDictionary objectForKey:@"SLChannelDescription"]];
+    [channel setChannelTopic:[channelDictionary objectForKey:@"SLChannelTopic"]];
+    [channel setChannelID:[[channelDictionary objectForKey:@"SLChannelID"] unsignedIntValue]];
+    [channel setParent:[[channelDictionary objectForKey:@"SLChannelParentID"] unsignedIntValue]];
+    [channel setCodec:[[channelDictionary objectForKey:@"SLChannelCodec"] unsignedIntValue]];
+    [channel setFlags:[[channelDictionary objectForKey:@"SLChannelFlags"] unsignedIntValue]];
+    [channel setMaxUsers:[[channelDictionary objectForKey:@"SLChannelMaxUsers"] unsignedIntValue]];
+    [channel setSortOrder:[[channelDictionary objectForKey:@"SLChannelSortOrder"] unsignedIntValue]];
+
+    [blocker blockMainThread];
+    [flattenedChannels setObject:channel forKey:[NSNumber numberWithUnsignedInt:[channel channelID]]];
+    // root channels have a parent of 0xffffffff, if we've got a real parent and we haven't
+    // encountered yet then we should crater
+
+    if ([channel parent] == 0xffffffff)
+    {
+      [channels setObject:channel forKey:[NSNumber numberWithUnsignedInt:[channel channelID]]];
+    }
+    else
+    {
+      NSNumber *parentChannel = [NSNumber numberWithUnsignedInt:[channel parent]];
+      
+      if (![flattenedChannels objectForKey:parentChannel])
+      {
+        [blocker unblockThread];
+        [[NSException exceptionWithName:@"ParentChannelNotFound" reason:@"Subchannel defined before parent channel." userInfo:nil] raise];
+      }
+      //[(TSChannel*)[flattenedChannels objectForKey:parentChannel] addSubChannel:channel];
+        [channels setObject:channel forKey:[NSNumber numberWithUnsignedInt:[channel channelID]]];
+    }
+    [blocker unblockThread];
   
+  
+  [blocker blockMainThread];
+  [sortedChannels autorelease];
+    
+  NSArray *sortDescriptors = [NSArray arrayWithObjects:
+                              [[[NSSortDescriptor alloc] initWithKey:@"sortOrder" ascending:YES] autorelease],
+                              [[[NSSortDescriptor alloc] initWithKey:@"channelName" ascending:YES] autorelease],
+                              nil];
+  sortedChannels = [[[channels allValues] sortedArrayUsingDescriptors:sortDescriptors] retain];
+  [blocker unblockThread];
+  [blocker release];
+  [self performSelectorOnMainThread:@selector(setupChannelsMenu) withObject:nil waitUntilDone:YES];
 }
 
 - (void)connection:(SLConnection*)connection receivedChannelChangeNotification:(unsigned int)playerID fromChannel:(unsigned int)fromChannelID toChannel:(unsigned int)toChannelID
@@ -1181,12 +1286,13 @@
             }
             [transmission setCodec:[currentChannel codec]];
         }
+        
         else
         {
             unsigned int newFlags = (([player playerFlags] & ~(TSPlayerHasMutedSpeakers | TSPlayerHasMutedMicrophone)) | TSPlayerHasMutedSpeakers);
             [teamspeakConnection changeStatusTo:newFlags];
             
-            NSAlert *alert = [NSAlert init];
+            NSAlert *alert = [[NSAlert alloc]init];
             [alert addButtonWithTitle:@"OK"];
             [alert setMessageText:@"Incompatible codec."];
             [alert setInformativeText:@"This channel uses a non-Speex codec, you can't listen or talk on this channel."];
@@ -1206,14 +1312,15 @@
             [invocation setArgument:&context atIndex:5];
             [invocation performSelectorOnMainThread:@selector(invokeWithTarget:) withObject:alert waitUntilDone:YES];
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [mainWindowOutlineView performSelectorOnMainThread:@selector(expandItem:) withObject:newChannel waitUntilDone:YES];
+          
+            [self performSelectorOnMainThread:@selector(setupChannelsMenu) withObject:nil waitUntilDone:YES];
+        });
     }
-    
-    [mainWindowOutlineView performSelectorOnMainThread:@selector(expandItem:) withObject:newChannel waitUntilDone:YES];
-    [self performSelectorOnMainThread:@selector(setupChannelsMenu) withObject:nil waitUntilDone:YES];
-    
-
 [blocker release];
 }
+
     - (void)connection:(SLConnection*)connection receivedPlayerList:(NSDictionary*)playerDictionary
 {
   TSThreadBlocker *blocker = [[TSThreadBlocker alloc] init];

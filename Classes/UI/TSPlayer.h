@@ -12,6 +12,7 @@
 #import "TSAudioConverter.h"
 
 typedef enum {
+  TSPlayerChannelAdmin = 0x00,
   TSPlayerChannelCommander = 0x01,
   TSPlayerBlockWhispers = 0x04,
   TSPlayerIsAway = 0x08,

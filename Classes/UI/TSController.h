@@ -57,6 +57,16 @@ typedef enum {
   IBOutlet NSPopUpButton *toolbarViewStatusPopupButton;
   IBOutlet NSImageView *toolbarViewStatusImageView;
     
+    
+    //New channel creation
+    IBOutlet NSWindow *newChannelWindow;
+    IBOutlet NSTextField *newChannelName;
+    IBOutlet NSTextField *newChannelTopic;
+    IBOutlet NSUInteger *newChannelMaxUsers;
+    IBOutlet NSTextField *newChannelDescription;
+    IBOutlet NSTextField *newChannelPasswordField;
+    
+    
   // outline view stuff
   NSTextFieldCell *sharedTextFieldCell;
   TSPlayerCell *sharedPlayerCell;
@@ -79,6 +89,7 @@ typedef enum {
   
   // background stuff
     SLConnection *teamspeakConnection;
+    SLConnection *createChannel;
   
   
   // transmission stuff
@@ -135,6 +146,11 @@ typedef enum {
 - (IBAction)toggleBlockWhispers:(id)sender;
 - (IBAction)menuChangeChannelAction:(id)sender;
 
+//create new channel
+- (IBAction)createChannel:(id)sender;
+- (IBAction)newChannelWindowOKAction:(id)sender;
+- (IBAction)newChannelWindowCancelAction:(id)sender;
+
 #pragma mark Connection Window Actions
 
 - (IBAction)connectionWindowUpdateType:(id)sender;
@@ -170,6 +186,8 @@ typedef enum {
 - (void)connectionFailedToLogin:(SLConnection*)connection withError:(NSError*)error;
 - (void)connectionDisconnected:(SLConnection*)connection withError:(NSError*)error;
 - (void)connection:(SLConnection*)connection receivedChannelList:(NSDictionary*)channelDictionary;
+- (void)connection:(SLConnection*)connection receivedNewChannel:(NSDictionary *)channelDictionary;
+- (void)connection:(SLConnection*)connection receivedChannelLeftNotification:(unsigned int)channelID;
 - (void)connection:(SLConnection*)connection receivedPlayerList:(NSDictionary*)playerDictionary;
 - (void)connection:(SLConnection*)connection receivedNewPlayerNotification:(unsigned int)playerID channel:(unsigned int)channelID nickname:(NSString*)nickname channelPrivFlags:(unsigned int)cFlags extendedFlags:(unsigned int)eFlags;
 - (void)connection:(SLConnection*)connection receivedPlayerLeftNotification:(unsigned int)playerID;
