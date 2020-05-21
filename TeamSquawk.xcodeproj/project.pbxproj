@@ -113,6 +113,7 @@
 		FEA6EB61246C5851008E4F63 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA6EB60246C5851008E4F63 /* MainMenu.xib */; };
 		FEC5EBF4246C506A00224E0F /* BlueTransmit.tiff in Resources */ = {isa = PBXBuildFile; fileRef = FEC5EBF2246C506A00224E0F /* BlueTransmit.tiff */; };
 		FEC5EBF5246C506A00224E0F /* GreenTransmit.tiff in Resources */ = {isa = PBXBuildFile; fileRef = FEC5EBF3246C506A00224E0F /* GreenTransmit.tiff */; };
+		FECC1A912476C4BA00B09DD5 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECC1A902476C4B900B09DD5 /* ShortcutRecorder.framework */; };
 		FEE742821D141C7A002D5B23 /* Appcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = FEE742811D141C7A002D5B23 /* Appcast.xml */; };
 		FEE742841D141D39002D5B23 /* 2.0b3.html in Resources */ = {isa = PBXBuildFile; fileRef = FEE742831D141D39002D5B23 /* 2.0b3.html */; };
 /* End PBXBuildFile section */
@@ -535,7 +536,6 @@
 		FAD13BBD24609EE9005837E0 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		FAD13BBF2460DAE2005837E0 /* TeamSquawkx64.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TeamSquawkx64.icns; sourceTree = "<group>"; };
 		FAD13BC22460DE1B005837E0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TeamSquawk/Images.xcassets; sourceTree = "<group>"; };
-		FAF8BC4F24634139009DA73E /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		FE17CD8924729E04008DA4BB /* MTCoreAudio64.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MTCoreAudio64.framework; sourceTree = "<group>"; };
 		FE4D9B4B246D6E4E00B27E96 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		FE4D9B4D246D6E5700B27E96 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -545,6 +545,7 @@
 		FEB9DB3D246C9B3200B73AFE /* TeamSquawk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamSquawk.entitlements; sourceTree = "<group>"; };
 		FEC5EBF2246C506A00224E0F /* BlueTransmit.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = BlueTransmit.tiff; sourceTree = SOURCE_ROOT; };
 		FEC5EBF3246C506A00224E0F /* GreenTransmit.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = GreenTransmit.tiff; sourceTree = SOURCE_ROOT; };
+		FECC1A902476C4B900B09DD5 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShortcutRecorder.framework; sourceTree = "<group>"; };
 		FEE742811D141C7A002D5B23 /* Appcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Appcast.xml; sourceTree = "<group>"; };
 		FEE742831D141D39002D5B23 /* 2.0b3.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 2.0b3.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -560,6 +561,7 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				C9BD028A0FFC96DC00FC280A /* AudioToolbox.framework in Frameworks */,
 				C9E2D1B1100662B700ED920D /* Carbon.framework in Frameworks */,
+				FECC1A912476C4BA00B09DD5 /* ShortcutRecorder.framework in Frameworks */,
 				FE17CD8B24729E0C008DA4BB /* MTCoreAudio64.framework in Frameworks */,
 				C939E1E7100DB5FA002CBED3 /* AudioUnit.framework in Frameworks */,
 				C939EDCE1011E7A1002CBED3 /* Sparkle.framework in Frameworks */,
@@ -600,6 +602,7 @@
 		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FECC1A902476C4B900B09DD5 /* ShortcutRecorder.framework */,
 				FE17CD8924729E04008DA4BB /* MTCoreAudio64.framework */,
 				C95468FB101540CD00FCF935 /* MWFramework.framework */,
 				C939EDCD1011E7A1002CBED3 /* Sparkle.framework */,
@@ -734,7 +737,6 @@
 				C9E2E0B21009698700ED920D /* RPImageAndTextCell.h */,
 				C9E2E0B31009698700ED920D /* RPImageAndTextCell.m */,
 				FAD13BBD24609EE9005837E0 /* Preferences.xib */,
-				FAF8BC4F24634139009DA73E /* Preferences.xib */,
 				C939EB211010FD61002CBED3 /* TSThreadBlocker.h */,
 				C939EB221010FD61002CBED3 /* TSThreadBlocker.m */,
 			);

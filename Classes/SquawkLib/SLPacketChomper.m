@@ -53,7 +53,7 @@ dest = [[[NSString alloc] initWithBytes:(const char*)dest##Buffer length:dest##L
 dest = [[[NSString alloc] initWithBytes:(const char*)dest##Buffer length:dest##Len encoding: NSUTF8StringEncoding] autorelease]
 
 #define SNARF_NULLTERM_STRING(dest) char *dest##DataPtr = (char*)[[snarfData subdataWithRange:NSMakeRange(snarfPos, [snarfData length] - snarfPos)] bytes]; \
-                                    unsigned int dest##Len = (strlen(dest##DataPtr) < ([snarfData length] - snarfPos)) ? strlen(dest##DataPtr) : ([snarfData length] - snarfPos); \
+                                    unsigned int dest##Len = (int)((strlen(dest##DataPtr) < ([snarfData length] - snarfPos)) ? strlen(dest##DataPtr) : ([snarfData length] - snarfPos)); \
                                     dest = [[[NSString alloc] initWithBytes:dest##DataPtr length:dest##Len encoding:NSUTF8StringEncoding] autorelease]; \
                                     snarfPos += dest##Len + 1
 
@@ -647,7 +647,7 @@ dest = [[[NSString alloc] initWithBytes:(const char*)dest##Buffer length:dest##L
     SNARF_CRC();
     
     // number of channels
-    unsigned int currentChannel = 0, numberOfChannels = 0;
+    unsigned int numberOfChannels = 0;
     SNARF_INT(numberOfChannels);
     unsigned int channelID = 0;
     SNARF_INT(channelID);

@@ -354,7 +354,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="w1D-3k-fpU">
                             <rect key="frame" x="1" y="1" width="271" height="555"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="32" indentationPerLevel="12" autoresizesOutlineColumn="YES" outlineTableColumn="456" id="454">
                                     <rect key="frame" x="0.0" y="0.0" width="1003" height="555"/>
@@ -443,13 +443,13 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         <size key="cellSize" width="162" height="18"/>
                         <size key="intercellSpacing" width="4" height="2"/>
-                        <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" imageScaling="proportionallyDown" inset="2" id="538">
+                        <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="538">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <cells>
                             <column>
-                                <buttonCell type="radio" title="Anonymous" imagePosition="left" alignment="left" state="on" tag="1" imageScaling="proportionallyDown" inset="2" id="536">
+                                <buttonCell type="radio" title="Anonymous" imagePosition="left" alignment="left" state="on" tag="1" inset="2" id="536">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <connections>
@@ -458,7 +458,7 @@
                                 </buttonCell>
                             </column>
                             <column>
-                                <buttonCell type="radio" title="Registered" imagePosition="left" alignment="left" imageScaling="proportionallyDown" inset="2" id="539">
+                                <buttonCell type="radio" title="Registered" imagePosition="left" alignment="left" inset="2" id="539">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <connections>
@@ -577,7 +577,7 @@ Gw
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Item 1" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="510" id="508">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="label" size="11"/>
+                        <font key="font" metaFont="menu" size="11"/>
                         <menu key="menu" title="OtherViews" id="509">
                             <items>
                                 <menuItem title="Item 1" state="on" hidden="YES" id="510"/>

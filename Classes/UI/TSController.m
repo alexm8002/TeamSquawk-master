@@ -296,7 +296,7 @@
 
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(RPImageAndTextCell*)cell forTableColumn:(NSTableColumn*)tableColumn forChannel:(TSChannel*)channel
 {
-  [cell setImage:nil];
+  //[cell setImage:nil];
 }
 
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(RPImageAndTextCell*)cell forTableColumn:(NSTableColumn*)tableColumn forPlayer:(TSPlayer*)player
@@ -308,7 +308,7 @@
 
 - (NSMenu*)contextualMenuForPlayer:(TSPlayer*)player
 {
-  NSMenu *menu = [[NSMenu allocWithZone:[NSMenu menuZone]] init];
+  NSMenu *menu = [[NSMenu allocWithZone:[NSMenu zone]] init];
   
   [menu addItemWithTitle:@"Kick Player" action:@selector(kickPlayer:) keyEquivalent:@""];
   [menu addItemWithTitle:@"Kick Player From Channel" action:@selector(channelKickPlayer:) keyEquivalent:@""];
@@ -421,7 +421,7 @@
   [newChannelWindow center];
   [newChannelWindow makeKeyAndOrderFront:sender];
 }
-
+//setIntegerValue:500
 - (IBAction)disconnectMenuAction:(id)sender
 {
   if (isConnected)

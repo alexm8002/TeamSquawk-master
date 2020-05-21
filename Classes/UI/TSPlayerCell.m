@@ -35,7 +35,6 @@
   {
     NSRect transmissionRect;
     NSImage *image;
-    float opacity;
     
     if ([player isLocallyMuted])
     {
