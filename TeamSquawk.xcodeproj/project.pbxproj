@@ -113,7 +113,8 @@
 		FEA6EB61246C5851008E4F63 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA6EB60246C5851008E4F63 /* MainMenu.xib */; };
 		FEC5EBF4246C506A00224E0F /* BlueTransmit.tiff in Resources */ = {isa = PBXBuildFile; fileRef = FEC5EBF2246C506A00224E0F /* BlueTransmit.tiff */; };
 		FEC5EBF5246C506A00224E0F /* GreenTransmit.tiff in Resources */ = {isa = PBXBuildFile; fileRef = FEC5EBF3246C506A00224E0F /* GreenTransmit.tiff */; };
-		FECC1A912476C4BA00B09DD5 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECC1A902476C4B900B09DD5 /* ShortcutRecorder.framework */; };
+		FECC1A922476C55700B09DD5 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FECC1A902476C4B900B09DD5 /* ShortcutRecorder.framework */; };
+		FECC1A932476C55700B09DD5 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FECC1A902476C4B900B09DD5 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FEE742821D141C7A002D5B23 /* Appcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = FEE742811D141C7A002D5B23 /* Appcast.xml */; };
 		FEE742841D141D39002D5B23 /* 2.0b3.html in Resources */ = {isa = PBXBuildFile; fileRef = FEE742831D141D39002D5B23 /* 2.0b3.html */; };
 /* End PBXBuildFile section */
@@ -136,6 +137,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				C939F0221011E7CC002CBED3 /* Sparkle.framework in Copy Frameworks */,
+				FECC1A932476C55700B09DD5 /* ShortcutRecorder.framework in Copy Frameworks */,
 				FE17CD8C24729E0C008DA4BB /* MTCoreAudio64.framework in Copy Frameworks */,
 				C9BD027F0FFC1BB900FC280A /* libspeex.1.5.0.dylib in Copy Frameworks */,
 				C9BD02800FFC1BBC00FC280A /* libspeexdsp.1.5.0.dylib in Copy Frameworks */,
@@ -561,7 +563,7 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				C9BD028A0FFC96DC00FC280A /* AudioToolbox.framework in Frameworks */,
 				C9E2D1B1100662B700ED920D /* Carbon.framework in Frameworks */,
-				FECC1A912476C4BA00B09DD5 /* ShortcutRecorder.framework in Frameworks */,
+				FECC1A922476C55700B09DD5 /* ShortcutRecorder.framework in Frameworks */,
 				FE17CD8B24729E0C008DA4BB /* MTCoreAudio64.framework in Frameworks */,
 				C939E1E7100DB5FA002CBED3 /* AudioUnit.framework in Frameworks */,
 				C939EDCE1011E7A1002CBED3 /* Sparkle.framework in Frameworks */,
