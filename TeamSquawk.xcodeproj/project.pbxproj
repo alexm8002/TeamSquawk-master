@@ -114,7 +114,7 @@
 		FEC5EBF4246C506A00224E0F /* BlueTransmit.tiff in Resources */ = {isa = PBXBuildFile; fileRef = FEC5EBF2246C506A00224E0F /* BlueTransmit.tiff */; };
 		FEC5EBF5246C506A00224E0F /* GreenTransmit.tiff in Resources */ = {isa = PBXBuildFile; fileRef = FEC5EBF3246C506A00224E0F /* GreenTransmit.tiff */; };
 		FEE742821D141C7A002D5B23 /* Appcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = FEE742811D141C7A002D5B23 /* Appcast.xml */; };
-		FEE742841D141D39002D5B23 /* 2.0b.html in Resources */ = {isa = PBXBuildFile; fileRef = FEE742831D141D39002D5B23 /* 2.0b.html */; };
+		FEE742841D141D39002D5B23 /* 2.0b3.html in Resources */ = {isa = PBXBuildFile; fileRef = FEE742831D141D39002D5B23 /* 2.0b3.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -546,7 +546,7 @@
 		FEC5EBF2246C506A00224E0F /* BlueTransmit.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = BlueTransmit.tiff; sourceTree = SOURCE_ROOT; };
 		FEC5EBF3246C506A00224E0F /* GreenTransmit.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = GreenTransmit.tiff; sourceTree = SOURCE_ROOT; };
 		FEE742811D141C7A002D5B23 /* Appcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Appcast.xml; sourceTree = "<group>"; };
-		FEE742831D141D39002D5B23 /* 2.0b.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 2.0b.html; sourceTree = "<group>"; };
+		FEE742831D141D39002D5B23 /* 2.0b3.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 2.0b3.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -622,7 +622,7 @@
 			children = (
 				FEB9DB3D246C9B3200B73AFE /* TeamSquawk.entitlements */,
 				FEE742811D141C7A002D5B23 /* Appcast.xml */,
-				FEE742831D141D39002D5B23 /* 2.0b.html */,
+				FEE742831D141D39002D5B23 /* 2.0b3.html */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -1442,7 +1442,7 @@
 				C9E2CC0D1003F18F00ED920D /* TransmitGreen.png in Resources */,
 				C9E2CC0E1003F18F00ED920D /* TransmitOrange.png in Resources */,
 				C9E2CE0C1004823400ED920D /* TransmitGray.png in Resources */,
-				FEE742841D141D39002D5B23 /* 2.0b.html in Resources */,
+				FEE742841D141D39002D5B23 /* 2.0b3.html in Resources */,
 				C9E2CF5710053DE300ED920D /* Mute.tiff in Resources */,
 				C9E2CF6D10053F5200ED920D /* BlockWhispers.tiff in Resources */,
 				FAD13BC32460DE1B005837E0 /* Images.xcassets in Resources */,

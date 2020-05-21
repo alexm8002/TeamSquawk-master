@@ -6,13 +6,13 @@
         <description>Most recent changes with links to updates.</description>
         <language>en</language>
         <item>
-            <title>Version 2.0b</title>
+            <title>Version 2.0b3</title>
             <sparkle:releaseNotesLink>
-                https://github.com/alexm8002/TeamSquawk-master/blob/master/2.0b.html
+                https://github.com/alexm8002/TeamSquawk-master/blob/master/2.0b3.html
             </sparkle:releaseNotesLink>
-            <pubDate>Fri, 10 May 2020 12:00 +0000</pubDate>
-            <enclosure url="https://github.com/alexm8002/TeamSquawk-master/releases/download/2.0b/TeamSquawk-x-64-2.0b.dmg"
-            sparkle:version="2.0b" length="1472893" type="application/octet-stream"
+            <pubDate>Thu, 21 May 2020 12:00 +0000</pubDate>
+            <enclosure url="https://github.com/alexm8002/TeamSquawk-master/releases/download/2.0b3/TeamSquawk-X64.2.0.b3.dmg"
+            sparkle:version="2.0b3" length="1472893" type="application/octet-stream"
             sparkle:dsaSignature="MCwCFARpHI0XRiOfea6DzSD56R9PtPp7AhQfzcjpEnWr4z+H8RfxCQtGacIwkA==" />
         </item>
         
