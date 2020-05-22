@@ -208,12 +208,33 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
   [connectionEditorPasswordTextField setStringValue:@""];
   
   [self connectionEditorWindowUpdateType:self];
-    //[connectionEditorWindow beginSheet:[self window] completionHandler:nil];
-  [NSApp beginSheet:connectionEditorWindow
-     modalForWindow:[self window]
-     modalDelegate:self
-     didEndSelector:@selector(connectionEditorSheetDidEnd:returnCode:contextInfo:)
-     contextInfo:nil];
+
+    [[self window] beginSheet:connectionEditorWindow completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSModalResponseOK)
+        {
+          NSDictionary *server = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  [connectionEditorServerTextField stringValue], @"ServerAddress",
+                                  [connectionEditorNicknameTextField stringValue], @"Nickname",
+                                  [NSNumber numberWithInt:8767], @"Port",
+                                  [NSNumber numberWithBool:([[connectionEditorTypeMatrix selectedCell] tag] == 0)], @"Registered",
+                                  [connectionEditorPasswordTextField stringValue], @"Password",
+                                  // should always come last, then nil username will stop the array
+                                  (([[connectionEditorTypeMatrix selectedCell] tag] == 0) ? [connectionEditorUsernameTextField stringValue] : nil), @"Username",
+                                  nil];
+
+          NSMutableArray *recentServers = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"RecentServers"] mutableCopy];
+            [recentServers addObject:server];
+            [[NSUserDefaults standardUserDefaults] setObject:recentServers forKey:@"RecentServers"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"TSRecentServersDidChange" object:nil];
+            [serversTableView reloadData];
+            
+            [recentServers release];
+        }
+    }];
+    
+    
 }
 
 - (IBAction)deleteServerAction:(id)sender
@@ -245,12 +266,33 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
     [connectionEditorPasswordTextField setStringValue:[server objectForKey:@"Password"]];
     
     [self connectionEditorWindowUpdateType:self];
+
+      [[self window] beginSheet:connectionEditorWindow completionHandler:^(NSModalResponse returnCode) {
+          if (returnCode == NSModalResponseOK)
+          {
+            NSDictionary *server = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [connectionEditorServerTextField stringValue], @"ServerAddress",
+                                    [connectionEditorNicknameTextField stringValue], @"Nickname",
+                                    [NSNumber numberWithInt:8767], @"Port",
+                                    [NSNumber numberWithBool:([[connectionEditorTypeMatrix selectedCell] tag] == 0)], @"Registered",
+                                    [connectionEditorPasswordTextField stringValue], @"Password",
+                                    // should always come last, then nil username will stop the array
+                                    (([[connectionEditorTypeMatrix selectedCell] tag] == 0) ? [connectionEditorUsernameTextField stringValue] : nil), @"Username",
+                                    nil];
+
+            NSMutableArray *recentServers = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"RecentServers"] mutableCopy];
+              int row = (int)[serversTableView selectedRow];
+              [recentServers replaceObjectAtIndex:row withObject:server];
+              [[NSUserDefaults standardUserDefaults] setObject:recentServers forKey:@"RecentServers"];
+              [[NSUserDefaults standardUserDefaults] synchronize];
+
+              [[NSNotificationCenter defaultCenter] postNotificationName:@"TSRecentServersDidChange" object:nil];
+              [serversTableView reloadData];
+              
+              [recentServers release];
+          }
+      }];
       
-    [NSApp beginSheet:connectionEditorWindow
-    modalForWindow:[self window]
-    modalDelegate:self
-    didEndSelector:@selector(connectionEditorSheetDidEnd:returnCode:contextInfo:)
-    contextInfo:server];
   }
 }
 
@@ -269,7 +311,7 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
     [NSApp endSheet:connectionEditorWindow returnCode:NSModalResponseCancel];
 }
 
-- (void)connectionEditorSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
+/*- (void)connectionEditorSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
 {
   [sheet orderOut:self];
   
@@ -306,7 +348,7 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
     
     [recentServers release];
   }
-}
+}*/
 
 - (NSInteger)serversNumberOfRowsInTableView:(NSTableView *)aTableView
 {
@@ -626,11 +668,36 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
     [hotkeyEditorActionPopup selectItemWithTag:tag];
     [hotkeyEditorRecorder setKeyCombo:combo];
     
-    [NSApp beginSheet:hotkeyEditorWindow
+ /*   [NSApp beginSheet:hotkeyEditorWindow
        modalForWindow:[self window]
         modalDelegate:self 
        didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:)
-          contextInfo:(void*)row];
+          contextInfo:(void*)row];*/
+      [[self window]beginSheet:hotkeyEditorWindow completionHandler:^(NSModalResponse returnCode) {
+          if (returnCode == NSModalResponseOK)
+          {
+            NSMutableArray *hotkeys = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"Hotkeys"] mutableCopy];
+            
+            int keycode = (int)[hotkeyEditorRecorder keyCombo].code;
+            unsigned int modifiers = (int)[hotkeyEditorRecorder cocoaToCarbonFlags:[hotkeyEditorRecorder keyCombo].flags];
+            
+            // right, setup a new dictionary for this entry
+            NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  [NSNumber numberWithInt:(int)[hotkeyEditorActionPopup selectedTag]], @"HotkeyAction",
+                                  [NSNumber numberWithInt:keycode], @"HotkeyKeycode",
+                                  [NSNumber numberWithUnsignedInt:modifiers], @"HotkeyModifiers",
+                                  nil];
+            [hotkeys replaceObjectAtIndex:row withObject:dict];
+            
+            [[NSUserDefaults standardUserDefaults] setObject:hotkeys forKey:@"Hotkeys"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"TSHotkeysDidChange" object:nil];
+            [hotkeyTableView reloadData];
+          }
+      }];
+      
+      
   }
 }
 
@@ -638,7 +705,7 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
 {
   [NSApp endSheet:hotkeyEditorWindow returnCode:[sender tag]];
 }
-
+/*
 - (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
 {
   [sheet orderOut:self];
@@ -665,7 +732,7 @@ NSString *TSPreferencesServersDragType = @"TSPreferencesServersDragType";
     [[NSNotificationCenter defaultCenter] postNotificationName:@"TSHotkeysDidChange" object:nil];
     [hotkeyTableView reloadData];
   }
-}
+}*/
 
 - (BOOL)shortcutRecorder:(SRRecorderControl *)aRecorder isKeyCode:(NSInteger)keyCode andFlagsTaken:(NSUInteger)flags reason:(NSString **)aReason
 {

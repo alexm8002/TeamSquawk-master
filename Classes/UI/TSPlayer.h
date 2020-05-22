@@ -82,4 +82,6 @@ typedef enum {
 - (unsigned int)channelID;
 - (void)setChannelID:(unsigned int)aChannelID;
 
+- (void)backgroundDecodeData:(NSData*)audioCodecData;
+
 @end

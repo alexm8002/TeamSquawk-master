@@ -131,7 +131,10 @@
     
 @autoreleasepool {
   
-  [NSTimer scheduledTimerWithTimeInterval:[[NSDate distantFuture] timeIntervalSinceNow] target:self selector:nil userInfo:nil repeats:NO];
+    [NSTimer timerWithTimeInterval:[[NSDate distantFuture] timeIntervalSinceNow] repeats:NO block:^(NSTimer * _Nonnull timer) {
+        return;
+    }];
+  //[NSTimer scheduledTimerWithTimeInterval:[[NSDate distantFuture] timeIntervalSinceNow] target:self selector:nil userInfo:nil repeats:NO];
   
   while (![[NSThread currentThread] isCancelled])
    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];

@@ -1873,7 +1873,7 @@ static void MyCFSocketCallback(CFSocketRef, CFSocketCallBackType, CFDataRef, con
 		
 		if([self canAcceptBytes:theSocket])
 		{
-			int result;
+			NSUInteger result;
 			CFSocketNativeHandle theNativeSocket = CFSocketGetNative(theSocket);
 			
 			const void *buf  = [theCurrentSend->buffer bytes];
@@ -2113,7 +2113,7 @@ static void MyCFSocketCallback(CFSocketRef, CFSocketCallBackType, CFDataRef, con
 		
 			if([self hasBytesAvailable:theSocket])
 			{
-				int result;
+				NSUInteger result;
 				CFSocketNativeHandle theNativeSocket = CFSocketGetNative(theSocket);
 				
 				// Allocate buffer for recvfrom operation.

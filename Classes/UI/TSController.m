@@ -417,7 +417,7 @@
   [newChannelTopic setStringValue:@""];
   [newChannelDescription setStringValue:@""];
   [newChannelPasswordField setStringValue:@""];
-  [newChannelMaxUsers setIntegerValue:500];
+  [newChannelMaxUsers setStringValue:@"500"];
   [newChannelWindow center];
   [newChannelWindow makeKeyAndOrderFront:sender];
 }

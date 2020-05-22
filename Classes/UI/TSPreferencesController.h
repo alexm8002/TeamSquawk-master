@@ -88,7 +88,7 @@ typedef enum {
 - (IBAction)connectionEditorWindowUpdateType:(id)sender;
 - (IBAction)connectionEditorWindowOKAction:(id)sender;
 - (IBAction)connectionEditorWindowCancelAction:(id)sender;
-- (void)connectionEditorSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;;
+//- (void)connectionEditorSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;;
 - (NSInteger)serversNumberOfRowsInTableView:(NSTableView *)aTableView;
 - (id)serversTableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 - (void)serversTableView:(NSTableView *)aTableView willDisplayCell:(id)aCell forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
@@ -114,7 +114,7 @@ typedef enum {
 - (IBAction)deleteHotkeyAction:(id)sender;
 - (IBAction)doubleClickHotkeyTableView:(id)sender;
 - (IBAction)hotkeyEditorButtonAction:(id)sender;
-- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;;
+//- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;;
 - (NSInteger)hotkeysNumberOfRowsInTableView:(NSTableView*)aTableview;
 - (id)hotkeysTableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 - (void)hotkeysTableViewSelectionDidChange:(NSNotification *)aNotification;

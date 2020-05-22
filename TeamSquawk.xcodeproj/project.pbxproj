@@ -113,7 +113,7 @@
 		FECC1AA22476C76200B09DD5 /* SRRecorderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FECC1A9C2476C76200B09DD5 /* SRRecorderCell.m */; };
 		FECC1AA32476C76200B09DD5 /* SRRecorderControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FECC1A9E2476C76200B09DD5 /* SRRecorderControl.m */; };
 		FEE742821D141C7A002D5B23 /* Appcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = FEE742811D141C7A002D5B23 /* Appcast.xml */; };
-		FEE742841D141D39002D5B23 /* 2.0b3.html in Resources */ = {isa = PBXBuildFile; fileRef = FEE742831D141D39002D5B23 /* 2.0b3.html */; };
+		FEE742841D141D39002D5B23 /* 2.0.1.html in Resources */ = {isa = PBXBuildFile; fileRef = FEE742831D141D39002D5B23 /* 2.0.1.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -543,7 +543,7 @@
 		FECC1A9D2476C76200B09DD5 /* SRValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRValidator.h; sourceTree = "<group>"; };
 		FECC1A9E2476C76200B09DD5 /* SRRecorderControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRRecorderControl.m; sourceTree = "<group>"; };
 		FEE742811D141C7A002D5B23 /* Appcast.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Appcast.xml; sourceTree = "<group>"; };
-		FEE742831D141D39002D5B23 /* 2.0b3.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 2.0b3.html; sourceTree = "<group>"; };
+		FEE742831D141D39002D5B23 /* 2.0.1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 2.0.1.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -619,7 +619,7 @@
 			children = (
 				FEB9DB3D246C9B3200B73AFE /* TeamSquawk.entitlements */,
 				FEE742811D141C7A002D5B23 /* Appcast.xml */,
-				FEE742831D141D39002D5B23 /* 2.0b3.html */,
+				FEE742831D141D39002D5B23 /* 2.0.1.html */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -1437,7 +1437,7 @@
 				C9E2CC0D1003F18F00ED920D /* TransmitGreen.png in Resources */,
 				C9E2CC0E1003F18F00ED920D /* TransmitOrange.png in Resources */,
 				C9E2CE0C1004823400ED920D /* TransmitGray.png in Resources */,
-				FEE742841D141D39002D5B23 /* 2.0b3.html in Resources */,
+				FEE742841D141D39002D5B23 /* 2.0.1.html in Resources */,
 				C9E2CF5710053DE300ED920D /* Mute.tiff in Resources */,
 				C9E2CF6D10053F5200ED920D /* BlockWhispers.tiff in Resources */,
 				C9E2CF7D1005403000ED920D /* ChannelCommander.png in Resources */,
@@ -1569,6 +1569,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 2.0;
 				DEVELOPMENT_TEAM = 4BV6J54P25;
 				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1595,9 +1596,10 @@
 					"\"$(SRCROOT)/build/Debug\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 2.0.1;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = "-headerpad_max_install_names";
-				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.sysctl.${PRODUCT_NAME:identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = org.alexm8002.TeamSquawk;
 				PRODUCT_NAME = TeamSquawk;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/UI/TeamSquawk-Bridging-Header.h";
@@ -1616,6 +1618,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 4BV6J54P25;
 				ENABLE_HARDENED_RUNTIME = NO;
@@ -1641,10 +1644,11 @@
 					"\"$(SRCROOT)/build/Debug\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 2.0.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				OTHER_LDFLAGS = "-headerpad_max_install_names";
-				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.sysctl.${PRODUCT_NAME:identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = org.alexm8002.TeamSquawk;
 				PRODUCT_NAME = TeamSquawk;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/UI/TeamSquawk-Bridging-Header.h";

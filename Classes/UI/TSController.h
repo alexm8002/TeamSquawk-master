@@ -62,7 +62,7 @@ typedef enum {
     IBOutlet NSWindow *newChannelWindow;
     IBOutlet NSTextField *newChannelName;
     IBOutlet NSTextField *newChannelTopic;
-    IBOutlet NSUInteger *newChannelMaxUsers;
+    IBOutlet NSTextField *newChannelMaxUsers;
     IBOutlet NSTextField *newChannelDescription;
     IBOutlet NSTextField *newChannelPasswordField;
     

@@ -15,11 +15,12 @@
 - (BOOL)getFSRef:(FSRef *)aFSRef;
 
 @end
-
+/*
 @implementation NSString (Extras)
 
 + (NSString *)stringWithFSRef:(const FSRef *)aFSRef
 {
+    
   CFURLRef theURL = CFURLCreateFromFSRef( kCFAllocatorDefault, aFSRef );
   NSString* thePath = [(NSURL *)theURL path];
   CFRelease ( theURL );
@@ -33,7 +34,7 @@
 
 }
 
-@end
+@end*/
 
 @implementation TSAudioExtraction
 
