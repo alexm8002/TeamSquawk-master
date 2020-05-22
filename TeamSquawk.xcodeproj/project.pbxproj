@@ -102,7 +102,6 @@
 		FA5B11C2245F66CA008B8E58 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA5B11C1245F66C9008B8E58 /* AVFoundation.framework */; };
 		FAD13BBE24609EEA005837E0 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD13BBD24609EE9005837E0 /* Preferences.xib */; };
 		FAD13BC02460DAE5005837E0 /* TeamSquawkx64.icns in Resources */ = {isa = PBXBuildFile; fileRef = FAD13BBF2460DAE2005837E0 /* TeamSquawkx64.icns */; };
-		FAD13BC32460DE1B005837E0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD13BC22460DE1B005837E0 /* Images.xcassets */; };
 		FE17CD8B24729E0C008DA4BB /* MTCoreAudio64.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE17CD8924729E04008DA4BB /* MTCoreAudio64.framework */; };
 		FE17CD8C24729E0C008DA4BB /* MTCoreAudio64.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = FE17CD8924729E04008DA4BB /* MTCoreAudio64.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FEA6EB61246C5851008E4F63 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEA6EB60246C5851008E4F63 /* MainMenu.xib */; };
@@ -524,7 +523,6 @@
 		FA5B11C1245F66C9008B8E58 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FAD13BBD24609EE9005837E0 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		FAD13BBF2460DAE2005837E0 /* TeamSquawkx64.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TeamSquawkx64.icns; sourceTree = "<group>"; };
-		FAD13BC22460DE1B005837E0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TeamSquawk/Images.xcassets; sourceTree = "<group>"; };
 		FE17CD8924729E04008DA4BB /* MTCoreAudio64.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MTCoreAudio64.framework; sourceTree = "<group>"; };
 		FE4D9B4B246D6E4E00B27E96 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		FE4D9B4D246D6E5700B27E96 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -650,7 +648,6 @@
 			children = (
 				FEA6EB60246C5851008E4F63 /* MainMenu.xib */,
 				FA3D48722461CEE700B63EBA /* TeamSquawk-Template.sparseimage */,
-				FAD13BC22460DE1B005837E0 /* Images.xcassets */,
 				FAD13BBF2460DAE2005837E0 /* TeamSquawkx64.icns */,
 				FE812C2A1CC6675B00691D31 /* dsa_pub.pem */,
 				C9E2CA1610032AAF00ED920D /* Images */,
@@ -1443,7 +1440,6 @@
 				FEE742841D141D39002D5B23 /* 2.0b3.html in Resources */,
 				C9E2CF5710053DE300ED920D /* Mute.tiff in Resources */,
 				C9E2CF6D10053F5200ED920D /* BlockWhispers.tiff in Resources */,
-				FAD13BC32460DE1B005837E0 /* Images.xcassets in Resources */,
 				C9E2CF7D1005403000ED920D /* ChannelCommander.png in Resources */,
 				FEC5EBF4246C506A00224E0F /* BlueTransmit.tiff in Resources */,
 				C9E2D08710055FC800ED920D /* Away.png in Resources */,
